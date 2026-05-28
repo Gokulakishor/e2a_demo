@@ -2,425 +2,326 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { siteConfig } from "@/data/config";
+import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { 
-  Menu, 
-  X, 
-  ChevronDown, 
-  Calendar, 
-  Download, 
-  ExternalLink, 
-  Sparkles, 
-  Clock, 
-  Users, 
-  Award, 
-  FileText, 
-  CheckCircle2, 
-  Compass,
-  ShieldAlert,
-  ArrowRight
-} from "lucide-react";
+import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+
+const NAV_LINKS: Array<{
+  label: string;
+  href: string;
+  children?: Array<{ label: string; href: string }>;
+}> = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Call for Papers", href: "/call-for-papers" },
+  { label: "Special Session", href: "/special-session" },
+  {
+    label: "For Authors",
+    href: "/information-for-authors",
+    children: [
+      { label: "Registration", href: "/information-for-authors#registration" },
+      { label: "Paper Submission", href: "/information-for-authors#paper-submission" },
+      { label: "Travel Support", href: "/information-for-authors#travel-support" },
+      { label: "Best Presentation Award", href: "/information-for-authors#best-presentation-award" },
+    ],
+  },
+  { label: "Committee", href: "/committee" },
+  { label: "Speakers", href: "/speakers" },
+  { label: "Sponsors", href: "/#sponsors" },
+  { label: "Venue", href: "/venue" },
+  { label: "Contact", href: "/contact" },
+];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  
-  // Advanced Dropdown States
-  const [activeDropdown, setActiveDropdown] = useState<"none" | "papers" | "committee" | "submit">("none");
-  const [countdownOpen, setCountdownOpen] = useState(false);
-  const closeTimeout = useRef<any>(null);
+  const [timeStr, setTimeStr] = useState("");
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const pathname = usePathname();
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 30);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Safe hover handlers to prevent jitter
-  const handleMouseEnter = (menu: "papers" | "committee" | "submit") => {
-    if (closeTimeout.current) clearTimeout(closeTimeout.current);
-    setActiveDropdown(menu);
-  };
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const options: Intl.DateTimeFormatOptions = {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+        timeZone: "Asia/Kolkata",
+      };
+      setTimeStr(now.toLocaleTimeString("en-IN", options) + " IST");
+    };
+    updateTime();
+    const id = setInterval(updateTime, 1000);
+    return () => clearInterval(id);
+  }, []);
 
-  const handleMouseLeave = () => {
-    closeTimeout.current = setTimeout(() => {
-      setActiveDropdown("none");
-    }, 150);
-  };
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setOpenDropdown(null);
+  }, [pathname]);
 
-  // Dynamic Deadline Days Calculation
-  // We assume a real deadline of July 15, 2027 for submissions.
-  const submissionDeadline = new Date("2027-07-15T23:59:59");
-  const today = new Date();
-  const diffTime = Math.abs(submissionDeadline.getTime() - today.getTime());
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setOpenDropdown(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
-    <header 
-      className={`fixed top-0 w-full z-50 transition-all duration-500 border-b ${
-        isScrolled 
-          ? "bg-white/70 backdrop-blur-2xl border-primary/10 shadow-[0_8px_32px_rgba(30,58,138,0.04)] py-2.5" 
-          : "bg-transparent border-transparent py-5"
-      }`}
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between relative">
-        
-        {/* BRAND LOGO */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <motion.span 
-            whileHover={{ scale: 1.02 }}
-            className="font-bold text-2xl tracking-tighter text-foreground group-hover:text-primary transition-colors"
-          >
-            E2A<span className="text-accent font-mono text-xl">&apos;27</span>
-          </motion.span>
-        </Link>
-
-        {/* 100x BETTER: DYNAMIC MILESTONE TICKER BADGE */}
-        <div className="hidden xl:flex items-center gap-2.5 relative">
-          <button 
-            onClick={() => setCountdownOpen(!countdownOpen)}
-            onBlur={() => setTimeout(() => setCountdownOpen(false), 200)}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 hover:bg-accent/20 transition-all text-xs font-mono font-semibold text-slate-700 animate-pulse active:scale-95"
-          >
-            <span className="w-1.5 h-1.5 bg-accent rounded-full" />
-            <span>SUBMISSIONS OPEN: {diffDays} DAYS LEFT</span>
-            <ChevronDown className={`h-3 w-3 transition-transform ${countdownOpen ? "rotate-180" : ""}`} />
-          </button>
-
-          {/* Countdown Timeline Popover Menu */}
-          <AnimatePresence>
-            {countdownOpen && (
-              <motion.div
-                initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                className="absolute top-full mt-3 left-0 w-80 bg-white border border-slate-200 shadow-2xl rounded-2xl p-5 space-y-4 text-left z-50"
-              >
-                <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
-                  <Clock className="h-4.5 w-4.5 text-primary" />
-                  <span className="text-xs uppercase font-bold tracking-wider font-mono text-slate-500">Milestone Deadlines</span>
-                </div>
-                
-                <div className="space-y-3">
-                  {[
-                    { label: "Paper Submissions Close", date: "July 15, 2027", status: "Active Countdown", active: true },
-                    { label: "Acceptance Notifications", date: "Sept 15, 2027", status: "Pending", active: false },
-                    { label: "Registration Deadline", date: "Oct 15, 2027", status: "Pending", active: false }
-                  ].map((milestone, idx) => (
-                    <div key={idx} className="flex justify-between items-start text-xs">
-                      <div>
-                        <p className={`font-semibold ${milestone.active ? "text-primary" : "text-slate-600"}`}>{milestone.label}</p>
-                        <p className="text-[10px] text-slate-400 font-mono mt-0.5">{milestone.date}</p>
-                      </div>
-                      <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold font-mono uppercase tracking-wider ${
-                        milestone.active ? "bg-accent/20 text-slate-700" : "bg-slate-100 text-slate-400"
-                      }`}>
-                        {milestone.status}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-500 font-mono">
-                  <span>Standard Review Cycle</span>
-                  <Link href="/#important-dates" className="text-primary underline hover:text-accent font-bold">View Timeline</Link>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+    <>
+      {/* ── Institutional Top Bar ── */}
+      <div className="fixed top-0 inset-x-0 z-50 h-9 bg-[#0f172a] border-b border-white/5 flex items-center justify-between px-4 md:px-8 select-none pointer-events-auto">
+        <div className="flex items-center gap-2 min-w-0">
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse shrink-0" />
+          <span className="text-[10px] font-mono tracking-wider text-white/60 truncate">
+            <span className="text-white/80 font-semibold">NATIONAL INSTITUTE OF TECHNOLOGY SILCHAR</span>
+            <span className="hidden sm:inline text-white/40"> — An Institute of National Importance</span>
+          </span>
         </div>
-
-        {/* DESKTOP INTERACTIVE NAVIGATION */}
-        <nav className="hidden lg:flex items-center gap-1.5">
-          
-          {/* Home Link */}
-          <Link href="/" className="text-xs font-semibold text-slate-600 hover:text-primary transition-all uppercase tracking-wider px-3.5 py-2.5 rounded-xl hover:bg-slate-100">
-            Home
-          </Link>
-          
-          {/* About Link */}
-          <Link href="/about" className="text-xs font-semibold text-slate-600 hover:text-primary transition-all uppercase tracking-wider px-3.5 py-2.5 rounded-xl hover:bg-slate-100">
-            About
-          </Link>
-
-          {/* 100x BETTER: CALL FOR PAPERS MEGA MENU TRIGGER */}
-          <div 
-            className="relative"
-            onMouseEnter={() => handleMouseEnter("papers")}
-            onMouseLeave={handleMouseLeave}
+        <div className="flex items-center gap-3 shrink-0">
+          <a
+            href="https://www.nits.ac.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:inline text-[10px] font-mono text-white/50 hover:text-amber-400 transition-colors"
           >
-            <button 
-              className={`text-xs font-semibold uppercase tracking-wider px-3.5 py-2.5 rounded-xl transition-all flex items-center gap-1 ${
-                activeDropdown === "papers" ? "bg-slate-100 text-primary" : "text-slate-600 hover:text-primary hover:bg-slate-100"
-              }`}
-            >
-              <span>Call For Papers</span>
-              <ChevronDown className={`h-3.5 w-3.5 transition-transform ${activeDropdown === "papers" ? "rotate-180" : ""}`} />
-            </button>
-
-            {/* Papers Dropdown Mega Menu */}
-            <AnimatePresence>
-              {activeDropdown === "papers" && (
-                <motion.div
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 15 }}
-                  className="absolute left-1/2 -translate-x-1/2 mt-2.5 w-[480px] bg-white border border-slate-200 shadow-2xl rounded-2xl p-6 grid grid-cols-2 gap-6 z-50"
-                >
-                  {/* Left Column: Submission Quick Desk */}
-                  <div className="space-y-4 border-r border-slate-100 pr-6">
-                    <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
-                      <Compass className="h-4 w-4 text-primary" />
-                      <span className="text-[10px] font-extrabold uppercase tracking-wider font-mono text-slate-500">Submission Desk</span>
-                    </div>
-
-                    <div className="space-y-3">
-                      {[
-                        { label: "CMT Submissions Portal ↗", href: "https://cmt3.research.microsoft.com/", desc: "Official peer-reviewing portal" },
-                        { label: "Smart Track Matcher ✨", href: "/call-for-papers#matcher", desc: "Interactive AI track validator" },
-                        { label: "IEEE Author Guidelines", href: "/call-for-papers", desc: "Formatting regulations & compliance" }
-                      ].map((item, idx) => (
-                        <Link key={idx} href={item.href} className="block group/item">
-                          <p className="text-xs font-bold text-slate-800 group-hover/item:text-primary transition-colors">{item.label}</p>
-                          <p className="text-[9px] text-slate-400 mt-0.5 leading-tight">{item.desc}</p>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Right Column: Templates & Info */}
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
-                      <FileText className="h-4 w-4 text-primary" />
-                      <span className="text-[10px] font-extrabold uppercase tracking-wider font-mono text-slate-500">Downloads</span>
-                    </div>
-
-                    <div className="space-y-3">
-                      {[
-                        { label: "IEEE MS-Word Template", href: "https://www.ieee.org/conferences/publishing/templates.html", desc: "Pre-formatted double-column format" },
-                        { label: "IEEE LaTeX Template", href: "https://www.ieee.org/conferences/publishing/templates.html", desc: "Recommended for mathematical formulas" }
-                      ].map((item, idx) => (
-                        <a key={idx} href={item.href} target="_blank" rel="noopener noreferrer" className="block group/item">
-                          <p className="text-xs font-bold text-slate-800 group-hover/item:text-primary transition-colors flex items-center gap-1">
-                            <span>{item.label}</span>
-                            <Download className="h-3 w-3 text-slate-400 shrink-0" />
-                          </p>
-                          <p className="text-[9px] text-slate-400 mt-0.5 leading-tight">{item.desc}</p>
-                        </a>
-                      ))}
-                    </div>
-
-                    <div className="pt-2 mt-2 bg-slate-50 border border-slate-100 p-2.5 rounded-xl flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
-                      <span className="text-[9px] font-mono font-bold text-slate-600 leading-tight">Double-Blind Peer Review compliant.</span>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          {/* Dates Link */}
-          <Link href="/#important-dates" className="text-xs font-semibold text-slate-600 hover:text-primary transition-all uppercase tracking-wider px-3.5 py-2.5 rounded-xl hover:bg-slate-100">
-            Dates
-          </Link>
-
-          {/* 100x BETTER: COMMITTEE MEGA MENU TRIGGER */}
-          <div 
-            className="relative"
-            onMouseEnter={() => handleMouseEnter("committee")}
-            onMouseLeave={handleMouseLeave}
-          >
-            <button 
-              className={`text-xs font-semibold uppercase tracking-wider px-3.5 py-2.5 rounded-xl transition-all flex items-center gap-1 ${
-                activeDropdown === "committee" ? "bg-slate-100 text-primary" : "text-slate-600 hover:text-primary hover:bg-slate-100"
-              }`}
-            >
-              <span>Committee</span>
-              <ChevronDown className={`h-3.5 w-3.5 transition-transform ${activeDropdown === "committee" ? "rotate-180" : ""}`} />
-            </button>
-
-            {/* Committee Hover Dropdown */}
-            <AnimatePresence>
-              {activeDropdown === "committee" && (
-                <motion.div
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 15 }}
-                  className="absolute left-1/2 -translate-x-1/2 mt-2.5 w-[380px] bg-white border border-slate-200 shadow-2xl rounded-2xl p-5 space-y-4 z-50"
-                >
-                  <div className="flex items-center gap-2 pb-2 border-b border-slate-100">
-                    <Users className="h-4.5 w-4.5 text-primary" />
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider font-mono text-slate-500">Core leadership delegates</span>
-                  </div>
-
-                  <div className="space-y-3 text-left">
-                    {[
-                      { name: "Prof. Dilip Kumar Baidya", role: "Director, NIT Silchar & Conference Patron" },
-                      { name: "Prof. Ramjee Prasad", role: "Founder, CTIF Global Capsule & Honorary Chair" },
-                      { name: "Dr. Munmun Khanra", role: "HOD, Dept of EIE & Organizing Convenor" }
-                    ].map((member, idx) => (
-                      <div key={idx} className="text-xs">
-                        <p className="font-bold text-slate-800">{member.name}</p>
-                        <p className="text-[10px] text-slate-400 leading-tight mt-0.5">{member.role}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="pt-3 border-t border-slate-100">
-                    <Link href="/committee" className="w-full py-2 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 font-bold text-[10px] font-mono uppercase tracking-wider rounded-lg flex items-center justify-center gap-1.5 transition-all">
-                      <span>Search All 132 Members</span>
-                      <ArrowRight className="h-3 w-3" />
-                    </Link>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          {/* Registration Link */}
-          <Link href="/registration" className="text-xs font-semibold text-slate-600 hover:text-primary transition-all uppercase tracking-wider px-3.5 py-2.5 rounded-xl hover:bg-slate-100">
-            Registration
-          </Link>
-
-          {/* Speakers Link */}
-          <Link href="/speakers" className="text-xs font-semibold text-slate-600 hover:text-primary transition-all uppercase tracking-wider px-3.5 py-2.5 rounded-xl hover:bg-slate-100">
-            Speakers
-          </Link>
-
-          {/* Venue & Travel Link */}
-          <Link href="/venue" className="text-xs font-semibold text-slate-600 hover:text-primary transition-all uppercase tracking-wider px-3.5 py-2.5 rounded-xl hover:bg-slate-100">
-            Venue
-          </Link>
-
-          {/* Contact Link */}
-          <Link href="/#contact" className="text-xs font-semibold text-slate-600 hover:text-primary transition-all uppercase tracking-wider px-3.5 py-2.5 rounded-xl hover:bg-slate-100">
-            Contact
-          </Link>
-
-          {/* 100x BETTER: DYNAMIC SUBMISSION ROUTER ACTION */}
-          <div 
-            className="relative"
-            onMouseEnter={() => handleMouseEnter("submit")}
-            onMouseLeave={handleMouseLeave}
-          >
-            <Button 
-              className="ml-3 bg-gradient-to-r from-primary to-accent text-white hover:opacity-90 font-mono uppercase tracking-wider text-[11px] px-5 py-5.5 shadow-lg shadow-primary/10 transition-all duration-300 rounded-xl hover:shadow-xl hover:scale-[1.03] flex items-center gap-1 border-0"
-            >
-              <span>Submit Paper</span>
-              <ChevronDown className="h-3.5 w-3.5 shrink-0" />
-            </Button>
-
-            {/* Submit Paper CTA Dropdown */}
-            <AnimatePresence>
-              {activeDropdown === "submit" && (
-                <motion.div
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 15 }}
-                  className="absolute right-0 mt-2.5 w-72 bg-white border border-slate-200 shadow-2xl rounded-2xl p-4 space-y-2.5 z-50 text-left"
-                >
-                  <a 
-                    href="https://cmt3.research.microsoft.com/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-50 transition-all group/item"
-                  >
-                    <div className="p-1.5 bg-primary/10 rounded-lg text-primary group-hover/item:scale-105 transition-transform shrink-0">
-                      <ExternalLink className="h-4 w-4" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold text-slate-800 group-hover/item:text-primary">Open CMT Portal ↗</p>
-                      <p className="text-[9px] text-slate-400 mt-0.5 leading-tight">Redirects to Microsoft peer review tool.</p>
-                    </div>
-                  </a>
-
-                  <Link 
-                    href="/call-for-papers#matcher"
-                    className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-50 transition-all group/item"
-                  >
-                    <div className="p-1.5 bg-accent/20 rounded-lg text-accent group-hover/item:scale-105 transition-transform shrink-0">
-                      <Sparkles className="h-4 w-4" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold text-slate-800 group-hover/item:text-primary">Track Matcher Assistant</p>
-                      <p className="text-[9px] text-slate-400 mt-0.5 leading-tight">Verify your abstract's compatibility.</p>
-                    </div>
-                  </Link>
-
-                  <div className="pt-2 border-t border-slate-100 flex items-center gap-2 text-[9px] text-slate-400 justify-center font-mono font-medium">
-                    <Award className="h-3.5 w-3.5 text-primary" />
-                    <span>IEEE Submissions Protocol Support</span>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-        </nav>
-
-        {/* MOBILE MENU TOGGLE */}
-        <motion.button 
-          whileTap={{ scale: 0.9 }}
-          className="lg:hidden text-foreground p-2 rounded-xl hover:bg-primary/5 transition-colors"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X className="h-6 w-6 text-primary" /> : <Menu className="h-6 w-6" />}
-        </motion.button>
-
+            NIT PORTAL ↗
+          </a>
+          <span className="hidden md:inline text-white/20 text-xs">|</span>
+          <span className="text-[10px] font-mono tabular-nums text-amber-400/90 tracking-tight">
+            {timeStr}
+          </span>
+        </div>
       </div>
 
-      {/* MOBILE RESPONSIVE DRAWER */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="absolute top-full left-0 w-full bg-white/95 backdrop-blur-2xl border-b border-primary/10 shadow-[0_20px_60px_rgba(30,58,138,0.08)] py-6 lg:hidden max-h-[85vh] overflow-y-auto"
-          >
-            <div className="flex flex-col gap-1 px-6">
-              {[
-                { label: "Home", href: "/" },
-                { label: "About E2A'27", href: "/about" },
-                { label: "Call for Papers", href: "/call-for-papers" },
-                { label: "Smart Track Matcher", href: "/call-for-papers#matcher" },
-                { label: "Important Dates", href: "/#important-dates" },
-                { label: "Organizing Committee", href: "/committee" },
-                { label: "Registration & Fee", href: "/registration" },
-                { label: "Keynote Speakers", href: "/speakers" },
-                { label: "Venue & Travel Details", href: "/venue" },
-                { label: "Contact Organizers", href: "/#contact" }
-              ].map((link, idx) => (
-                <Link 
-                  key={idx} 
-                  href={link.href}
-                  className="text-base font-semibold text-slate-700 py-3.5 px-4 rounded-xl hover:bg-primary/5 hover:text-primary transition-all border-b border-slate-100"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ))}
+      {/* ── Main Navbar ── */}
+      <header
+        className={`fixed inset-x-0 z-40 transition-all duration-500 ${
+          isScrolled
+            ? "top-9 bg-white/97 backdrop-blur-2xl border-b border-slate-200/80 shadow-[0_4px_24px_rgba(30,58,138,0.08)] py-2"
+            : "top-9 bg-gradient-to-b from-black/60 via-black/30 to-transparent border-b border-transparent py-4"
+        }`}
+      >
+        <div className="max-w-screen-xl mx-auto px-4 md:px-6 xl:px-8 flex items-center justify-between gap-4">
 
-              <a 
-                href="https://cmt3.research.microsoft.com/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-full mt-4"
-              >
-                <Button className="w-full bg-gradient-to-r from-primary to-accent text-white font-mono uppercase tracking-wider rounded-xl shadow-lg py-6.5 border-0">
-                  Open Submissions Portal (CMT)
-                </Button>
-              </a>
+          {/* Brand */}
+          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
+            <img
+              src="/logo.svg"
+              alt="NIT Silchar"
+              className="h-9 w-9 object-contain transition-transform duration-300 group-hover:scale-105"
+            />
+            <div className="flex flex-col leading-none">
+              <span className={`font-bold text-[17px] tracking-tight transition-colors group-hover:text-[#C9A227] ${
+                isScrolled ? "text-slate-800" : "text-white drop-shadow-md"
+              }`}>
+                E2A<span className={`font-mono ${isScrolled ? "text-[#C9A227]" : "text-amber-300"}`}>&apos;27</span>
+              </span>
+              <span className={`text-[8px] font-mono tracking-widest uppercase mt-0.5 ${
+                isScrolled ? "text-slate-400" : "text-white/70"
+              }`}>
+                Dept. of EIE · NIT Silchar
+              </span>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
+          </Link>
+
+          {/* Desktop Nav Links */}
+          <nav className="hidden xl:flex items-center gap-0.5" ref={dropdownRef}>
+            {NAV_LINKS.map((link) => {
+              const active = pathname === link.href || (link.children && pathname.startsWith("/information-for-authors"));
+              const hasChildren = link.children && link.children.length > 0;
+
+              return (
+                <div key={link.href} className="relative">
+                  {hasChildren ? (
+                    <button
+                      onClick={() => setOpenDropdown(openDropdown === link.label ? null : link.label)}
+                      className={`relative px-2.5 py-2 rounded-lg text-[11px] font-semibold uppercase tracking-wider transition-all duration-200 whitespace-nowrap flex items-center gap-1 ${
+                        isScrolled
+                          ? active
+                            ? "text-[#1E3A8A]"
+                            : "text-slate-500 hover:text-[#1E3A8A] hover:bg-slate-100/70"
+                          : active
+                            ? "text-white font-bold"
+                            : "text-white/90 hover:text-white hover:bg-white/10"
+                      }`}
+                    >
+                      {link.label}
+                      <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${openDropdown === link.label ? "rotate-180" : ""}`} />
+                      {active && (
+                        <motion.span
+                          layoutId="activeUnderline"
+                          className={`absolute bottom-0.5 left-3 right-3 h-0.5 rounded-full ${
+                            isScrolled
+                              ? "bg-gradient-to-r from-[#1E3A8A] to-[#C9A227]"
+                              : "bg-amber-300"
+                          }`}
+                          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                        />
+                      )}
+                    </button>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className={`relative px-2.5 py-2 rounded-lg text-[11px] font-semibold uppercase tracking-wider transition-all duration-200 whitespace-nowrap ${
+                        isScrolled
+                          ? active
+                            ? "text-[#1E3A8A]"
+                            : "text-slate-500 hover:text-[#1E3A8A] hover:bg-slate-100/70"
+                          : active
+                            ? "text-white font-bold"
+                            : "text-white/90 hover:text-white hover:bg-white/10"
+                      }`}
+                    >
+                      {link.label}
+                      {active && (
+                        <motion.span
+                          layoutId="activeUnderline"
+                          className={`absolute bottom-0.5 left-3 right-3 h-0.5 rounded-full ${
+                            isScrolled
+                              ? "bg-gradient-to-r from-[#1E3A8A] to-[#C9A227]"
+                              : "bg-amber-300"
+                          }`}
+                          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                        />
+                      )}
+                    </Link>
+                  )}
+
+                  {/* Desktop Dropdown */}
+                  <AnimatePresence>
+                    {hasChildren && openDropdown === link.label && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -5 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute top-full left-0 mt-1 w-64 bg-white/98 backdrop-blur-2xl border border-slate-200 rounded-xl shadow-xl overflow-hidden z-50"
+                      >
+                        {link.children!.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            onClick={() => setOpenDropdown(null)}
+                            className="block px-4 py-3 text-[11px] font-semibold text-slate-600 hover:bg-primary/5 hover:text-[#1E3A8A] transition-colors uppercase tracking-wider border-b border-slate-100 last:border-b-0"
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </nav>
+
+          {/* Desktop CTA removed as per user request */}
+
+          {/* Mobile hamburger */}
+          <button
+            className={`xl:hidden p-2 rounded-xl transition-colors ${
+              isScrolled ? "text-slate-600 hover:bg-slate-100" : "text-white hover:bg-white/10"
+            }`}
+            onClick={() => setMobileMenuOpen((v) => !v)}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+
+        {/* ── Mobile Drawer ── */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="xl:hidden overflow-hidden bg-white/98 backdrop-blur-2xl border-t border-slate-200/80 shadow-lg max-h-[70vh] overflow-y-auto"
+            >
+              <div className="max-w-screen-xl mx-auto px-4 py-4 flex flex-col gap-1">
+                {NAV_LINKS.map((link) => {
+                  const active = pathname === link.href;
+                  const hasChildren = link.children && link.children.length > 0;
+
+                  return (
+                    <div key={link.href}>
+                      {hasChildren ? (
+                        <>
+                          <button
+                            onClick={() => setMobileExpanded(mobileExpanded === link.label ? null : link.label)}
+                            className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${
+                              active
+                                ? "bg-[#1E3A8A]/8 text-[#1E3A8A]"
+                                : "text-slate-600 hover:bg-slate-50 hover:text-[#1E3A8A]"
+                            }`}
+                          >
+                            {link.label}
+                            <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${mobileExpanded === link.label ? "rotate-180" : ""}`} />
+                          </button>
+                          <AnimatePresence>
+                            {mobileExpanded === link.label && (
+                              <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: "auto" }}
+                                exit={{ opacity: 0, height: 0 }}
+                                transition={{ duration: 0.2 }}
+                                className="overflow-hidden"
+                              >
+                                <div className="pl-6 py-1 space-y-1">
+                                  {link.children!.map((child) => (
+                                    <Link
+                                      key={child.href}
+                                      href={child.href}
+                                      onClick={() => setMobileMenuOpen(false)}
+                                      className="block px-4 py-2.5 rounded-lg text-sm text-slate-500 hover:bg-slate-50 hover:text-[#1E3A8A] transition-colors"
+                                    >
+                                      {child.label}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </>
+                      ) : (
+                        <Link
+                          href={link.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className={`px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${
+                            active
+                              ? "bg-[#1E3A8A]/8 text-[#1E3A8A]"
+                              : "text-slate-600 hover:bg-slate-50 hover:text-[#1E3A8A]"
+                          }`}
+                        >
+                          {link.label}
+                        </Link>
+                      )}
+                    </div>
+                  );
+                })}
+                {/* Mobile CTA removed as per user request */}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
+    </>
   );
 }

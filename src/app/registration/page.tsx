@@ -1,314 +1,106 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Calculator, CreditCard, Sparkles, Check, HelpCircle } from "lucide-react";
+import { motion } from "framer-motion";
+
+import { Calculator, Sparkles } from "lucide-react";
 
 export default function RegistrationPage() {
   const feeData = [
-    { category: "UG/PG/PhD Scholars", indian: "₹ 5,000", foreign: "$ 250" },
-    { category: "Academicians/R&D Organizations", indian: "₹ 7,000", foreign: "$ 350" },
-    { category: "Industry Professionals", indian: "₹ 10,000", foreign: "$ 500" },
-    { category: "Non-Author Attendees", indian: "₹ 3,000", foreign: "$ 150" },
+    { category: "Students/Research Scholars (IEEE Member)", indian: "₹ 4,000", foreign: "$ 200" },
+    { category: "Students/Research Scholars (Non-IEEE)", indian: "₹ 5,000", foreign: "$ 250" },
+    { category: "Academicians/R&D (IEEE Member)", indian: "₹ 5,500", foreign: "$ 300" },
+    { category: "Academicians/R&D (Non-IEEE)", indian: "₹ 6,500", foreign: "$ 350" },
+    { category: "Industry (IEEE Member)", indian: "₹ 7,000", foreign: "$ 400" },
+    { category: "Industry (Non-IEEE)", indian: "₹ 8,000", foreign: "$ 450" },
+    { category: "Attendee/Listener", indian: "₹ 2,000", foreign: "$ 100" },
   ];
 
   // Calculator State
-  const [category, setCategory] = useState("student");
+  const [category, setCategory] = useState("student_ieee");
   const [isForeign, setIsForeign] = useState(false);
-  const [isIeeeMember, setIsIeeeMember] = useState(false);
   const [isEarlyBird, setIsEarlyBird] = useState(true);
   const [extraPapers, setExtraPapers] = useState(0);
-  const [extraPages, setExtraPages] = useState(0);
 
   // Dynamic calculations
   const calculateTotal = () => {
-    let base = 0;
-    if (category === "student") {
-      base = isForeign ? 250 : 5000;
-    } else if (category === "academic") {
-      base = isForeign ? 350 : 7000;
-    } else if (category === "industry") {
-      base = isForeign ? 500 : 10000;
-    } else {
-      base = isForeign ? 150 : 3000;
-    }
+    const prices: Record<string, { indian: number; foreign: number }> = {
+      student_ieee: { indian: 4000, foreign: 200 },
+      student_nonieee: { indian: 5000, foreign: 250 },
+      academic_ieee: { indian: 5500, foreign: 300 },
+      academic_nonieee: { indian: 6500, foreign: 350 },
+      industry_ieee: { indian: 7000, foreign: 400 },
+      industry_nonieee: { indian: 8000, foreign: 450 },
+      attendee: { indian: 2000, foreign: 100 },
+    };
+    const sel = prices[category] ?? prices.student_ieee;
+    const base = isForeign ? sel.foreign : sel.indian;
 
-    let ieeeDiscount = isIeeeMember ? Math.round(base * 0.15) : 0;
     let earlyDiscount = isEarlyBird ? Math.round(base * 0.10) : 0;
-    
     const extraPaperCost = extraPapers * (isForeign ? 100 : 4000);
-    const extraPageCost = extraPages * (isForeign ? 25 : 1000);
 
-    const subtotal = base - ieeeDiscount - earlyDiscount;
-    const total = subtotal + extraPaperCost + extraPageCost;
+    const subtotal = base - earlyDiscount;
+    const total = subtotal + extraPaperCost;
+
+    // Exchange rate: 1 USD = 83 INR
+    const toInr = (usdVal: number) => usdVal * 83;
 
     return {
       base,
-      ieeeDiscount,
       earlyDiscount,
       extraPaperCost,
-      extraPageCost,
       total,
-      currency: isForeign ? "$" : "₹"
+      currency: isForeign ? "$" : "₹",
+      baseInr: isForeign ? toInr(base) : base,
+      earlyDiscountInr: isForeign ? toInr(earlyDiscount) : earlyDiscount,
+      extraPaperCostInr: isForeign ? toInr(extraPaperCost) : extraPaperCost,
+      totalInr: isForeign ? toInr(total) : total
     };
   };
 
   const invoice = calculateTotal();
 
   return (
-    <div className="flex flex-col w-full min-h-screen bg-transparent">
+    <div className="flex flex-col w-full min-h-screen bg-transparent relative overflow-hidden">
       {/* Header */}
-      <section className="relative pt-40 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-purple-500/10 to-cyan-500/10 z-0 animate-pulse duration-[8000ms]" />
-        <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+      <section className="relative pt-48 pb-24 overflow-hidden bg-slate-950 text-white">
+        {/* Parallax campus background image */}
+        <div className="absolute inset-0 z-0 opacity-30 select-none pointer-events-none">
+          <img 
+            src="https://res.cloudinary.com/dprjiwgfo/image/upload/c_fill,g_auto,w_1600,h_900,q_auto/v1779298973/Screenshot_2026-05-20_231150_afrlhp.png" 
+            alt="NIT Silchar Campus" 
+            className="w-full h-full object-cover object-center scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent" />
+        </div>
+        <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
         <div className="container mx-auto px-4 text-center relative z-10">
           <motion.h1 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 text-foreground"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 text-white"
           >
-            Registration <span className="text-gradient">Portal</span>
+            Registration <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-200 to-white drop-shadow-[0_0_15px_rgba(251,191,36,0.2)]">Portal</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-slate-600 max-w-2xl mx-auto font-light leading-relaxed"
+            className="text-lg text-slate-300 max-w-2xl mx-auto font-light leading-relaxed"
           >
             Details regarding registration fees, deadlines, and our real-time interactive invoice planner.
           </motion.p>
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="py-24 relative">
+        {/* Institutional Seal Watermark */}
+        <div className="absolute left-0 top-1/4 opacity-[0.02] pointer-events-none select-none z-0 hidden lg:block">
+          <img src="/logo.svg" alt="NIT Silchar watermark" className="w-[500px] h-[500px]" />
+        </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl space-y-16">
           
-          {/* DYNAMIC PACKAGE PLANNER */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="border border-primary/20 bg-white/40 backdrop-blur-2xl rounded-3xl p-8 shadow-xl space-y-6 relative overflow-hidden"
-          >
-            <div className="flex items-center gap-3 border-b pb-4">
-              <div className="p-2.5 bg-primary/10 rounded-xl">
-                <Calculator className="h-6 w-6 text-primary animate-pulse" />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold text-foreground">Interactive Fee Calculator</h3>
-                <p className="text-sm text-slate-500 font-light">Build your custom package, apply IEEE discounts, add papers, and calculate your exact dues in real-time.</p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-              {/* OPTIONS SELECTOR */}
-              <div className="lg:col-span-7 space-y-6">
-                
-                {/* 1. Category */}
-                <div className="space-y-3">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 font-mono">1. Select Participant Category</span>
-                  <div className="grid grid-cols-2 gap-3">
-                    {[
-                      { id: "student", label: "Student / Scholar" },
-                      { id: "academic", label: "Academic / R&D" },
-                      { id: "industry", label: "Industry Pro" },
-                      { id: "attendee", label: "Attendee Only" }
-                    ].map((opt) => (
-                      <button
-                        key={opt.id}
-                        onClick={() => setCategory(opt.id)}
-                        className={`px-4 py-3 rounded-xl border text-sm font-semibold transition-all ${
-                          category === opt.id 
-                            ? "bg-primary border-primary text-white shadow-md"
-                            : "bg-white/60 border-slate-200 text-slate-700 hover:bg-slate-50"
-                        }`}
-                      >
-                        {opt.label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* 2. Parameters */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {/* Nationality */}
-                  <div className="bg-white/50 border border-slate-100 rounded-2xl p-4 space-y-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 font-mono">Nationality</span>
-                    <div className="flex bg-slate-100 rounded-lg p-0.5">
-                      <button
-                        onClick={() => setIsForeign(false)}
-                        className={`flex-1 py-1.5 text-xs font-bold rounded-md transition-all ${!isForeign ? "bg-white text-primary shadow-sm" : "text-slate-500"}`}
-                      >
-                        Indian
-                      </button>
-                      <button
-                        onClick={() => setIsForeign(true)}
-                        className={`flex-1 py-1.5 text-xs font-bold rounded-md transition-all ${isForeign ? "bg-white text-primary shadow-sm" : "text-slate-500"}`}
-                      >
-                        Foreign
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* IEEE Member */}
-                  <div className="bg-white/50 border border-slate-100 rounded-2xl p-4 space-y-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 font-mono">IEEE Member (-15%)</span>
-                    <div className="flex bg-slate-100 rounded-lg p-0.5">
-                      <button
-                        onClick={() => setIsIeeeMember(true)}
-                        className={`flex-1 py-1.5 text-xs font-bold rounded-md transition-all ${isIeeeMember ? "bg-white text-primary shadow-sm" : "text-slate-500"}`}
-                      >
-                        Yes
-                      </button>
-                      <button
-                        onClick={() => setIsIeeeMember(false)}
-                        className={`flex-1 py-1.5 text-xs font-bold rounded-md transition-all ${!isIeeeMember ? "bg-white text-primary shadow-sm" : "text-slate-500"}`}
-                      >
-                        No
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Early Bird */}
-                  <div className="bg-white/50 border border-slate-100 rounded-2xl p-4 space-y-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 font-mono">Early Bird (-10%)</span>
-                    <div className="flex bg-slate-100 rounded-lg p-0.5">
-                      <button
-                        onClick={() => setIsEarlyBird(true)}
-                        className={`flex-1 py-1.5 text-xs font-bold rounded-md transition-all ${isEarlyBird ? "bg-white text-primary shadow-sm" : "text-slate-500"}`}
-                      >
-                        Active
-                      </button>
-                      <button
-                        onClick={() => setIsEarlyBird(false)}
-                        className={`flex-1 py-1.5 text-xs font-bold rounded-md transition-all ${!isEarlyBird ? "bg-white text-primary shadow-sm" : "text-slate-500"}`}
-                      >
-                        Regular
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* 3. Add-ons sliders */}
-                <div className="space-y-4 bg-white/50 border border-slate-100 rounded-2xl p-6">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 font-mono">3. Additional Papers &amp; Extra Pages</span>
-                  
-                  {/* Extra Papers */}
-                  <div className="space-y-2">
-                    <div className="flex justify-between text-sm">
-                      <span className="font-medium text-slate-700">Extra Papers Submissions</span>
-                      <span className="font-bold text-primary font-mono">{extraPapers} {extraPapers === 1 ? "Paper" : "Papers"}</span>
-                    </div>
-                    <div className="flex gap-2">
-                      {[0, 1, 2].map((num) => (
-                        <button
-                          key={num}
-                          onClick={() => setExtraPapers(num)}
-                          className={`flex-1 py-2 text-xs font-semibold rounded-lg border ${
-                            extraPapers === num 
-                              ? "bg-slate-800 text-white border-slate-800" 
-                              : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
-                          }`}
-                        >
-                          {num === 0 ? "None (1 Paper Incl.)" : `+${num} Paper${num > 1 ? "s" : ""}`}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Extra Pages */}
-                  <div className="space-y-2 pt-2 border-t border-slate-100">
-                    <div className="flex justify-between text-sm">
-                      <span className="font-medium text-slate-700">Extra Pages (Standard is 6 pages)</span>
-                      <span className="font-bold text-primary font-mono">{extraPages} {extraPages === 1 ? "Page" : "Pages"}</span>
-                    </div>
-                    <input
-                      type="range"
-                      min="0"
-                      max="4"
-                      value={extraPages}
-                      onChange={(e) => setExtraPages(parseInt(e.target.value))}
-                      className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-primary"
-                    />
-                    <div className="flex justify-between text-[10px] text-slate-400 font-mono">
-                      <span>0 Pages</span>
-                      <span>1 Page</span>
-                      <span>2 Pages</span>
-                      <span>3 Pages</span>
-                      <span>4 Pages Max</span>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-              {/* DYNAMIC GLASS RECEIPT PANEL */}
-              <div className="lg:col-span-5 bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-3xl p-6 shadow-2xl space-y-6 relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-4 opacity-5">
-                  <Sparkles className="h-40 w-40 text-white animate-spin-slow" />
-                </div>
-                
-                <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-400 font-mono border-b border-white/10 pb-3">Package Breakdown</h4>
-                
-                <div className="space-y-3.5 text-sm font-light text-slate-300">
-                  <div className="flex justify-between">
-                    <span>Base Registration</span>
-                    <span className="font-semibold text-white font-mono">{invoice.currency} {invoice.base.toLocaleString()}</span>
-                  </div>
-                  
-                  {isIeeeMember && (
-                    <div className="flex justify-between text-cyan-400">
-                      <span>IEEE Member Discount (-15%)</span>
-                      <span className="font-mono">-{invoice.currency} {invoice.ieeeDiscount.toLocaleString()}</span>
-                    </div>
-                  )}
-
-                  {isEarlyBird && (
-                    <div className="flex justify-between text-purple-400">
-                      <span>Early Bird Reward (-10%)</span>
-                      <span className="font-mono">-{invoice.currency} {invoice.earlyDiscount.toLocaleString()}</span>
-                    </div>
-                  )}
-
-                  {extraPapers > 0 && (
-                    <div className="flex justify-between text-amber-400">
-                      <span>{extraPapers} Extra Paper(s)</span>
-                      <span className="font-mono">+{invoice.currency} {invoice.extraPaperCost.toLocaleString()}</span>
-                    </div>
-                  )}
-
-                  {extraPages > 0 && (
-                    <div className="flex justify-between text-emerald-400">
-                      <span>{extraPages} Extra Page(s)</span>
-                      <span className="font-mono">+{invoice.currency} {invoice.extraPageCost.toLocaleString()}</span>
-                    </div>
-                  )}
-                </div>
-
-                <div className="border-t border-white/10 pt-4 space-y-2">
-                  <div className="flex justify-between items-baseline">
-                    <span className="font-bold text-md text-white font-mono">Net Due Dues</span>
-                    <span className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-300 to-white font-mono tracking-tighter">
-                      {invoice.currency} {invoice.total.toLocaleString()}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="space-y-3 pt-4">
-                  <Button className="w-full bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 font-bold hover:opacity-90 font-mono py-6 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/10">
-                    <CreditCard className="h-4 w-4" /> SECURE CMT / SBI COLLECT
-                  </Button>
-                  <p className="text-[10px] text-center text-slate-400 font-mono">
-                    All transactions securely processed under NIT Silchar regulations.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Registration fees table */}
+          {/* Registration fees table (NOW ABOVE THE CALCULATOR) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -340,6 +132,180 @@ export default function RegistrationPage() {
             </p>
           </motion.div>
 
+          {/* DYNAMIC PACKAGE PLANNER */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="border border-primary/20 bg-white/40 backdrop-blur-2xl rounded-3xl p-8 shadow-xl space-y-6 relative overflow-hidden"
+          >
+            <div className="flex items-center gap-3 border-b pb-4">
+              <div className="p-2.5 bg-primary/10 rounded-xl">
+                <Calculator className="h-6 w-6 text-primary animate-pulse" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-foreground">Interactive Fee Calculator</h3>
+                <p className="text-sm text-slate-500 font-light font-sans">Build your custom package, apply discounts, add papers, and calculate your exact dues in real-time.</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              {/* OPTIONS SELECTOR */}
+              <div className="lg:col-span-7 space-y-6">
+                
+                {/* 1. Category */}
+                <div className="space-y-3">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 font-mono">1. Select Participant Category</span>
+                  <div className="grid grid-cols-2 gap-3">
+                    {[
+                      { id: "student_ieee", label: "Student (IEEE)" },
+                      { id: "student_nonieee", label: "Student (Non-IEEE)" },
+                      { id: "academic_ieee", label: "Academic (IEEE)" },
+                      { id: "academic_nonieee", label: "Academic (Non-IEEE)" },
+                      { id: "industry_ieee", label: "Industry (IEEE)" },
+                      { id: "industry_nonieee", label: "Industry (Non-IEEE)" },
+                      { id: "attendee", label: "Attendee" }
+                    ].map((opt) => (
+                      <button
+                        key={opt.id}
+                        onClick={() => setCategory(opt.id)}
+                        className={`px-4 py-3 rounded-xl border text-sm font-semibold transition-all ${
+                          category === opt.id 
+                            ? "bg-primary border-primary text-white shadow-md"
+                            : "bg-white/60 border-slate-200 text-slate-700 hover:bg-slate-50"
+                        }`}
+                      >
+                        {opt.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* 2. Parameters */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Nationality */}
+                  <div className="bg-white/50 border border-slate-100 rounded-2xl p-4 space-y-2">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 font-mono">Nationality</span>
+                    <div className="flex bg-slate-100 rounded-lg p-0.5">
+                      <button
+                        onClick={() => setIsForeign(false)}
+                        className={`flex-1 py-1.5 text-xs font-bold rounded-md transition-all ${!isForeign ? "bg-white text-primary shadow-sm" : "text-slate-500"}`}
+                      >
+                        Indian
+                      </button>
+                      <button
+                        onClick={() => setIsForeign(true)}
+                        className={`flex-1 py-1.5 text-xs font-bold rounded-md transition-all ${isForeign ? "bg-white text-primary shadow-sm" : "text-slate-500"}`}
+                      >
+                        Foreign
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Early Bird */}
+                  <div className="bg-white/50 border border-slate-100 rounded-2xl p-4 space-y-2">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 font-mono">Early Bird (-10%)</span>
+                    <div className="flex bg-slate-100 rounded-lg p-0.5">
+                      <button
+                        onClick={() => setIsEarlyBird(true)}
+                        className={`flex-1 py-1.5 text-xs font-bold rounded-md transition-all ${isEarlyBird ? "bg-white text-primary shadow-sm" : "text-slate-500"}`}
+                      >
+                        Active
+                      </button>
+                      <button
+                        onClick={() => setIsEarlyBird(false)}
+                        className={`flex-1 py-1.5 text-xs font-bold rounded-md transition-all ${!isEarlyBird ? "bg-white text-primary shadow-sm" : "text-slate-500"}`}
+                      >
+                        Regular
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. Add-ons selector */}
+                <div className="space-y-4 bg-white/50 border border-slate-100 rounded-2xl p-6">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 font-mono">2. Additional Papers</span>
+                  
+                  {/* Extra Papers */}
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-sm">
+                      <span className="font-medium text-slate-700">Extra Papers Submissions</span>
+                      <span className="font-bold text-primary font-mono">{extraPapers} {extraPapers === 1 ? "Paper" : "Papers"}</span>
+                    </div>
+                    <div className="flex gap-2">
+                      {[0, 1, 2].map((num) => (
+                        <button
+                          key={num}
+                          onClick={() => setExtraPapers(num)}
+                          className={`flex-1 py-2 text-xs font-semibold rounded-lg border ${
+                            extraPapers === num 
+                              ? "bg-slate-800 text-white border-slate-800" 
+                              : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
+                          }`}
+                        >
+                          {num === 0 ? "None (1 Paper Incl.)" : `+${num} Paper${num > 1 ? "s" : ""}`}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* DYNAMIC GLASS RECEIPT PANEL */}
+              <div className="lg:col-span-5 bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-3xl p-6 shadow-2xl space-y-6 relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-4 opacity-5">
+                  <Sparkles className="h-40 w-40 text-white animate-spin-slow" />
+                </div>
+                
+                <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-400 font-mono border-b border-white/10 pb-3">Package Breakdown</h4>
+                        <div className="space-y-3.5 text-sm font-light text-slate-300">
+                  <div className="flex justify-between items-start">
+                    <span>Base Registration</span>
+                    <div className="text-right">
+                      <span className="font-semibold text-white font-mono">{invoice.currency} {invoice.base.toLocaleString()}</span>
+                      {isForeign && <span className="block text-[10px] text-slate-400 font-mono">Approx. ₹ {invoice.baseInr.toLocaleString()}</span>}
+                    </div>
+                  </div>
+
+                  {isEarlyBird && (
+                    <div className="flex justify-between items-start text-purple-400">
+                      <span>Early Bird Reward (-10%)</span>
+                      <div className="text-right">
+                        <span className="font-mono">-{invoice.currency} {invoice.earlyDiscount.toLocaleString()}</span>
+                        {isForeign && <span className="block text-[10px] text-purple-300/70 font-mono">Approx. -₹ {invoice.earlyDiscountInr.toLocaleString()}</span>}
+                      </div>
+                    </div>
+                  )}
+
+                  {extraPapers > 0 && (
+                    <div className="flex justify-between items-start text-amber-400">
+                      <span>{extraPapers} Extra Paper(s)</span>
+                      <div className="text-right">
+                        <span className="font-mono">+{invoice.currency} {invoice.extraPaperCost.toLocaleString()}</span>
+                        {isForeign && <span className="block text-[10px] text-amber-300/70 font-mono">Approx. +₹ {invoice.extraPaperCostInr.toLocaleString()}</span>}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <div className="border-t border-white/10 pt-4 space-y-2">
+                  <div className="flex justify-between items-baseline">
+                    <span className="font-bold text-md text-white font-mono">Net Due Dues</span>
+                    <div className="text-right">
+                      <span className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-300 to-white font-mono tracking-tighter block">
+                        {invoice.currency} {invoice.total.toLocaleString()}
+                      </span>
+                      {isForeign && <span className="text-xs text-cyan-300/80 font-mono font-medium block mt-1">Approx. ₹ {invoice.totalInr.toLocaleString()}</span>}
+                    </div>
+                  </div>
+                </div>
+
+                <p className="text-xs text-center text-slate-400 font-mono mt-4">Payment portal details will be updated soon.</p>
+              </div>
+            </div>
+          </motion.div>
+
           {/* Guidelines */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -353,15 +319,13 @@ export default function RegistrationPage() {
               <li>A single registration covers the presentation and publication of exactly one paper.</li>
               <li>Students must upload a valid Student ID card during the registration process.</li>
               <li>Registration fees are non-refundable.</li>
+              <li>Papers that are not presented at the conference will not be included in the proceedings.</li>
             </ul>
           </motion.div>
 
           <div className="text-center">
-            <Button size="lg" className="bg-gradient-to-r from-primary to-cyan-500 text-white font-semibold h-14 px-8 text-lg rounded-xl shadow-lg">
-              Proceed to SBI Collect Portal
-            </Button>
-            <p className="mt-4 text-sm text-slate-500 font-light">
-              You will be redirected to the official SBI Collect portal for NIT Silchar.
+            <p className="text-sm text-slate-500 font-light">
+              Payment details and portal link will be updated soon. For queries, please contact e2a@ei.nits.ac.in
             </p>
           </div>
         </div>

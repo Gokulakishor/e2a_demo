@@ -51,35 +51,35 @@
 }
 
 :root {
-  /* Prestigious & Authoritative Academic Light Theme */
-  --background: #FCFBF7; /* Luxurious Soft Ivory/Parchment */
-  --foreground: #111827; /* Rich Charcoal for classic academic readability */
-  
-  --card: rgba(255, 255, 255, 0.85); /* Premium structured card background */
-  --card-foreground: #111827;
-  
-  --popover: #FCFBF7;
-  --popover-foreground: #111827;
-  
-  --primary: #1E3A8A; /* Authoritative Deep Royal Navy Blue */
+  /* Premium Academic Theme */
+  --background: #F9F8F5;           /* Warm ivory parchment */
+  --foreground: #0f172a;           /* Deep slate for readability */
+
+  --card: rgba(255, 255, 255, 0.9);
+  --card-foreground: #0f172a;
+
+  --popover: #F9F8F5;
+  --popover-foreground: #0f172a;
+
+  --primary: #1E3A8A;              /* Royal Navy Blue */
   --primary-foreground: #FFFFFF;
-  
-  --secondary: #F4EFEB; /* Soft warm sand/cream accent */
+
+  --secondary: #F0ECE6;            /* Warm sand */
   --secondary-foreground: #1E3A8A;
-  
-  --muted: #F3F4F6;
-  --muted-foreground: #4B5563;
-  
-  --accent: #B59410; /* Sophisticated Academic Gold/Bronze */
+
+  --muted: #F1F2F4;
+  --muted-foreground: #64748b;
+
+  --accent: #C9A227;               /* Richer, warmer academic gold */
   --accent-foreground: #FFFFFF;
-  
-  --destructive: #991B1B;
+
+  --destructive: #b91c1c;
   --destructive-foreground: #FFFFFF;
-  
-  --border: rgba(209, 213, 219, 0.6);
-  --input: rgba(209, 213, 219, 0.6);
+
+  --border: rgba(203, 213, 225, 0.7);
+  --input: rgba(203, 213, 225, 0.7);
   --ring: #1E3A8A;
-  --radius: 0.5rem; /* Soft, prestigious classical rounded corners */
+  --radius: 0.5rem;
 }
 
 @layer base {
@@ -209,4 +209,10 @@
 .animate-pulse-grid-dot {
   animation: pulseGridDot 8s ease-in-out infinite;
   transform-origin: center;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
 }

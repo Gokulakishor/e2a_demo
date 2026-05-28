@@ -15,7 +15,7 @@ export const speakersData: Speaker[] = [
     designation: "Professor",
     affiliation: "Massachusetts Institute of Technology (MIT)",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop",
-    bio: "Dr. Doe is a renowned researcher in the field of VLSI design and quantum computing. She has over 150 publications in top-tier IEEE journals.",
+    bio: "Dr. Doe is a renowned researcher in the field of VLSI design and quantum computing. She has over 150 publications in top-tier international journals.",
     type: "Keynote",
   },
   {

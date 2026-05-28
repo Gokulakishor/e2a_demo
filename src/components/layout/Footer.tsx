@@ -105,7 +105,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-xs text-slate-400 leading-relaxed font-light">
-              IEEE International Conference on Emerging Electronics & Automation. Steered by Department of EIE, National Institute of Technology Silchar.
+              6th International Conference on Emerging Electronics & Automation. Steered by Department of EIE, National Institute of Technology Silchar.
             </p>
 
             <div className="border-t border-slate-800 pt-4 space-y-3">
@@ -121,7 +121,7 @@ export function Footer() {
             
             <div className="flex items-center gap-2 text-[10px] text-slate-500 font-mono">
               <ShieldCheck className="h-4 w-4 text-slate-500 shrink-0" />
-              <span>IEEE Double-Blind Peer Review System</span>
+              <span>Springer LNEE Peer Review System</span>
             </div>
           </div>
 
@@ -237,7 +237,7 @@ export function Footer() {
                 { label: "Call for Papers", href: "/call-for-papers" },
                 { label: "Organizing Committee", href: "/committee" },
                 { label: "Keynote Speakers", href: "/speakers" },
-                { label: "Smart Track Matcher", href: "/call-for-papers" }
+                { label: "Contact Us", href: "/contact" }
               ].map(link => (
                 <li key={link.label}>
                   <Link href={link.href} className="hover:text-white transition-colors flex items-center gap-1">
@@ -301,11 +301,11 @@ export function Footer() {
         {/* BOTTOM ROW: COPYRIGHT & INSTITUTION CREDITS */}
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 font-mono">
           <div className="flex flex-col md:flex-row items-center gap-4">
-            <p>© {new Date().getFullYear()} E2A Conference. All rights reserved.</p>
+            <p>© 2027 E2A Conference. All rights reserved.</p>
             <span className="hidden md:inline text-slate-700">|</span>
             <p className="flex items-center gap-1.5 hover:text-slate-300 transition-colors">
               <ShieldCheck className="h-3.5 w-3.5" />
-              <span>IEEE Xplore Support Compliant</span>
+              <span>Conference Standard Compliant</span>
             </p>
           </div>
           

@@ -1,17 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
-import { Users } from "lucide-react";
+import { Presentation } from "lucide-react";
 
-export default function SpeakersPage() {
+export default function SpecialSessionPage() {
   return (
     <div className="flex flex-col w-full min-h-screen bg-transparent relative overflow-hidden">
       <section className="relative pt-48 pb-24 overflow-hidden bg-slate-950 text-white">
         {/* Parallax campus background image */}
         <div className="absolute inset-0 z-0 opacity-30 select-none pointer-events-none">
           <img 
-            src="https://res.cloudinary.com/dprjiwgfo/image/upload/c_fill,g_auto,w_1600,h_900,q_auto,a_exif/v1779948840/DSC_6297_1_ilo7ja.jpg" 
+            src="https://res.cloudinary.com/dprjiwgfo/image/upload/c_fill,g_auto,w_1600,h_900,q_auto,a_exif/v1779299287/DSC_6225_wnugff.jpg" 
             alt="NIT Silchar Campus" 
             className="w-full h-full object-cover object-center scale-105"
           />
@@ -24,7 +23,7 @@ export default function SpeakersPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 text-white"
           >
-            Keynote &amp; Plenary <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-200 to-white drop-shadow-[0_0_15px_rgba(251,191,36,0.2)]">Speakers</span>
+            Special <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-200 to-white drop-shadow-[0_0_15px_rgba(251,191,36,0.2)]">Session</span>
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0 }}
@@ -32,7 +31,7 @@ export default function SpeakersPage() {
             transition={{ delay: 0.2 }}
             className="text-lg text-slate-300 max-w-2xl mx-auto font-light leading-relaxed"
           >
-            Learn from world-renowned experts pushing the boundaries of electronics, automation, and engineering.
+            Explore focused technical sessions on specialized topics.
           </motion.p>
         </div>
       </section>
@@ -51,14 +50,14 @@ export default function SpeakersPage() {
             <div className="absolute inset-0 bg-gradient-to-br from-white/95 to-stone-50/90 rounded-3xl z-0" />
             <div className="relative z-10 glass-card rounded-[23px] p-12 text-center bg-white/80">
               <div className="p-4 bg-primary/10 rounded-2xl w-fit mx-auto mb-6">
-                <Users className="h-10 w-10 text-primary animate-pulse" />
+                <Presentation className="h-10 w-10 text-primary animate-pulse" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-800 mb-2">Speakers Lineup</h3>
+              <h3 className="text-2xl font-bold text-slate-800 mb-2">Special Session Details</h3>
               <p className="text-lg text-primary font-mono tracking-widest uppercase font-extrabold mb-4">
-                To be decided soon
+                To be announced soon
               </p>
               <p className="text-sm text-slate-500 font-light max-w-md mx-auto leading-relaxed">
-                The organizing committee is currently in the process of finalizing keynotes, plenary speeches, and invited talk speakers. Full schedule and profile updates will be posted here.
+                The organizing committee is in the process of finalizing special session details. Full information will be posted here once available.
               </p>
             </div>
           </motion.div>

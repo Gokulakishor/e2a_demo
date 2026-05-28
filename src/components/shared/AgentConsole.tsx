@@ -42,17 +42,17 @@ export function AgentConsole() {
     "[COMPUTE] Matching track expertise weights with active publications lists...",
     "[MATCH] Reviewer index matches: Dr. Rajdeep Dasgupta (NIT Silchar) - Weight: 0.95",
     "[MATCH] Reviewer index matches: Dr. Shivendra K. Pandey (NIT Silchar) - Weight: 0.92",
-    "[ACTION] Allocating double-blind peer-review tickets in CMT system...",
+    "[ACTION] Allocating peer-review tickets in CMT system...",
     "[SUCCESS] 2 peer reviewers successfully assigned. CMT tickets committed [✓]"
   ];
 
   const gammaLogs = [
     "[INFO] Initializing E2A PDF Compliance Auditor Agent Gamma...",
     "[INFO] Parsing uploaded abstract PDF manuscript...",
-    "[CHECK] Verifying IEEE Double-Column Page Margins (0.75 in)... COMPLIANT [✓]",
+    "[CHECK] Verifying Standard Double-Column Page Margins (0.75 in)... COMPLIANT [✓]",
     "[CHECK] Verifying Reference bracket numbering format [1], [2]... COMPLIANT [✓]",
     "[CHECK] Verifying Font families (Times New Roman / serif)... COMPLIANT [✓]",
-    "[CHECK] Checking author info metadata shielding (Double-Blind Rule)... SHIELDED [✓]",
+    "[CHECK] Checking paper format compliance (Springer Rule)... COMPLIANT [✓]",
     "[SUCCESS] Document format compliance audit: 100% Passed. Ready for reviewer pool."
   ];
 
@@ -116,7 +116,7 @@ export function AgentConsole() {
               E2A'27 Agent Orchestration Hub
             </h3>
             <p className="text-sm text-slate-500 font-light leading-relaxed max-w-lg">
-              Interact with the state-of-the-art autonomous agents governing submissions compliance, semantic matching, and double-blind peer reviewer allocations.
+              Interact with the state-of-the-art autonomous agents governing submissions compliance, semantic matching, and peer reviewer allocations.
             </p>
           </div>
 
@@ -198,7 +198,7 @@ export function AgentConsole() {
 
             <div className="pt-3 border-t border-slate-900 flex justify-between items-center text-[9px] text-slate-600 mt-2">
               <span>Status: {simState.toUpperCase()}</span>
-              <span>IEEE_AUTOMATION_PROTOCOL_SECURE</span>
+              <span>AUTOMATION_PROTOCOL_SECURE</span>
             </div>
           </div>
 

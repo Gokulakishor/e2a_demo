@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useTransform, useInView, Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/data/config";
-import { CalendarDays, MapPin, Users, BookOpen, Presentation, GraduationCap, ChevronRight, Award, Zap, Sparkles } from "lucide-react";
+import { CalendarDays, MapPin, Users, BookOpen, Presentation, GraduationCap, ChevronRight, ArrowRight, Award, Zap, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { Magnetic } from "@/components/shared/Magnetic";
 import { PhotoGallery } from "@/components/shared/Gallery";
@@ -20,22 +20,14 @@ const FADE_UP_ANIMATION_VARIANTS: Variants = {
 };
 
 const SLIDES = [
-  {
-    url: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop",
-    caption: "Microelectronics & VLSI Fabrication Research"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200&auto=format&fit=crop",
-    caption: "Advanced Instrumentation & Automation Systems"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200&auto=format&fit=crop",
-    caption: "NIT Silchar State-of-the-Art Research Center"
-  },
-  {
-    url: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1200&auto=format&fit=crop",
-    caption: "Next-Gen Deep Learning Hardware Labs"
-  }
+  "https://res.cloudinary.com/dprjiwgfo/image/upload/v1779950042/Screenshot_2026-05-28_120336_ipmju6.png",
+  "https://res.cloudinary.com/dprjiwgfo/image/upload/v1779298973/Screenshot_2026-05-20_231203_hfxw07.png",
+  "https://res.cloudinary.com/dprjiwgfo/image/upload/v1779298972/Screenshot_2026-05-20_231231_wundhr.png",
+  "https://res.cloudinary.com/dprjiwgfo/image/upload/v1779948841/DSC_5343_c11mwh.jpg",
+  "https://res.cloudinary.com/dprjiwgfo/image/upload/v1779948841/DSC_5333_pyiqc7.jpg",
+  "https://res.cloudinary.com/dprjiwgfo/image/upload/v1779948840/DSC_6217_1_kpkz2x.jpg",
+  "https://res.cloudinary.com/dprjiwgfo/image/upload/v1779948840/DSC_5389_ps547t.jpg",
+  "https://res.cloudinary.com/dprjiwgfo/image/upload/v1779948840/DSC_5400_sgrkhs.jpg"
 ];
 
 function Slideshow() {
@@ -60,32 +52,15 @@ function Slideshow() {
           className="absolute inset-0"
         >
           <img
-            src={SLIDES[index].url}
-            alt={SLIDES[index].caption}
-            className="w-full h-full object-cover transition-transform duration-[5000ms] ease-out scale-105"
+            src={SLIDES[index].replace('/upload/', '/upload/c_fill,g_auto:faces,w_1200,h_800,q_auto/')}
+            alt="Conference Slide"
+            className="w-full h-full object-cover object-[center_20%] transition-transform duration-[5000ms] ease-out scale-105"
           />
         </motion.div>
       </AnimatePresence>
       
       {/* overlay mask */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent z-10 pointer-events-none" />
-
-      {/* Dynamic Slide Caption */}
-      <div className="absolute bottom-6 left-6 right-6 z-20">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.5 }}
-            className="text-white"
-          >
-            <p className="font-mono text-[9px] uppercase tracking-widest text-cyan-400 mb-1 font-semibold">Featured Highlight</p>
-            <h4 className="text-xs font-medium tracking-wide font-sans text-white/90">{SLIDES[index].caption}</h4>
-          </motion.div>
-        </AnimatePresence>
-      </div>
 
       {/* Pagination indicators */}
       <div className="absolute bottom-6 right-6 z-20 flex gap-2">
@@ -110,7 +85,7 @@ function CountdownTimer() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    const targetDate = new Date("August 15, 2027 23:59:59").getTime();
+    const targetDate = new Date("August 15, 2026 23:59:59").getTime();
 
     const interval = setInterval(() => {
       const now = new Date().getTime();
@@ -164,7 +139,7 @@ function CountdownTimer() {
       </div>
 
       <p className="text-[10px] text-slate-400 font-mono mt-4">
-        Paper Submission Deadline: August 15, 2027 (11:59 PM IST)
+        Paper Submission Deadline: August 15, 2026 (11:59 PM IST)
       </p>
     </motion.div>
   );
@@ -221,7 +196,7 @@ export default function Home() {
               {/* Live Status Label */}
               <div className="absolute top-4 left-4 z-20 flex items-center gap-2 bg-black/40 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10">
                 <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
-                <span className="font-mono text-[9px] text-white tracking-widest uppercase font-semibold">NIT SILCHAR CAMPUS</span>
+                <span className="font-mono text-[9px] text-white tracking-widest uppercase font-semibold">NIT SILCHAR</span>
               </div>
             </motion.div>
 
@@ -239,7 +214,7 @@ export default function Home() {
               <motion.div variants={FADE_DOWN_ANIMATION_VARIANTS}>
                 <div className="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-primary/5 text-primary font-mono text-[10px] mb-6 border border-primary/10 tracking-widest uppercase font-semibold">
                   <Zap className="h-3.5 w-3.5 text-accent" />
-                  <span>IEEE International Conference 2027</span>
+                  <span>6th International Conference 2027</span>
                 </div>
               </motion.div>
 
@@ -270,22 +245,37 @@ export default function Home() {
                   <MapPin className="h-4.5 w-4.5 text-accent" />
                   <span className="font-mono text-xs tracking-wider uppercase font-semibold text-slate-700">{siteConfig.location}</span>
                 </motion.div>
+                <motion.div whileHover={{ y: -3 }} className="flex items-center gap-3 text-foreground glass-card py-2.5 px-6 rounded-xl border border-primary/20 bg-primary/5">
+                  <Users className="h-4.5 w-4.5 text-primary" />
+                  <span className="font-mono text-xs tracking-wider uppercase font-extrabold text-primary">In-Person Mode</span>
+                </motion.div>
               </motion.div>
 
               <motion.div 
                 variants={FADE_UP_ANIMATION_VARIANTS} 
                 className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
               >
-                <Magnetic>
-                  <Button size="lg" className="bg-gradient-to-r from-primary to-[#B59410] text-white hover:opacity-95 px-8 h-14 text-xs font-mono uppercase tracking-widest shadow-xl shadow-primary/20 rounded-xl transition-all hover:scale-105 duration-300 w-full sm:w-auto border-0">
-                    Register Now
-                  </Button>
-                </Magnetic>
-                <Magnetic>
-                  <Button size="lg" className="!border-slate-200 !text-slate-700 hover:!text-primary px-8 h-14 text-xs font-mono uppercase tracking-widest rounded-xl glass-card transition-all hover:scale-105 duration-300 w-full sm:w-auto">
-                    Call for Papers
-                  </Button>
-                </Magnetic>
+                <Link href="/call-for-papers" className="w-full sm:w-auto">
+                  <Magnetic>
+                    <Button size="lg" className="bg-gradient-to-r from-primary to-[#B59410] text-white hover:opacity-95 px-8 h-14 text-xs font-mono uppercase tracking-widest shadow-xl shadow-primary/20 rounded-xl transition-all hover:scale-105 duration-300 w-full sm:w-auto border-0">
+                      Call for Papers
+                    </Button>
+                  </Magnetic>
+                </Link>
+                <Link href="/registration" className="w-full sm:w-auto">
+                  <Magnetic>
+                    <Button size="lg" className="!border-slate-200 !text-slate-700 hover:!text-primary px-8 h-14 text-xs font-mono uppercase tracking-widest rounded-xl glass-card transition-all hover:scale-105 duration-300 w-full sm:w-auto">
+                      Register Now
+                    </Button>
+                  </Magnetic>
+                </Link>
+                <a href="https://cmt3.research.microsoft.com/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                  <Magnetic>
+                    <Button size="lg" className="bg-gradient-to-r from-[#1E3A8A] to-[#B59410] text-white hover:opacity-95 px-8 h-14 text-xs font-mono uppercase tracking-widest shadow-xl shadow-primary/20 rounded-xl transition-all hover:scale-105 duration-300 w-full sm:w-auto border-0 flex items-center justify-center gap-2">
+                      Submit Paper <ArrowRight className="h-4 w-4" />
+                    </Button>
+                  </Magnetic>
+                </a>
               </motion.div>
             </motion.div>
 
@@ -323,35 +313,28 @@ export default function Home() {
             </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 icon: BookOpen,
                 value: 3000,
                 suffix: "+",
                 label: "Accepted Research Papers",
-                desc: "Spanning microelectronics, signals, automation, and energy grids.",
+                desc: "Covering a diverse range of topics across electronics and automation.",
               },
               {
                 icon: Users,
                 value: 150,
                 suffix: "+",
                 label: "Keynotes & Expert Speakers",
-                desc: "Distinguished IEEE Fellows, industry executives, and global scientists.",
-              },
-              {
-                icon: MapPin,
-                value: 45,
-                suffix: "+",
-                label: "Countries Represented",
-                desc: "Promoting inclusive and borderless technological exchange.",
+                desc: "Distinguished Fellows, industry executives, and global scientists.",
               },
               {
                 icon: Award,
                 value: 80,
                 suffix: "+",
                 label: "Technical Sessions & Tracks",
-                desc: "Intensive peer-review forums for presenting breakthrough discoveries.",
+                desc: "To present and showcase state-of-the-art research.",
               }
             ].map((stat, idx) => (
               <motion.div
@@ -374,9 +357,6 @@ export default function Home() {
                     <div className="p-3 bg-stone-100 rounded-xl group-hover:bg-primary/10 transition-colors shrink-0">
                       <stat.icon className="h-6 w-6 text-primary group-hover:text-primary transition-colors" />
                     </div>
-                    <span className="font-mono text-[10px] text-muted-foreground bg-stone-100/80 px-2 py-0.5 rounded border border-stone-200/50">
-                      METRIC 0{idx + 1}
-                    </span>
                   </div>
 
                   <div className="mb-4">
@@ -422,10 +402,10 @@ export default function Home() {
                 Shaping the future <br/> of <span className="text-gradient">Technology.</span>
               </motion.h2>
               <motion.p variants={FADE_UP_ANIMATION_VARIANTS} className="text-xl text-muted-foreground leading-relaxed mb-8 font-light">
-                E2A'27 serves as a premier platform for researchers, academicians, and industry professionals from across the globe, focusing on deep tech and automation.
+                The International Conference on Emerging Electronics and Automation (E2A) is organized by the Department of Electronics and Instrumentation Engineering, NIT Silchar. The conference aims to bring together researchers, academicians, and industry professionals to share their research findings and explore new areas of collaboration.
               </motion.p>
               <motion.p variants={FADE_UP_ANIMATION_VARIANTS} className="text-lg text-muted-foreground/80 leading-relaxed mb-10">
-                Hosted at NIT Silchar, this conference accelerates advancements in critical technological domains through unprecedented collaboration.
+                The conference covers a wide range of topics in electronics, instrumentation, and automation, providing a platform for the exchange of ideas and the dissemination of knowledge.
               </motion.p>
               <motion.div variants={FADE_UP_ANIMATION_VARIANTS}>
                 <Link href="/about">
@@ -443,7 +423,7 @@ export default function Home() {
               viewport={{ once: true, margin: "-150px" }}
               className="relative aspect-square rounded-2xl overflow-hidden glass-card shadow-2xl group"
             >
-              <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1200&auto=format&fit=crop" alt="Campus" className="object-cover w-full h-full opacity-90 transition-all duration-700 group-hover:scale-105" />
+              <img src="https://res.cloudinary.com/dprjiwgfo/image/upload/c_fill,g_auto,w_1200,h_1200,q_auto,a_exif/v1779299287/DSC_6225_wnugff.jpg" alt="NIT Silchar Campus" className="object-cover w-full h-full opacity-90 transition-all duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10" />
               <div className="absolute bottom-8 left-8 text-white z-20">
                  <div className="flex items-center gap-3 mb-4 bg-white/10 backdrop-blur px-3 py-1.5 w-fit border border-white/20 rounded-full">
@@ -486,37 +466,71 @@ export default function Home() {
                 icon: BookOpen, 
                 title: "Microelectronics & VLSI", 
                 desc: "Devices, Circuits, Systems, and CAD.",
-                topics: ["Device Modeling and Simulation", "Low Power VLSI Design", "Analog and Mixed Signal IC Design", "Testing and Verification", "CAD for VLSI"]
+                topics: [
+                  "Device Modeling and Simulation", "Low Power VLSI Design", "Analog and Mixed Signal IC Design", 
+                  "Testing and Verification", "CAD for VLSI", "Nanoelectronics and Nanotechnology", 
+                  "Optoelectronics", "Micro-Electro-Mechanical Systems (MEMS)", "Hardware Security and Trust", "Embedded Systems Design"
+                ]
               },
               { 
                 icon: Presentation, 
                 title: "Signal & Image Processing", 
-                desc: "AI/ML in Signal Processing, Computer Vision.",
-                topics: ["Audio and Acoustic Signal Processing", "Biomedical Signal Processing", "Computer Vision and Pattern Recognition", "Machine Learning in Signal Processing", "Speech Processing"]
+                desc: "Audio, Video, Speech, and Big Data Analysis.",
+                topics: [
+                  "Audio and Acoustic Signal Processing", "Biomedical Signal Processing", "Computer Vision and Pattern Recognition", 
+                  "Machine Learning in Signal Processing", "Speech Processing", "Image and Video Processing", 
+                  "Signal Processing for Big Data", "Information Forensics and Security", "Remote Sensing and Signal Processing", "Multimedia Analysis and Retrieval"
+                ]
               },
               { 
                 icon: Award, 
-                title: "Control & Automation", 
-                desc: "Robotics, Control Systems, IoT Applications.",
-                topics: ["Linear and Non-linear Control", "Robotics and Intelligent Systems", "Industrial Automation", "Process Control", "IoT Applications"]
+                title: "Control & Robotics", 
+                desc: "Robotics, Automation, and Navigation Systems.",
+                topics: [
+                  "Linear and Non-linear Control", "Robotics and Intelligent Systems", "Industrial Automation", 
+                  "Process Control", "Robust and Decentralized Control", "Stability Analysis", 
+                  "Fractional-order Control", "Mechatronics Systems", "Unmanned Aerial Vehicles (UAVs)", "Autonomous Navigation"
+                ]
               },
               { 
-                icon: Users, 
+                icon: Zap, 
                 title: "Power & Energy Systems", 
                 desc: "Smart Grids, Renewable Energy, Power Electronics.",
-                topics: ["Smart Grid Technologies", "Renewable Energy Systems", "Power Electronics and Drives", "Energy Storage Systems", "Power System Planning"]
+                topics: [
+                  "Smart Grid Technologies", "Renewable Energy Systems", "Power Electronics and Drives", 
+                  "Energy Storage Systems", "Power System Planning and Operation", "Battery Management Systems", 
+                  "Electrified Transportation (EVs)", "Microgrids and Distributed Generation", "High Voltage Engineering", "Power Quality and Conditioning"
+                ]
               },
               { 
                 icon: MapPin, 
                 title: "Communication Systems", 
                 desc: "5G/6G, Wireless Networks, Optical Communications.",
-                topics: ["Wireless and Mobile Communication", "Optical Communication and Networks", "5G and 6G Technologies", "Antenna and Microwave Engineering", "Satellite Communications"]
+                topics: [
+                  "Wireless and Mobile Communication", "Optical Communication and Networks", "5G and Beyond Technologies", 
+                  "Antenna and Microwave Engineering", "Satellite Communications", "IoT/IIoT Communication", 
+                  "MIMO and Cooperative Communications", "THz Communication", "Radar Systems", "Quantum Communication"
+                ]
               },
               { 
                 icon: CalendarDays, 
                 title: "Sensors & Instrumentation", 
                 desc: "Biomedical Instrumentation, Advanced Sensors.",
-                topics: ["Advanced Sensor Technologies", "Biomedical Instrumentation", "Industrial Instrumentation", "Internet of Things (IoT) Sensors", "Optical Sensors"]
+                topics: [
+                  "Advanced Sensor Technologies", "Biomedical Instrumentation", "Industrial Instrumentation", 
+                  "Internet of Things (IoT) Sensors", "Optical Sensors", "Methods of Measurements", 
+                  "Smart and Intelligent Sensors", "Sensors and Sensor Data Fusion", "Non-Destructive Testing", "Virtual Instrumentation"
+                ]
+              },
+              { 
+                icon: Sparkles, 
+                title: "AI & Soft Computing", 
+                desc: "Machine Learning, Deep Learning, and NLP.",
+                topics: [
+                  "Artificial Intelligence and Machine Learning", "Deep Learning Applications", "AI in Healthcare", 
+                  "Evolutionary Computing", "Hybrid Intelligent Systems", "Pervasive Computing", 
+                  "Data Visualization and Analytics", "Natural Language Processing (NLP)", "Fuzzy Logic and Neural Networks", "Optimization Techniques"
+                ]
               },
             ].map((track, i) => (
               <motion.div
@@ -552,7 +566,7 @@ export default function Home() {
                           transition={{ duration: 0.3, ease: "easeInOut" }}
                           className="mt-6 pt-6 border-t border-primary/10 space-y-4 w-full text-left"
                         >
-                          <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 font-mono block">Sub-domains & Scope</span>
+                          <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 font-mono block">Subtopics</span>
                           <div className="grid grid-cols-1 gap-2.5">
                             {track.topics.map((topic, idx) => (
                               <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-600 hover:text-primary transition-colors">
@@ -567,7 +581,7 @@ export default function Home() {
                   </div>
 
                   <div className="mt-6 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-primary font-mono group-hover:underline">
-                    <span>{activeTrack === i ? "Collapse Scope" : "View Scope & Subtopics"}</span>
+                    <span>{activeTrack === i ? "Collapse Subtopics" : "View Subtopics"}</span>
                   </div>
                 </div>
               </motion.div>
@@ -615,11 +629,12 @@ export default function Home() {
 
           <div className="space-y-16 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-[2px] before:bg-gradient-to-b before:from-transparent before:via-primary/30 before:to-transparent">
             {[
-              { date: "August 15, 2027", event: "Paper Submission Deadline", highlight: true, id: "T-01" },
-              { date: "October 15, 2027", event: "Notification of Acceptance", highlight: false, id: "T-02" },
-              { date: "November 05, 2027", event: "Camera Ready Paper Submission", highlight: false, id: "T-03" },
-              { date: "November 15, 2027", event: "Early Bird Registration", highlight: true, id: "T-04" },
-              { date: "December 15-17, 2027", event: "Conference Dates", highlight: false, id: "T-05" },
+              { date: "July 01, 2026", event: "Paper Submission Starts", highlight: true, id: "T-00" },
+              { date: "August 15, 2026", event: "Paper Submission Deadline", highlight: true, id: "T-01" },
+              { date: "October 15, 2026", event: "Notification of Acceptance", highlight: false, id: "T-02" },
+              { date: "November 05, 2026", event: "Camera Ready Paper Submission", highlight: false, id: "T-03" },
+              { date: "November 15, 2026", event: "Early Bird Registration", highlight: true, id: "T-04" },
+              { date: "January 20-22, 2027", event: "Conference Dates", highlight: false, id: "T-05" },
             ].map((item, i) => (
               <motion.div 
                 key={i}
@@ -651,6 +666,137 @@ export default function Home() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SPONSORS & PARTNERS SECTION */}
+      <section id="sponsors" className="py-24 relative z-20">
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="text-center mb-16">
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="font-mono text-primary text-xs font-bold uppercase tracking-widest mb-4"
+            >
+              Collaborations & Support
+            </motion.div>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl font-bold tracking-tight text-foreground"
+            >
+              Sponsors <span className="text-gradient">&amp; Partners</span>
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-muted-foreground mt-4 max-w-xl mx-auto font-light"
+            >
+              Proudly supported by leading publishers, research foundations, and healthcare instrumentation companies.
+            </motion.p>
+          </div>
+
+          {/* Active Sponsors Grid */}
+          <div className="flex justify-center mb-20">
+            {[
+              { name: "Springer", role: "Publication Partner", desc: "Lecture Notes in Electrical Engineering" }
+            ].map((sponsor, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="max-w-sm w-full text-center p-6 bg-white/40 border border-slate-200 backdrop-blur-md rounded-2xl flex flex-col justify-between items-center h-full hover:shadow-md hover:border-primary/20 transition-all duration-300"
+              >
+                <div className="h-10 flex items-center justify-center mb-3">
+                  <span className="font-extrabold text-lg text-slate-700 tracking-tight font-sans uppercase">{sponsor.name}</span>
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold text-primary uppercase tracking-wider font-mono">{sponsor.role}</p>
+                  <p className="text-[9px] text-slate-400 font-light mt-0.5">{sponsor.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Sponsorship Opportunities (Gold/Silver Tiers etc.) */}
+          <div className="border-t border-slate-200 pt-16">
+            <div className="text-center mb-12">
+              <h3 className="text-2xl font-bold text-slate-800">Sponsorship Packages</h3>
+              <p className="text-xs text-slate-500 font-light mt-1">Promote your brand to global engineering researchers and practitioners.</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {[
+                {
+                  tier: "Platinum Sponsor",
+                  cost: "₹ 50,000 / $ 650",
+                  color: "from-blue-500/10 to-indigo-500/15 border-blue-200",
+                  benefits: [
+                    "Full page ad in conference program",
+                    "Logo on all website pages & banner links",
+                    "Dedicated product exhibition booth",
+                    "15-minute presentation session",
+                    "Webcast of promotional video",
+                    "2 Complimentary delegate registrations"
+                  ]
+                },
+                {
+                  tier: "Gold Sponsor",
+                  cost: "₹ 30,000 / $ 400",
+                  color: "from-amber-500/10 to-[#B59410]/15 border-amber-200",
+                  benefits: [
+                    "Half page ad in conference program",
+                    "Logo on all banners & website",
+                    "Logo inside published proceedings",
+                    "Webcast of promotional video",
+                    "1 Complimentary delegate registration"
+                  ]
+                },
+                {
+                  tier: "Silver Sponsor",
+                  cost: "₹ 20,000 / $ 250",
+                  color: "from-stone-400/10 to-stone-500/15 border-stone-200",
+                  benefits: [
+                    "Quarter page ad in conference program",
+                    "Logo on website & promotional materials",
+                    "Logo on standard sponsor banners"
+                  ]
+                }
+              ].map((tier, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className={`bg-gradient-to-br ${tier.color} border p-6 rounded-2xl flex flex-col justify-between`}
+                >
+                  <div>
+                    <h4 className="text-lg font-bold text-slate-800">{tier.tier}</h4>
+                    <p className="text-md font-bold text-primary font-mono mt-1">{tier.cost}</p>
+                    <div className="h-px bg-slate-200 my-4" />
+                    <ul className="space-y-2.5">
+                      {tier.benefits.map((benefit, i) => (
+                        <li key={i} className="flex items-start gap-2 text-xs text-slate-600">
+                          <span className="h-1.5 w-1.5 rounded-full bg-accent mt-1.5 shrink-0" />
+                          <span className="font-light leading-relaxed">{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-500 font-mono">
+                    <span>Contact: e2a@ei.nits.ac.in</span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
