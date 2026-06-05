@@ -99,30 +99,17 @@ export function Footer() {
           
           {/* Column 1: Core Branding, Trust Badges, Local Clock */}
           <div className="lg:col-span-3 space-y-6">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="font-bold text-3xl tracking-tighter text-white">
-                E2A<span className="text-accent font-mono text-2xl">'27</span>
-              </span>
+            <Link href="/" className="flex items-center gap-2 mb-2">
+              <img
+                src="https://res.cloudinary.com/dprjiwgfo/image/upload/v1780614814/E2A_-_2027_dpjmot.png"
+                alt="E2A 2027"
+                className="h-14 w-auto object-contain brightness-0 invert"
+              />
             </Link>
             <p className="text-xs text-slate-400 leading-relaxed font-light">
               6th International Conference on Emerging Electronics & Automation. Steered by Department of EIE, National Institute of Technology Silchar.
             </p>
 
-            <div className="border-t border-slate-800 pt-4 space-y-3">
-              <div className="flex items-center gap-2 text-xs text-slate-400">
-                <Clock className="h-4 w-4 text-accent shrink-0" />
-                <span className="font-mono">NIT Silchar (IST)</span>
-              </div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-bold tracking-wider uppercase">
-                <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
-                Helpdesk Active (9am - 6pm)
-              </div>
-            </div>
-            
-            <div className="flex items-center gap-2 text-[10px] text-slate-500 font-mono">
-              <ShieldCheck className="h-4 w-4 text-slate-500 shrink-0" />
-              <span>Springer LNEE Peer Review System</span>
-            </div>
           </div>
 
           {/* Column 2: 100x BETTER: DYNAMIC INTERACTIVE QUERY DESK */}
@@ -131,13 +118,19 @@ export function Footer() {
               <Sparkles className="h-24 w-24 text-accent" />
             </div>
 
-            <div className="flex items-center gap-2 mb-4">
-              <div className="p-1.5 bg-accent/20 rounded-lg text-accent">
-                <Mail className="h-4 w-4" />
+            <div className="flex items-start justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <div className="p-1.5 bg-accent/20 rounded-lg text-accent">
+                  <Mail className="h-4 w-4" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-white tracking-tight">Interactive Quick Helpdesk</h4>
+                  <p className="text-[10px] text-slate-400">Direct query router to organizing chairs.</p>
+                </div>
               </div>
-              <div>
-                <h4 className="text-sm font-bold text-white tracking-tight">Interactive Quick Helpdesk</h4>
-                <p className="text-[10px] text-slate-400">Direct query router to organizing chairs.</p>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[8px] font-bold tracking-wider uppercase mt-1">
+                <span className="w-1 h-1 bg-emerald-400 rounded-full animate-pulse" />
+                Active (9AM - 6PM IST)
               </div>
             </div>
 
@@ -310,7 +303,7 @@ export function Footer() {
           </div>
           
           <div className="mt-4 md:mt-0 flex items-center gap-6">
-            <a href="https://e2a.nits.ac.in" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors flex items-center gap-1">
+            <a href="https://eie.nits.ac.in/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors flex items-center gap-1">
               Official Site <ExternalLink className="h-3 w-3" />
             </a>
             <span className="text-slate-800">|</span>

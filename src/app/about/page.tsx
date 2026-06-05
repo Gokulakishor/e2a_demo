@@ -75,7 +75,7 @@ export default function AboutPage() {
           >
             <h2 className="text-3xl font-bold text-primary">Department of Electronics & Instrumentation Engineering</h2>
             <p className="text-lg text-slate-600 leading-relaxed font-light text-justify">
-              The Department of Electronics and Instrumentation Engineering (EIE) at NIT Silchar was established in 2008. The department offers B.Tech, M.Tech, and Ph.D. programs. Our faculty members are actively engaged in cutting-edge research across various specializations including VLSI Design, Signal Processing, Control Systems, and Sensor Technologies.
+              The Department of Electronics and Instrumentation Engineering (EIE) at NIT Silchar was established in 2008. The department offers B.Tech, M.Tech, and Ph.D. programs. Our faculty members are actively engaged in cutting-edge research across various specializations including VLSI Design, Signal Processing, Control Systems, Communication, Drone and Robotics Technologies, HealthCare Technologies ,  Energy Engineering and Sensor Technologies.
             </p>
           </motion.div>
 

@@ -5,108 +5,61 @@ export interface Track {
 
 export const tracksData: Track[] = [
   {
-    title: "Track 1: Microelectronics & VLSI",
+    title: "Control And Robotics",
     topics: [
-      "Device Modeling and Simulation",
-      "Low Power VLSI Design",
-      "Analog and Mixed Signal IC Design",
-      "Testing and Verification",
-      "CAD for VLSI",
-      "Nanoelectronics and Nanotechnology",
-      "Optoelectronics",
-      "Micro-Electro-Mechanical Systems (MEMS)",
-      "Hardware Security and Trust",
-      "Embedded Systems Design"
+      "Linear Control", "Non-linear Control", "Robust Control", "Decentralized Control", 
+      "Robotics", "Industrial Automation", "Stability Analysis", "Fractional Order Control"
     ]
   },
   {
-    title: "Track 2: Signal & Image Processing",
+    title: "Signal and Image Processing",
     topics: [
-      "Audio and Acoustic Signal Processing",
-      "Biomedical Signal Processing",
-      "Computer Vision and Pattern Recognition",
-      "Machine Learning in Signal Processing",
-      "Speech Processing",
-      "Image and Video Processing",
-      "Signal Processing for Big Data",
-      "Information Forensics and Security",
-      "Remote Sensing and Signal Processing",
-      "Multimedia Analysis and Retrieval"
+      "Image and Video Signal Processing", "Multimedia Applications", "Signal Processing for Big Data", 
+      "Speech and Audio Processing", "Computer Vision", "Biomedical Applications, Bio-Signal Analysis", 
+      "Language Identification", "Information Forensics & Security", "Sparse Signal Processing", 
+      "Time-Frequency Analysis", "Active Noise Control", "Adapative Signal Processing", "Array Signal Processing"
     ]
   },
   {
-    title: "Track 3: Control & Robotics",
+    title: "Communication Systems",
     topics: [
-      "Linear and Non-linear Control",
-      "Robotics and Intelligent Systems",
-      "Industrial Automation",
-      "Process Control",
-      "Robust and Decentralized Control",
-      "Stability Analysis",
-      "Fractional-order Control",
-      "Mechatronics Systems",
-      "Unmanned Aerial Vehicles (UAVs)",
-      "Autonomous Navigation"
+      "5G & beyond Communication", "IoT & IIoT Communication", "UDN", "MIMO", "D2D", 
+      "RF & Microwave", "Antennas", "THz Communication", "Small Cells", "mmWave communication", 
+      "Quantum Communication", "Radar Systems", "Optical Communication etc"
     ]
   },
   {
-    title: "Track 4: Power & Energy Systems",
+    title: "Sensors and Instrumentation",
     topics: [
-      "Smart Grid Technologies",
-      "Renewable Energy Systems",
-      "Power Electronics and Drives",
-      "Energy Storage Systems",
-      "Power System Planning and Operation",
-      "Battery Management Systems",
-      "Electrified Transportation (EVs)",
-      "Microgrids and Distributed Generation",
-      "High Voltage Engineering",
-      "Power Quality and Conditioning"
+      "Methods of Measurements", "Electromagnetics, Digital Holography, Laser based Instrumentation for Measurement and Monitoring systems", 
+      "Sensors and Sensing Technology", "Non-Destructive Testing", "Smart and Intelligent Sensors", 
+      "Biomedical Sensors, Signal Analysis & Health Monitoring Applications", "IoT Applications in Instrumentation", 
+      "Sensors & Sensor Data Fusion", "Robotics & Mechatronics Systems", "Process Control & Instrumentation."
     ]
   },
   {
-    title: "Track 5: Communication Systems",
+    title: "MEMS & VLSI",
     topics: [
-      "Wireless and Mobile Communication",
-      "Optical Communication and Networks",
-      "5G and Beyond Technologies",
-      "Antenna and Microwave Engineering",
-      "Satellite Communications",
-      "IoT/IIoT Communication",
-      "MIMO and Cooperative Communications",
-      "THz Communication",
-      "Radar Systems",
-      "Quantum Communication"
+      "NEMS & MEMS, Nanotechnology", "Solar Cells, Photonics & Energy", "2D Materials, Organic Semiconductors & Flexible Electronics", 
+      "Advanced Materials, Characterization and Applications", "Device Simulation & Modelling", "Memory Devices & Logic for Storage and Computing", 
+      "FinFET Technology, VLSI Circuits & System Design", "FPGA & Embedded System"
     ]
   },
   {
-    title: "Track 6: Sensors & Instrumentation",
+    title: "AI & Soft Computing",
     topics: [
-      "Advanced Sensor Technologies",
-      "Biomedical Instrumentation",
-      "Industrial Instrumentation",
-      "Internet of Things (IoT) Sensors",
-      "Optical Sensors",
-      "Methods of Measurements",
-      "Smart and Intelligent Sensors",
-      "Sensors and Sensor Data Fusion",
-      "Non-Destructive Testing",
-      "Virtual Instrumentation"
+      "AI and Machine Learning", "CAD System", "Deep Learning Applications", "AI in Healthcare", 
+      "Pattern Recognition", "Biometrics", "Evolutionary Computing", "Hybrid Intelligent Systems", 
+      "E-commerce, E-medicine", "Morphic Computing", "Pervasive computing and Ambient Intelligence", "Data Visualization."
     ]
   },
   {
-    title: "Track 7: AI & Soft Computing",
+    title: "Energy, Power System and Power Electronics",
     topics: [
-      "Artificial Intelligence and Machine Learning",
-      "Deep Learning Applications",
-      "AI in Healthcare",
-      "Evolutionary Computing",
-      "Hybrid Intelligent Systems",
-      "Pervasive Computing",
-      "Data Visualization and Analytics",
-      "Natural Language Processing (NLP)",
-      "Fuzzy Logic and Neural Networks",
-      "Optimization Techniques"
+      "Modelling of power and energy systems", "Electrical, thermal, ageing model and estimation of energy storage", 
+      "Power electronic converters for power or energy systems", "Energy/power management", "Battery management", 
+      "Renewable energy", "Electrified transportation", "Energy storage sizing", "EV Charging", 
+      "Energy efficient building", "Micro grid", "Vehicle-to-grid integration", "Grid integration of renewable energy"
     ]
   }
 ];

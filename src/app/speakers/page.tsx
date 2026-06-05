@@ -55,7 +55,7 @@ export default function SpeakersPage() {
               </div>
               <h3 className="text-2xl font-bold text-slate-800 mb-2">Speakers Lineup</h3>
               <p className="text-lg text-primary font-mono tracking-widest uppercase font-extrabold mb-4">
-                To be decided soon
+                To be announced soon
               </p>
               <p className="text-sm text-slate-500 font-light max-w-md mx-auto leading-relaxed">
                 The organizing committee is currently in the process of finalizing keynotes, plenary speeches, and invited talk speakers. Full schedule and profile updates will be posted here.

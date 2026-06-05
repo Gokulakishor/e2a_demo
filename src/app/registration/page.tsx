@@ -7,54 +7,45 @@ import { Calculator, Sparkles } from "lucide-react";
 
 export default function RegistrationPage() {
   const feeData = [
-    { category: "Students/Research Scholars (IEEE Member)", indian: "₹ 4,000", foreign: "$ 200" },
-    { category: "Students/Research Scholars (Non-IEEE)", indian: "₹ 5,000", foreign: "$ 250" },
-    { category: "Academicians/R&D (IEEE Member)", indian: "₹ 5,500", foreign: "$ 300" },
-    { category: "Academicians/R&D (Non-IEEE)", indian: "₹ 6,500", foreign: "$ 350" },
-    { category: "Industry (IEEE Member)", indian: "₹ 7,000", foreign: "$ 400" },
-    { category: "Industry (Non-IEEE)", indian: "₹ 8,000", foreign: "$ 450" },
-    { category: "Attendee/Listener", indian: "₹ 2,000", foreign: "$ 100" },
+    { category: "Students", old: "₹5,000", early: "₹6,000", late: "₹7,000" },
+    { category: "Academia/Scientists", old: "₹6,000", early: "₹8,000", late: "₹9,000" },
+    { category: "Industry Professionals", old: "₹7,000", early: "₹9,000", late: "₹10,000" },
+    { category: "Conference Attendees (Without Paper Presentation)", old: "₹3,000", early: "₹2,000", late: "₹3,000" },
   ];
 
   // Calculator State
-  const [category, setCategory] = useState("student_ieee");
+  const [category, setCategory] = useState("students");
   const [isForeign, setIsForeign] = useState(false);
   const [isEarlyBird, setIsEarlyBird] = useState(true);
   const [extraPapers, setExtraPapers] = useState(0);
 
   // Dynamic calculations
   const calculateTotal = () => {
-    const prices: Record<string, { indian: number; foreign: number }> = {
-      student_ieee: { indian: 4000, foreign: 200 },
-      student_nonieee: { indian: 5000, foreign: 250 },
-      academic_ieee: { indian: 5500, foreign: 300 },
-      academic_nonieee: { indian: 6500, foreign: 350 },
-      industry_ieee: { indian: 7000, foreign: 400 },
-      industry_nonieee: { indian: 8000, foreign: 450 },
-      attendee: { indian: 2000, foreign: 100 },
+    const prices: Record<string, { indian: number }> = {
+      students: { indian: 7000 },
+      academician: { indian: 9000 },
+      industry: { indian: 10000 },
+      attendee: { indian: 3000 },
     };
-    const sel = prices[category] ?? prices.student_ieee;
-    const base = isForeign ? sel.foreign : sel.indian;
+    const sel = prices[category] ?? prices.students;
+    const base = sel.indian;
 
-    let earlyDiscount = isEarlyBird ? Math.round(base * 0.10) : 0;
-    const extraPaperCost = extraPapers * (isForeign ? 100 : 4000);
+    let earlyDiscount = isEarlyBird ? 1000 : 0;
+    const extraPaperCost = extraPapers * 3000;
 
     const subtotal = base - earlyDiscount;
     const total = subtotal + extraPaperCost;
-
-    // Exchange rate: 1 USD = 83 INR
-    const toInr = (usdVal: number) => usdVal * 83;
 
     return {
       base,
       earlyDiscount,
       extraPaperCost,
       total,
-      currency: isForeign ? "$" : "₹",
-      baseInr: isForeign ? toInr(base) : base,
-      earlyDiscountInr: isForeign ? toInr(earlyDiscount) : earlyDiscount,
-      extraPaperCostInr: isForeign ? toInr(extraPaperCost) : extraPaperCost,
-      totalInr: isForeign ? toInr(total) : total
+      currency: "₹",
+      baseInr: base,
+      earlyDiscountInr: earlyDiscount,
+      extraPaperCostInr: extraPaperCost,
+      totalInr: total
     };
   };
 
@@ -112,16 +103,18 @@ export default function RegistrationPage() {
                 <thead className="uppercase tracking-wider border-b bg-slate-50/80 text-muted-foreground font-semibold">
                   <tr>
                     <th scope="col" className="px-6 py-4">Participant Category</th>
-                    <th scope="col" className="px-6 py-4">Indian Authors (INR)</th>
-                    <th scope="col" className="px-6 py-4">Foreign Authors (USD)</th>
+                    <th scope="col" className="px-6 py-4">Old Fees</th>
+                    <th scope="col" className="px-6 py-4">Revised Early Bird Fees</th>
+                    <th scope="col" className="px-6 py-4">Late Registration Fees</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border text-foreground">
                   {feeData.map((fee, idx) => (
                     <tr key={idx} className="hover:bg-muted/50 transition-colors">
                       <td className="px-6 py-4 font-semibold text-slate-700">{fee.category}</td>
-                      <td className="px-6 py-4 font-mono font-medium text-slate-600">{fee.indian}</td>
-                      <td className="px-6 py-4 font-mono font-medium text-slate-600">{fee.foreign}</td>
+                      <td className="px-6 py-4 font-mono font-medium text-slate-600">{fee.old}</td>
+                      <td className="px-6 py-4 font-mono font-medium text-slate-600">{fee.early}</td>
+                      <td className="px-6 py-4 font-mono font-medium text-slate-600">{fee.late}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -158,13 +151,10 @@ export default function RegistrationPage() {
                   <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 font-mono">1. Select Participant Category</span>
                   <div className="grid grid-cols-2 gap-3">
                     {[
-                      { id: "student_ieee", label: "Student (IEEE)" },
-                      { id: "student_nonieee", label: "Student (Non-IEEE)" },
-                      { id: "academic_ieee", label: "Academic (IEEE)" },
-                      { id: "academic_nonieee", label: "Academic (Non-IEEE)" },
-                      { id: "industry_ieee", label: "Industry (IEEE)" },
-                      { id: "industry_nonieee", label: "Industry (Non-IEEE)" },
-                      { id: "attendee", label: "Attendee" }
+                      { id: "students", label: "Students" },
+                      { id: "academician", label: "Academia/Scientists" },
+                      { id: "industry", label: "Industry Professionals" },
+                      { id: "attendee", label: "Attendees" }
                     ].map((opt) => (
                       <button
                         key={opt.id}
@@ -183,28 +173,10 @@ export default function RegistrationPage() {
 
                 {/* 2. Parameters */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {/* Nationality */}
-                  <div className="bg-white/50 border border-slate-100 rounded-2xl p-4 space-y-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 font-mono">Nationality</span>
-                    <div className="flex bg-slate-100 rounded-lg p-0.5">
-                      <button
-                        onClick={() => setIsForeign(false)}
-                        className={`flex-1 py-1.5 text-xs font-bold rounded-md transition-all ${!isForeign ? "bg-white text-primary shadow-sm" : "text-slate-500"}`}
-                      >
-                        Indian
-                      </button>
-                      <button
-                        onClick={() => setIsForeign(true)}
-                        className={`flex-1 py-1.5 text-xs font-bold rounded-md transition-all ${isForeign ? "bg-white text-primary shadow-sm" : "text-slate-500"}`}
-                      >
-                        Foreign
-                      </button>
-                    </div>
-                  </div>
 
                   {/* Early Bird */}
-                  <div className="bg-white/50 border border-slate-100 rounded-2xl p-4 space-y-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 font-mono">Early Bird (-10%)</span>
+                  <div className="bg-white/50 border border-slate-100 rounded-2xl p-4 space-y-2 md:col-span-2">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 font-mono">Early Bird (-₹1,000)</span>
                     <div className="flex bg-slate-100 rounded-lg p-0.5">
                       <button
                         onClick={() => setIsEarlyBird(true)}
@@ -314,13 +286,14 @@ export default function RegistrationPage() {
             className="space-y-6"
           >
             <h2 className="text-3xl font-bold text-primary border-b pb-4">Important Guidelines</h2>
-            <ul className="list-disc list-inside space-y-3 text-slate-600 font-light leading-relaxed">
+            <ol className="list-decimal list-inside space-y-3 text-slate-600 font-light leading-relaxed">
               <li>At least one author of each accepted paper must register at the full rate to ensure inclusion in the proceedings.</li>
-              <li>A single registration covers the presentation and publication of exactly one paper.</li>
-              <li>Students must upload a valid Student ID card during the registration process.</li>
+              <li>The authors can register for a maximum of 3 accepted papers. For each extra paper, an additional fee of INR 3,000 is to be paid.</li>
+              <li>Students can upload a maximum of 1 paper with a single registration.</li>
+              <li>The final camera-ready paper should have a maximum of 8 pages.</li>
               <li>Registration fees are non-refundable.</li>
               <li>Papers that are not presented at the conference will not be included in the proceedings.</li>
-            </ul>
+            </ol>
           </motion.div>
 
           <div className="text-center">

@@ -66,24 +66,23 @@ export default function InformationForAuthorsPage() {
                 <thead>
                   <tr className="bg-primary/5">
                     <th className="text-left p-3 font-semibold text-slate-800 border-b border-slate-200 rounded-tl-xl">Category</th>
-                    <th className="text-center p-3 font-semibold text-slate-800 border-b border-slate-200">Indian Authors (INR)</th>
-                    <th className="text-center p-3 font-semibold text-slate-800 border-b border-slate-200 rounded-tr-xl">Foreign Authors (USD)</th>
+                    <th className="text-center p-3 font-semibold text-slate-800 border-b border-slate-200">Old Fees</th>
+                    <th className="text-center p-3 font-semibold text-slate-800 border-b border-slate-200">Revised Early Bird Fees</th>
+                    <th className="text-center p-3 font-semibold text-slate-800 border-b border-slate-200 rounded-tr-xl">Late Registration Fees</th>
                   </tr>
                 </thead>
                 <tbody className="text-slate-700">
                   {[
-                    { category: "Students/Research Scholars (IEEE Member)", inr: "₹4,000", usd: "$200" },
-                    { category: "Students/Research Scholars (Non-IEEE)", inr: "₹5,000", usd: "$250" },
-                    { category: "Academicians/R&D (IEEE Member)", inr: "₹5,500", usd: "$300" },
-                    { category: "Academicians/R&D (Non-IEEE)", inr: "₹6,500", usd: "$350" },
-                    { category: "Industry (IEEE Member)", inr: "₹7,000", usd: "$400" },
-                    { category: "Industry (Non-IEEE)", inr: "₹8,000", usd: "$450" },
-                    { category: "Attendee/Listener", inr: "₹2,000", usd: "$100" },
+                    { category: "Students", old: "₹5,000", early: "₹6,000", late: "₹7,000" },
+                    { category: "Academia/Scientists", old: "₹6,000", early: "₹8,000", late: "₹9,000" },
+                    { category: "Industry Professionals", old: "₹7,000", early: "₹9,000", late: "₹10,000" },
+                    { category: "Conference Attendees (Without Paper Presentation)", old: "₹3,000", early: "₹2,000", late: "₹3,000" },
                   ].map((row, idx) => (
                     <tr key={idx} className={`${idx % 2 === 0 ? "bg-white/60" : "bg-slate-50/60"} hover:bg-primary/5 transition-colors`}>
                       <td className="p-3 border-b border-slate-100 font-medium">{row.category}</td>
-                      <td className="p-3 border-b border-slate-100 text-center font-mono font-semibold text-slate-800">{row.inr}</td>
-                      <td className="p-3 border-b border-slate-100 text-center font-mono font-semibold text-slate-800">{row.usd}</td>
+                      <td className="p-3 border-b border-slate-100 text-center font-mono font-semibold text-slate-800">{row.old}</td>
+                      <td className="p-3 border-b border-slate-100 text-center font-mono font-semibold text-slate-800">{row.early}</td>
+                      <td className="p-3 border-b border-slate-100 text-center font-mono font-semibold text-slate-800">{row.late}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -99,11 +98,35 @@ export default function InformationForAuthorsPage() {
               <h4 className="text-lg font-semibold text-slate-800 mb-3">Important Registration Guidelines</h4>
               <ol className="list-decimal list-inside space-y-2.5 text-sm text-slate-600 font-light leading-relaxed">
                 <li>At least one author of each accepted paper must register at the full rate to ensure inclusion in the proceedings.</li>
-                <li>A single registration covers the presentation and publication of exactly one paper.</li>
-                <li>Students must upload a valid Student ID card during the registration process.</li>
+                <li>The authors can register for a maximum of 3 accepted papers. For each extra paper, an additional fee of INR 3,000 is to be paid.</li>
+                <li>Students can upload a maximum of 1 paper with a single registration.</li>
+                <li>The final camera-ready paper should have a maximum of 8 pages.</li>
                 <li>Registration fees are non-refundable.</li>
                 <li>Papers that are not presented at the conference will not be included in the proceedings.</li>
               </ol>
+            </div>
+
+            {/* Frequently Asked Questions */}
+            <div className="pt-8 border-t border-slate-200">
+              <h3 className="text-xl font-bold text-primary mb-4">Frequently Asked Questions</h3>
+              <div className="space-y-4">
+                <div className="bg-white/60 border border-slate-100 p-4 rounded-xl">
+                  <h5 className="font-semibold text-slate-800 text-sm mb-1">Do all participants have to register for the conference?</h5>
+                  <p className="text-slate-600 font-light text-sm">Yes, all participants must register for the conference.</p>
+                </div>
+                <div className="bg-white/60 border border-slate-100 p-4 rounded-xl">
+                  <h5 className="font-semibold text-slate-800 text-sm mb-1">What is the preferred mode of paying registration fees for Indian participants in INR?</h5>
+                  <p className="text-slate-600 font-light text-sm">Electronic fund transfer to the conference bank account.</p>
+                </div>
+                <div className="bg-white/60 border border-slate-100 p-4 rounded-xl">
+                  <h5 className="font-semibold text-slate-800 text-sm mb-1">Is registration mandatory before final submission?</h5>
+                  <p className="text-slate-600 font-light text-sm">Yes, registration is mandatory before final submission.</p>
+                </div>
+                <div className="bg-white/60 border border-slate-100 p-4 rounded-xl">
+                  <h5 className="font-semibold text-slate-800 text-sm mb-1">Can an author upload the final paper without paying the registration fees?</h5>
+                  <p className="text-slate-600 font-light text-sm">No, authors cannot upload the final paper without paying the registration fees.</p>
+                </div>
+              </div>
             </div>
           </motion.div>
 
@@ -125,7 +148,7 @@ export default function InformationForAuthorsPage() {
             <ul className="list-disc list-inside space-y-3 text-sm md:text-md text-slate-700 font-light leading-relaxed text-justify">
               <li>All submissions must be made electronically via the Microsoft CMT portal.</li>
               <li>Papers must follow <strong className="font-semibold text-slate-800">Springer formatting guidelines</strong>.</li>
-              <li>Maximum <strong className="font-semibold text-slate-800">5 pages</strong> including figures, tables, and references.</li>
+              <li>Maximum <strong className="font-semibold text-slate-800">8 pages</strong> including figures, tables, and references.</li>
               <li>All submitted papers will undergo a rigorous peer review process.</li>
             </ul>
 

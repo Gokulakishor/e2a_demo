@@ -104,15 +104,15 @@ export default function CallForPapersPage() {
             </p>
             <ul className="list-disc list-inside space-y-3.5 text-slate-650 font-light text-sm md:text-md text-justify">
               <li className="text-justify leading-relaxed">All papers must be original and not simultaneously submitted to another journal or conference.</li>
-              <li className="text-justify leading-relaxed">Papers must be written in English and should follow the Springer formatting guidelines.</li>
-              <li className="text-justify leading-relaxed">The paper should be a maximum of <strong className="font-semibold text-slate-800">5 pages</strong> (including figures, tables, and references).</li>
-              <li className="text-justify leading-relaxed">All submissions will be made through the Microsoft CMT portal.</li>
-              <li className="text-justify leading-relaxed">All papers will undergo a <strong className="font-semibold text-slate-800">double-blind peer review</strong> process.</li>
+              <li className="text-justify leading-relaxed">Submissions should be made according to the Springer LNEE format (<a href="/templates/latex_template.zip" download className="text-primary hover:underline">LaTeX template</a>, <a href="/templates/word_template.zip" download className="text-primary hover:underline">Word template</a>).</li>
+              <li className="text-justify leading-relaxed">Authors must follow the <a href="/documents/Springer_Guidelines_for_Authors_of_Proceedings.pdf" className="text-primary hover:underline font-semibold">Springer Guidelines for Authors of Proceedings</a>.</li>
+              <li className="text-justify leading-relaxed">The paper should be a maximum of <strong className="font-semibold text-slate-800">8 pages</strong> (including figures, tables, and references).</li>
+              <li className="text-justify leading-relaxed">Papers should be submitted through the Microsoft CMT platform.</li>
+              <li className="text-justify leading-relaxed">All papers will undergo a rigorous peer review process (we do not follow double-blind review).</li>
               <li className="text-justify leading-relaxed">Accepted and presented papers will be published in the Springer Lecture Notes in Electrical Engineering (LNEE) series proceedings.</li>
               <li className="text-justify leading-relaxed">All submitted papers will be checked for plagiarism. The similarity index must be <strong className="font-semibold text-slate-800">below 15%</strong> (with less than 5% from a single source).</li>
               <li className="text-justify leading-relaxed">At least one author of each accepted paper must register at the full rate to ensure inclusion in the proceedings.</li>
               <li className="text-justify leading-relaxed">Papers that are not presented at the conference will not be included in the proceedings.</li>
-              <li className="text-justify leading-relaxed">The Springer template must be strictly followed.</li>
             </ul>
             <div className="pt-4 flex flex-wrap gap-4">
               <a 

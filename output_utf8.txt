@@ -1,0 +1,303 @@
+﻿
+--- Searching for: author guidelines ---
+
+--- Searching for: double-blind ---
+
+--- Searching for: latex ---
+jsxs("div",{style:{position:"fixed",top:0,left:0,width:"100%",height:"100vh",backgroundColor:"rgba(255, 255, 255, 0.98)",zIndex:2e3,transform:n?"translateX(0)":"translateX(100%)",transition:"transform 0.3s ease-in-out",overflowY:"auto",padding:"80px 20px 20px"},children:[l.jsx("button",{onClick:t,style:{position:"absolute",top:"20px",right:"20px",background:"none",border:"none",fontSize:"24px",cursor:"pointer",color:"#333"},children:"├ù"}),l.jsx("div",{style:{display:"flex",flexDirection:"column",gap:"10px"},children:e.map((s,a)=>l.jsx("div",{children:s.subItems&&s.subItems.length>0?l.jsxs("div",{children:[l.jsxs("button",{onClick:()=>o(a),style:{width:"100%",textAlign:"left",background:"none",border:"none",padding:"12px 0",fontSize:"16px",fontWeight:"500",color:"#333",cursor:"pointer",display:"flex",justifyContent:"space-between",alignItems:"center",borderBottom:"1px solid #f0f0f0",paddingBottom:"12px",marginBottom:"8px"},children:[s.name,l.jsx("span",{style:{fontSize:"16px",marginLeft:"8px"},children:r===a?"ΓêÆ":"+"})]}),r===a&&l.jsx("div",{style:{paddingLeft:"15px"},children:s.subItems.map((u,c)=>l.jsx("a",{href:u.pathname,target:u.
+---
+e:{position:"fixed",top:0,left:0,width:"100%",height:"100vh",backgroundColor:"rgba(255, 255, 255, 0.98)",zIndex:2e3,transform:n?"translateX(0)":"translateX(100%)",transition:"transform 0.3s ease-in-out",overflowY:"auto",padding:"80px 20px 20px"},children:[l.jsx("button",{onClick:t,style:{position:"absolute",top:"20px",right:"20px",background:"none",border:"none",fontSize:"24px",cursor:"pointer",color:"#333"},children:"├ù"}),l.jsx("div",{style:{display:"flex",flexDirection:"column",gap:"10px"},children:e.map((s,a)=>l.jsx("div",{children:s.subItems&&s.subItems.length>0?l.jsxs("div",{children:[l.jsxs("button",{onClick:()=>o(a),style:{width:"100%",textAlign:"left",background:"none",border:"none",padding:"12px 0",fontSize:"16px",fontWeight:"500",color:"#333",cursor:"pointer",display:"flex",justifyContent:"space-between",alignItems:"center",borderBottom:"1px solid #f0f0f0",paddingBottom:"12px",marginBottom:"8px"},children:[s.name,l.jsx("span",{style:{fontSize:"16px",marginLeft:"8px"},children:r===a?"ΓêÆ":"+"})]}),r===a&&l.jsx("div",{style:{paddingLeft:"15px"},children:s.subItems.map((u,c)=>l.jsx("a",{href:u.pathname,target:u.external?"_blank
+---
+"hidden",boxSizing:"border-box"},children:[l.jsx("style",{children:`
+    /* marquee movement */
+    @keyframes marquee {
+      0%   { transform: translateX(0%); }
+      100% { transform: translateX(-50%); } /* -50% to account for duplicated content */
+    }
+
+    /* subtle pulse for links */
+    @keyframes softPulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 rgba(0,0,0,0); }
+      50% { transform: scale(1.02); box-shadow: 0 6px 18px rgba(12, 74, 162, 0.06); }
+      100% { transform: scale(1); box-shadow: 0 0 0 rgba(0,0,0,0); }
+    }
+
+    /* respect user preference for reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .notice-scroller { animation: none !important; }
+      .notice-link { animation: none !important; }
+    }
+
+    /* pause marquee when hovered */
+    .notice-viewport:hover .notice-scroller { animation-play-state: paused; }
+  `}),l.jsx("div",{className:"notice-viewport",style:{padding:"10px 0",background:"linear-gradient(90deg, rgba(250,250,252,1) 0%, rgba(245,247,252,1) 100%)",borderTop:"1px solid rgba(15,23,42,0.04)",boxShadow:"inset 0 -1px 0 rgba(15,23,42,0.02)"},children:l.jsx("div",{style:
+---
+[l.jsx("style",{children:`
+    /* marquee movement */
+    @keyframes marquee {
+      0%   { transform: translateX(0%); }
+      100% { transform: translateX(-50%); } /* -50% to account for duplicated content */
+    }
+
+    /* subtle pulse for links */
+    @keyframes softPulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 rgba(0,0,0,0); }
+      50% { transform: scale(1.02); box-shadow: 0 6px 18px rgba(12, 74, 162, 0.06); }
+      100% { transform: scale(1); box-shadow: 0 0 0 rgba(0,0,0,0); }
+    }
+
+    /* respect user preference for reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .notice-scroller { animation: none !important; }
+      .notice-link { animation: none !important; }
+    }
+
+    /* pause marquee when hovered */
+    .notice-viewport:hover .notice-scroller { animation-play-state: paused; }
+  `}),l.jsx("div",{className:"notice-viewport",style:{padding:"10px 0",background:"linear-gradient(90deg, rgba(250,250,252,1) 0%, rgba(245,247,252,1) 100%)",borderTop:"1px solid rgba(15,23,42,0.04)",boxShadow:"inset 0 -1px 0 rgba(15,23,42,0.02)"},children:l.jsx("div",{style:{width:"100%",overflow:"hidden"},children:
+---
+      .profile-name::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 50px;
+          height: 2px;
+          background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+          border-radius: 1px;
+        }
+
+        .profile-designation {
+          color: var(--secondary-color);
+          font-size: 1.1rem;
+          font-weight: 500;
+          margin: 0;
+          margin-bottom: 0.75rem;
+          font-style: italic;
+        }
+
+        .profile-affiliation {
+          color: var(--dark-color);
+          font-size: 1rem;
+          margin: 0;
+          margin-bottom: 1.5rem;
+          line-height: 1.5;
+          max-width: 350px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .profile-link {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+          color: white;
+          border: none;
+          border-radius: 50px;
+          paddin
+---
+ linear-gradient(45deg, var(--secondary-color), var(--tertiary-color));
+        }
+
+        .profile-link:hover .link-icon {
+          transform: translateX(3px);
+        }
+
+        .link-icon {
+          margin-left: 0.5rem;
+          transition: transform 0.3s ease;
+        }
+
+        /* Animation for the card */
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .profile-card {
+          animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 400px) {
+          .profile-card {
+            max-width: 300px;
+            padding: 2rem 0 1.5rem;
+          }
+
+          .image-wrapper {
+            width: 120px;
+            height: 120px;
+          }
+
+          .profile-info {
+            padding: 0 1rem;
+          }
+
+          .profile-name {
+            font-size: 1.5rem;
+          }
+
+          .profile-designation {
+            font-size: 1rem;
+          }
+
+          .profile-affiliation {
+        
+---
+ant-dates-title::after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 80px;
+          height: 3px;
+          background: linear-gradient(90deg, #1abc9c, #f39c12);
+          border-radius: 3px;
+        }
+
+        .divider {
+          height: 4px;
+          background: linear-gradient(90deg, #1abc9c, #f39c12);
+          width: 150px;
+          margin: 0 auto 2.5rem;
+          border-radius: 2px;
+        }
+
+        .dates-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        .date-item {
+          margin-bottom: 1.5rem;
+          padding: 1.5rem;
+          border-radius: 8px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          transition: all 0.3s ease;
+          background-color: #f8f9fa;
+          border-left: 4px solid transparent;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .date-item:nth-child(odd) {
+          background-color: rgba(26, 188, 156, 0.05);
+        }
+
+        .date-item:hover {
+  
+---
+i",{className:"paper-submission-list-item",children:["Submissions should be made according to the Springer LNEE format (",l.jsx("a",{href:"/documents/latex_template.zip",target:"_blank",rel:"noreferrer",className:"paper-submission-link",children:"LaTeX template"}),","," ",l.jsx("a",{href:"/documents/word_template.zip",target:"_blank",rel:"noreferrer",className:"paper-submission-link",children:"Word template"}),")."]}),l.jsxs("li",{className:"paper-submission-list-item",children:["Authors must follow the"," ",l.jsx("a",{href:"/documents/Springer_Guidelines_for_Authors_of_Proceedings.pdf",target:"_blank",rel:"noreferrer",className:"paper-submission-link",children:"Springer Guidelines for Authors of Proceedings"}),"."]}),l.jsxs("li",{className:"paper-submission-list-item",children:["Papers should be submitted through the ",l.jsx("span",{className:"paper-submission-link",children:"CMT (E2A) platform"})]}),l.jsxs("li",{className:"paper-submission-list-item",children:["For Paper Submission "," ",l.jsx("a",{href:"https://cmt3.research.microsoft.com/EEA2025/Track/1/Submission/Create",target:"_blank",rel:"noreferrer",className:"paper-submiss
+---
+ Springer LNEE format (",l.jsx("a",{href:"/documents/latex_template.zip",target:"_blank",rel:"noreferrer",className:"paper-submission-link",children:"LaTeX template"}),","," ",l.jsx("a",{href:"/documents/word_template.zip",target:"_blank",rel:"noreferrer",className:"paper-submission-link",children:"Word template"}),")."]}),l.jsxs("li",{className:"paper-submission-list-item",children:["Authors must follow the"," ",l.jsx("a",{href:"/documents/Springer_Guidelines_for_Authors_of_Proceedings.pdf",target:"_blank",rel:"noreferrer",className:"paper-submission-link",children:"Springer Guidelines for Authors of Proceedings"}),"."]}),l.jsxs("li",{className:"paper-submission-list-item",children:["Papers should be submitted through the ",l.jsx("span",{className:"paper-submission-link",children:"CMT (E2A) platform"})]}),l.jsxs("li",{className:"paper-submission-list-item",children:["For Paper Submission "," ",l.jsx("a",{href:"https://cmt3.research.microsoft.com/EEA2025/Track/1/Submission/Create",target:"_blank",rel:"noreferrer",className:"paper-submission-link",children:"Click Here"}),"."]}),l.jsx("li",{className:"paper-submission-list-item",child
+---
+
+--- Searching for: best presentation award ---
+lsupport",external:!0}]},{name:" Call for Papers",pathname:"/call-for-papers",subItems:[{name:"Conference Tracks",pathname:"/call-for-papers"},{name:"Best Presentation Award",pathname:"/best-awards"}]},{name:"Program",subItems:[{name:"Brochure",pathname:"/program-brochure",external:!0},{name:"Program Schedule",pathname:"/program-schedule",external:!0},{name:"Keynote Speakers",pathname:"/keynote-speakers"}]},{pathname:"/important-dates",name:"Important Dates"},{pathname:"/committee",name:"Committee"},{pathname:"/sponsorship",name:"Sponsorship"},{pathname:"/contact-us",name:"Contact us"}],_e=()=>{const[e,n]=b.useState(!1),[t,r]=b.useState(!1),[i,o]=b.useState(0),s=()=>{typeof window<"u"&&window.scrollY>80?n(!0):n(!1)},a=()=>{typeof window<"u"&&(o(window.innerWidth),window.innerWidth>768&&t&&r(!1))};b.useEffect(()=>{if(!(typeof window>"u"))return o(window.innerWidth),window.addEventListener("scroll",s),window.addEventListener("resize",a),()=>{window.removeEventListener("scroll",s),window.removeEventListener("resize",a)}},[t]);const u=()=>r(!t),c=["/images/homeImg_d.jpg","/images/homeImg_c.jpg","/images/homeImg_e.jpg","/images/homeImg_f
+---
+ar-gradient(90deg, #0A66C2, #0047ab)",display:"inline-flex",alignItems:"center",justifyContent:"center",animation:"blinkBlue 1s infinite"},children:["Best Presentation Award : Results Announced ΓåÆ",l.jsx("style",{children:`
+      @keyframes blinkBlue {
+        0% {
+          opacity: 1;
+          transform: scale(1);
+          box-shadow: 0 0 0px rgba(10,102,194,0.6);
+        }
+        50% {
+          opacity: 0.4;
+          transform: scale(1.08);
+          box-shadow: 0 0 18px rgba(10,102,194,0.9);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+          box-shadow: 0 0 0px rgba(10,102,194,0.6);
+        }
+      }
+    `})]}),l.jsx("a",{href:"/travelsupport",style:{fontSize:16,fontWeight:700,color:"#0A66C2",textDecoration:"underline",padding:"6px 10px",borderRadius:8,background:"rgba(10,102,194,0.03)",display:"inline-flex",alignItems:"center",transition:"transform .18s ease, box-shadow .18s ease",animation:"softPulse 8s ease-in-out infinite"},className:"notice-link","aria-label":"Travel Support - For Authors",children:"Travel Support ΓåÆ"})]}),l.jsxs("div",{style:{display:"inline-flex",gap:"48px",alignIte
+---
+rgba(10,102,194,0.03)",display:"inline-flex",alignItems:"center",animation:"softPulse 7s ease-in-out infinite"},className:"notice-link","aria-label":"Best Presentation Award - Call for Papers",children:"Best Presentation Award ΓåÆ"}),l.jsx("a",{href:"/travelsupport",style:{fontSize:16,fontWeight:700,color:"#0A66C2",textDecoration:"underline",padding:"6px 10px",borderRadius:8,background:"rgba(10,102,194,0.03)",display:"inline-flex",alignItems:"center",animation:"softPulse 8s ease-in-out infinite"},className:"notice-link","aria-label":"Travel Support - For Authors",children:"Travel Support ΓåÆ"})]})]})})})]}),l.jsxs("div",{className:"content-grid",children:[l.jsxs("div",{className:"main-column",children:[l.jsxs("div",{className:"section-header",children:[l.jsx("h2",{className:"section-title",children:"About The Conference"}),l.jsx("div",{className:"section-underline"})]}),l.jsxs("div",{className:"content-card",children:[l.jsxs("p",{className:"lead-text",children:["Emerging Electronics and Automation (E2A) 2025 is the 5",l.jsx("sup",{children:"th"})," Annual International Conference organized by the Department of Electronics and Instrument
+---
+ms:"center",animation:"softPulse 7s ease-in-out infinite"},className:"notice-link","aria-label":"Best Presentation Award - Call for Papers",children:"Best Presentation Award ΓåÆ"}),l.jsx("a",{href:"/travelsupport",style:{fontSize:16,fontWeight:700,color:"#0A66C2",textDecoration:"underline",padding:"6px 10px",borderRadius:8,background:"rgba(10,102,194,0.03)",display:"inline-flex",alignItems:"center",animation:"softPulse 8s ease-in-out infinite"},className:"notice-link","aria-label":"Travel Support - For Authors",children:"Travel Support ΓåÆ"})]})]})})})]}),l.jsxs("div",{className:"content-grid",children:[l.jsxs("div",{className:"main-column",children:[l.jsxs("div",{className:"section-header",children:[l.jsx("h2",{className:"section-title",children:"About The Conference"}),l.jsx("div",{className:"section-underline"})]}),l.jsxs("div",{className:"content-card",children:[l.jsxs("p",{className:"lead-text",children:["Emerging Electronics and Automation (E2A) 2025 is the 5",l.jsx("sup",{children:"th"})," Annual International Conference organized by the Department of Electronics and Instrumentation Engineering at NIT Silchar, Assam. The conferen
+---
+igh-quality presentations and active participation, the conference will recognize one presenter in each track with the"," ",l.jsx("strong",{children:"Best Presentation Award"}),".",l.jsx("br",{}),"This Award will be presented in the memory of Major Ashish Kumar Roy by the Maj. Ashish Kumar Roy Foundation (MAKRF). The Award will constitute (i) Award plaque; (ii) T-Shirt with emblem depicting the award; (iii) Cash of Rs. 2,500/- in an envelope and (iv) a Certificate."]}),l.jsx("p",{style:{margin:"0 0 12px 0",fontSize:"16px"},children:"The award will be based on the quality of research, clarity of presentation, and ability to engage with the audience."}),l.jsxs("div",{style:{marginTop:"14px",padding:"14px",borderRadius:"8px",background:"#f7f9ff",borderLeft:"4px solid #0b5fff"},children:[l.jsx("strong",{style:{display:"block",marginBottom:"8px"},children:"Evaluation Criteria:"}),l.jsxs("ul",{style:{margin:0,paddingLeft:"18px"},children:[l.jsx("li",{children:"Quality and originality of the research"}),l.jsx("li",{children:"Clarity and structure of the presentation"}),l.jsx("li",{children:"Effectiveness in engaging and responding to the a
+---
+,l.jsx("h2",{style:{marginTop:"40px",fontSize:"24px",fontWeight:"700",color:"#0b5fff",borderBottom:"2px solid #e0e6ff",paddingBottom:"6px"},children:"Best Presentation Award Winners"}),l.jsx("div",{style:{overflowX:"auto",marginTop:"16px"},children:l.jsxs("table",{style:{width:"100%",borderCollapse:"collapse",borderRadius:"10px",overflow:"hidden"},children:[l.jsx("thead",{children:l.jsx("tr",{style:{background:"#0b5fff",color:"#fff"},children:["Sl. No.","Track Name","Paper ID","Paper Title","Presenting Author Name"].map((e,n)=>l.jsx("th",{style:{padding:"12px",fontSize:"14px",textAlign:"center",letterSpacing:"0.5px"},children:e},n))})}),l.jsx("tbody",{children:[["01","Control And Robotics","371","Robust Controller Design for Rotary Inverted Pendulum System using HΓê₧ Controller","Jitendra Goyal"],["02","Signal and Image Processing","367","A Sexting Prevention Framework Using a Semi-Supervised Multi-Branch Attention-Based Deep Learning Model","Debashis Das"],["03","Communication Systems","382","Statistical Fusion of Coherent and Non-Coherent Measurements in a Hybrid SDR Architecture for Position Estimation","Manish"],["04","Sensors and
+---
+
+--- Searching for: sponsorship ---
+e Speakers",pathname:"/keynote-speakers"}]},{pathname:"/important-dates",name:"Important Dates"},{pathname:"/committee",name:"Committee"},{pathname:"/sponsorship",name:"Sponsorship"},{pathname:"/contact-us",name:"Contact us"}],_e=()=>{const[e,n]=b.useState(!1),[t,r]=b.useState(!1),[i,o]=b.useState(0),s=()=>{typeof window<"u"&&window.scrollY>80?n(!0):n(!1)},a=()=>{typeof window<"u"&&(o(window.innerWidth),window.innerWidth>768&&t&&r(!1))};b.useEffect(()=>{if(!(typeof window>"u"))return o(window.innerWidth),window.addEventListener("scroll",s),window.addEventListener("resize",a),()=>{window.removeEventListener("scroll",s),window.removeEventListener("resize",a)}},[t]);const u=()=>r(!t),c=["/images/homeImg_d.jpg","/images/homeImg_c.jpg","/images/homeImg_e.jpg","/images/homeImg_f.jpg","/images/homeImg_b.jpg","/images/depImg3.jpeg","/images/homeImg_a.jpg","/images/depImg2.jpeg"];return l.jsx("div",{style:{width:"100vw",minHeight:"100vh",overflow:"hidden",position:"relative"},children:l.jsxs("div",{className:"header",id:"header",style:{position:"relative",width:"100%",height:"100vh",overflow:"hidden"},children:[l.jsx(ch,{interval:5e3,transit
+---
+e:"/keynote-speakers"}]},{pathname:"/important-dates",name:"Important Dates"},{pathname:"/committee",name:"Committee"},{pathname:"/sponsorship",name:"Sponsorship"},{pathname:"/contact-us",name:"Contact us"}],_e=()=>{const[e,n]=b.useState(!1),[t,r]=b.useState(!1),[i,o]=b.useState(0),s=()=>{typeof window<"u"&&window.scrollY>80?n(!0):n(!1)},a=()=>{typeof window<"u"&&(o(window.innerWidth),window.innerWidth>768&&t&&r(!1))};b.useEffect(()=>{if(!(typeof window>"u"))return o(window.innerWidth),window.addEventListener("scroll",s),window.addEventListener("resize",a),()=>{window.removeEventListener("scroll",s),window.removeEventListener("resize",a)}},[t]);const u=()=>r(!t),c=["/images/homeImg_d.jpg","/images/homeImg_c.jpg","/images/homeImg_e.jpg","/images/homeImg_f.jpg","/images/homeImg_b.jpg","/images/depImg3.jpeg","/images/homeImg_a.jpg","/images/depImg2.jpeg"];return l.jsx("div",{style:{width:"100vw",minHeight:"100vh",overflow:"hidden",position:"relative"},children:l.jsxs("div",{className:"header",id:"header",style:{position:"relative",width:"100%",height:"100vh",overflow:"hidden"},children:[l.jsx(ch,{interval:5e3,transition:3e3,images:c}),
+---
+ent)==null||t.scrollIntoView({behavior:"smooth"})};return b.useEffect(()=>{n()},[]),l.jsxs(l.Fragment,{children:[l.jsx(_e,{}),l.jsx("div",{className:"sponsorship-container",ref:e,children:l.jsxs("div",{className:"sponsorship-content",children:[l.jsx("h1",{className:"sponsorship-title",children:"How to Become a Sponsor?"}),l.jsx("p",{className:"sponsorship-description",children:"E2A 2025 welcomes sponsors and exhibitors interested in promoting their activities and products during our online conference event. With over 100 expected attendees, E2A 2025 offers a great opportunity to advertise electronics, automation, medical devices and related products, increasing the visibility of your esteemed organization."}),l.jsx("h2",{className:"sponsorship-subtitle",children:"Sponsorship Details:"}),l.jsx("h3",{className:"sponsorship-section-title",children:"Platinum Sponsor (Rs. 50,000/-):"}),l.jsxs("ul",{className:"sponsorship-benefits",children:[l.jsx("li",{children:"Logo recognition on the conference website with a link to your website."}),l.jsx("li",{children:"Logo recognition in the conference brochure, banners, proceedings, and sessions."
+---
+Effect(()=>{n()},[]),l.jsxs(l.Fragment,{children:[l.jsx(_e,{}),l.jsx("div",{className:"sponsorship-container",ref:e,children:l.jsxs("div",{className:"sponsorship-content",children:[l.jsx("h1",{className:"sponsorship-title",children:"How to Become a Sponsor?"}),l.jsx("p",{className:"sponsorship-description",children:"E2A 2025 welcomes sponsors and exhibitors interested in promoting their activities and products during our online conference event. With over 100 expected attendees, E2A 2025 offers a great opportunity to advertise electronics, automation, medical devices and related products, increasing the visibility of your esteemed organization."}),l.jsx("h2",{className:"sponsorship-subtitle",children:"Sponsorship Details:"}),l.jsx("h3",{className:"sponsorship-section-title",children:"Platinum Sponsor (Rs. 50,000/-):"}),l.jsxs("ul",{className:"sponsorship-benefits",children:[l.jsx("li",{children:"Logo recognition on the conference website with a link to your website."}),l.jsx("li",{children:"Logo recognition in the conference brochure, banners, proceedings, and sessions."}),l.jsx("li",{children:"A promotional video of the sponsor wil
+---
+x(_e,{}),l.jsx("div",{className:"sponsorship-container",ref:e,children:l.jsxs("div",{className:"sponsorship-content",children:[l.jsx("h1",{className:"sponsorship-title",children:"How to Become a Sponsor?"}),l.jsx("p",{className:"sponsorship-description",children:"E2A 2025 welcomes sponsors and exhibitors interested in promoting their activities and products during our online conference event. With over 100 expected attendees, E2A 2025 offers a great opportunity to advertise electronics, automation, medical devices and related products, increasing the visibility of your esteemed organization."}),l.jsx("h2",{className:"sponsorship-subtitle",children:"Sponsorship Details:"}),l.jsx("h3",{className:"sponsorship-section-title",children:"Platinum Sponsor (Rs. 50,000/-):"}),l.jsxs("ul",{className:"sponsorship-benefits",children:[l.jsx("li",{children:"Logo recognition on the conference website with a link to your website."}),l.jsx("li",{children:"Logo recognition in the conference brochure, banners, proceedings, and sessions."}),l.jsx("li",{children:"A promotional video of the sponsor will be webcast during the general online sessions of the
+---
+div",{className:"sponsorship-content",children:[l.jsx("h1",{className:"sponsorship-title",children:"How to Become a Sponsor?"}),l.jsx("p",{className:"sponsorship-description",children:"E2A 2025 welcomes sponsors and exhibitors interested in promoting their activities and products during our online conference event. With over 100 expected attendees, E2A 2025 offers a great opportunity to advertise electronics, automation, medical devices and related products, increasing the visibility of your esteemed organization."}),l.jsx("h2",{className:"sponsorship-subtitle",children:"Sponsorship Details:"}),l.jsx("h3",{className:"sponsorship-section-title",children:"Platinum Sponsor (Rs. 50,000/-):"}),l.jsxs("ul",{className:"sponsorship-benefits",children:[l.jsx("li",{children:"Logo recognition on the conference website with a link to your website."}),l.jsx("li",{children:"Logo recognition in the conference brochure, banners, proceedings, and sessions."}),l.jsx("li",{children:"A promotional video of the sponsor will be webcast during the general online sessions of the conference."}),l.jsx("li",{children:"A space for exhibiting your product will 
+---
+ise electronics, automation, medical devices and related products, increasing the visibility of your esteemed organization."}),l.jsx("h2",{className:"sponsorship-subtitle",children:"Sponsorship Details:"}),l.jsx("h3",{className:"sponsorship-section-title",children:"Platinum Sponsor (Rs. 50,000/-):"}),l.jsxs("ul",{className:"sponsorship-benefits",children:[l.jsx("li",{children:"Logo recognition on the conference website with a link to your website."}),l.jsx("li",{children:"Logo recognition in the conference brochure, banners, proceedings, and sessions."}),l.jsx("li",{children:"A promotional video of the sponsor will be webcast during the general online sessions of the conference."}),l.jsx("li",{children:"A space for exhibiting your product will be provided as required."}),l.jsx("li",{children:"The registration fee for the two (02) persons from your side will be waived."}),l.jsx("li",{children:"A session of 15 minutes duration will be arranged with the participants."})]}),l.jsx("h3",{className:"sponsorship-section-title",children:"Gold Sponsor (Rs. 30,000/-):"}),l.jsxs("ul",{className:"sponsorship-benefits",children:[l.jsx("li",{child
+---
+ical devices and related products, increasing the visibility of your esteemed organization."}),l.jsx("h2",{className:"sponsorship-subtitle",children:"Sponsorship Details:"}),l.jsx("h3",{className:"sponsorship-section-title",children:"Platinum Sponsor (Rs. 50,000/-):"}),l.jsxs("ul",{className:"sponsorship-benefits",children:[l.jsx("li",{children:"Logo recognition on the conference website with a link to your website."}),l.jsx("li",{children:"Logo recognition in the conference brochure, banners, proceedings, and sessions."}),l.jsx("li",{children:"A promotional video of the sponsor will be webcast during the general online sessions of the conference."}),l.jsx("li",{children:"A space for exhibiting your product will be provided as required."}),l.jsx("li",{children:"The registration fee for the two (02) persons from your side will be waived."}),l.jsx("li",{children:"A session of 15 minutes duration will be arranged with the participants."})]}),l.jsx("h3",{className:"sponsorship-section-title",children:"Gold Sponsor (Rs. 30,000/-):"}),l.jsxs("ul",{className:"sponsorship-benefits",children:[l.jsx("li",{children:"Logo recognition on the con
+---
+he visibility of your esteemed organization."}),l.jsx("h2",{className:"sponsorship-subtitle",children:"Sponsorship Details:"}),l.jsx("h3",{className:"sponsorship-section-title",children:"Platinum Sponsor (Rs. 50,000/-):"}),l.jsxs("ul",{className:"sponsorship-benefits",children:[l.jsx("li",{children:"Logo recognition on the conference website with a link to your website."}),l.jsx("li",{children:"Logo recognition in the conference brochure, banners, proceedings, and sessions."}),l.jsx("li",{children:"A promotional video of the sponsor will be webcast during the general online sessions of the conference."}),l.jsx("li",{children:"A space for exhibiting your product will be provided as required."}),l.jsx("li",{children:"The registration fee for the two (02) persons from your side will be waived."}),l.jsx("li",{children:"A session of 15 minutes duration will be arranged with the participants."})]}),l.jsx("h3",{className:"sponsorship-section-title",children:"Gold Sponsor (Rs. 30,000/-):"}),l.jsxs("ul",{className:"sponsorship-benefits",children:[l.jsx("li",{children:"Logo recognition on the conference website with a link to your website."})
+---
+dren:"Sponsorship Details:"}),l.jsx("h3",{className:"sponsorship-section-title",children:"Platinum Sponsor (Rs. 50,000/-):"}),l.jsxs("ul",{className:"sponsorship-benefits",children:[l.jsx("li",{children:"Logo recognition on the conference website with a link to your website."}),l.jsx("li",{children:"Logo recognition in the conference brochure, banners, proceedings, and sessions."}),l.jsx("li",{children:"A promotional video of the sponsor will be webcast during the general online sessions of the conference."}),l.jsx("li",{children:"A space for exhibiting your product will be provided as required."}),l.jsx("li",{children:"The registration fee for the two (02) persons from your side will be waived."}),l.jsx("li",{children:"A session of 15 minutes duration will be arranged with the participants."})]}),l.jsx("h3",{className:"sponsorship-section-title",children:"Gold Sponsor (Rs. 30,000/-):"}),l.jsxs("ul",{className:"sponsorship-benefits",children:[l.jsx("li",{children:"Logo recognition on the conference website with a link to your website."}),l.jsx("li",{children:"Logo recognition in the conference brochure, banners, proceedings, and ses
+---
+r side will be waived."}),l.jsx("li",{children:"A session of 15 minutes duration will be arranged with the participants."})]}),l.jsx("h3",{className:"sponsorship-section-title",children:"Gold Sponsor (Rs. 30,000/-):"}),l.jsxs("ul",{className:"sponsorship-benefits",children:[l.jsx("li",{children:"Logo recognition on the conference website with a link to your website."}),l.jsx("li",{children:"Logo recognition in the conference brochure, banners, proceedings, and sessions."}),l.jsx("li",{children:"A promotional video of the sponsor will be webcast during the general online sessions of the conference."}),l.jsx("li",{children:"The registration fee for one (01) person from your side will be waived."})]}),l.jsx("h3",{className:"sponsorship-section-title",children:"Silver Sponsor (Rs. 20,000/-):"}),l.jsxs("ul",{className:"sponsorship-benefits",children:[l.jsx("li",{children:"Logo recognition on the conference website with a link to your website."}),l.jsx("li",{children:"Logo recognition in the conference brochure, banners, proceedings, and sessions."})]}),l.jsx("p",{className:"sponsorship-note",children:"Early confirmation of your sponsorsh
+---
+nged with the participants."})]}),l.jsx("h3",{className:"sponsorship-section-title",children:"Gold Sponsor (Rs. 30,000/-):"}),l.jsxs("ul",{className:"sponsorship-benefits",children:[l.jsx("li",{children:"Logo recognition on the conference website with a link to your website."}),l.jsx("li",{children:"Logo recognition in the conference brochure, banners, proceedings, and sessions."}),l.jsx("li",{children:"A promotional video of the sponsor will be webcast during the general online sessions of the conference."}),l.jsx("li",{children:"The registration fee for one (01) person from your side will be waived."})]}),l.jsx("h3",{className:"sponsorship-section-title",children:"Silver Sponsor (Rs. 20,000/-):"}),l.jsxs("ul",{className:"sponsorship-benefits",children:[l.jsx("li",{children:"Logo recognition on the conference website with a link to your website."}),l.jsx("li",{children:"Logo recognition in the conference brochure, banners, proceedings, and sessions."})]}),l.jsx("p",{className:"sponsorship-note",children:"Early confirmation of your sponsorship will ensure an even higher level of exposure."}),l.jsxs("p",{className:"sponsorship-contac
+---
+ions of the conference."}),l.jsx("li",{children:"The registration fee for one (01) person from your side will be waived."})]}),l.jsx("h3",{className:"sponsorship-section-title",children:"Silver Sponsor (Rs. 20,000/-):"}),l.jsxs("ul",{className:"sponsorship-benefits",children:[l.jsx("li",{children:"Logo recognition on the conference website with a link to your website."}),l.jsx("li",{children:"Logo recognition in the conference brochure, banners, proceedings, and sessions."})]}),l.jsx("p",{className:"sponsorship-note",children:"Early confirmation of your sponsorship will ensure an even higher level of exposure."}),l.jsxs("p",{className:"sponsorship-contact",children:["Feel free to contact our General Chairs: Dr. Sudarsan Sahoo & Dr. Anup Kumar Sharma at"," ",l.jsx("a",{href:"mailto:e2a@ei.nits.ac.in",className:"sponsorship-email",children:"e2a@ei.nits.ac.in"})," for sponsorship related queries."]})]})})]})};const Th=()=>l.jsx(l.Fragment,{children:l.jsx("div",{className:"bg-white ptb-4 schedule mb-2",children:l.jsxs("div",{className:"imageRow",children:[l.jsx("img",{src:"https://res.cloudinary.com/dprjiwgfo/image/upload/v1757750412/pr
+---
+your side will be waived."})]}),l.jsx("h3",{className:"sponsorship-section-title",children:"Silver Sponsor (Rs. 20,000/-):"}),l.jsxs("ul",{className:"sponsorship-benefits",children:[l.jsx("li",{children:"Logo recognition on the conference website with a link to your website."}),l.jsx("li",{children:"Logo recognition in the conference brochure, banners, proceedings, and sessions."})]}),l.jsx("p",{className:"sponsorship-note",children:"Early confirmation of your sponsorship will ensure an even higher level of exposure."}),l.jsxs("p",{className:"sponsorship-contact",children:["Feel free to contact our General Chairs: Dr. Sudarsan Sahoo & Dr. Anup Kumar Sharma at"," ",l.jsx("a",{href:"mailto:e2a@ei.nits.ac.in",className:"sponsorship-email",children:"e2a@ei.nits.ac.in"})," for sponsorship related queries."]})]})})]})};const Th=()=>l.jsx(l.Fragment,{children:l.jsx("div",{className:"bg-white ptb-4 schedule mb-2",children:l.jsxs("div",{className:"imageRow",children:[l.jsx("img",{src:"https://res.cloudinary.com/dprjiwgfo/image/upload/v1757750412/program-images-0_lu1huf.jpg",alt:"program-0",className:"programImg"}),l.jsx("img",{src:"https://r
+---
+o your website."}),l.jsx("li",{children:"Logo recognition in the conference brochure, banners, proceedings, and sessions."})]}),l.jsx("p",{className:"sponsorship-note",children:"Early confirmation of your sponsorship will ensure an even higher level of exposure."}),l.jsxs("p",{className:"sponsorship-contact",children:["Feel free to contact our General Chairs: Dr. Sudarsan Sahoo & Dr. Anup Kumar Sharma at"," ",l.jsx("a",{href:"mailto:e2a@ei.nits.ac.in",className:"sponsorship-email",children:"e2a@ei.nits.ac.in"})," for sponsorship related queries."]})]})})]})};const Th=()=>l.jsx(l.Fragment,{children:l.jsx("div",{className:"bg-white ptb-4 schedule mb-2",children:l.jsxs("div",{className:"imageRow",children:[l.jsx("img",{src:"https://res.cloudinary.com/dprjiwgfo/image/upload/v1757750412/program-images-0_lu1huf.jpg",alt:"program-0",className:"programImg"}),l.jsx("img",{src:"https://res.cloudinary.com/dprjiwgfo/image/upload/v1757750413/program-images-1_efzpfk.jpg",alt:"program-1",className:"programImg"}),l.jsx("img",{src:"https://res.cloudinary.com/dprjiwgfo/image/upload/v1757750411/program-images-2_xv1t5q.jpg",alt:"program-2",className:"p
+---
+on in the conference brochure, banners, proceedings, and sessions."})]}),l.jsx("p",{className:"sponsorship-note",children:"Early confirmation of your sponsorship will ensure an even higher level of exposure."}),l.jsxs("p",{className:"sponsorship-contact",children:["Feel free to contact our General Chairs: Dr. Sudarsan Sahoo & Dr. Anup Kumar Sharma at"," ",l.jsx("a",{href:"mailto:e2a@ei.nits.ac.in",className:"sponsorship-email",children:"e2a@ei.nits.ac.in"})," for sponsorship related queries."]})]})})]})};const Th=()=>l.jsx(l.Fragment,{children:l.jsx("div",{className:"bg-white ptb-4 schedule mb-2",children:l.jsxs("div",{className:"imageRow",children:[l.jsx("img",{src:"https://res.cloudinary.com/dprjiwgfo/image/upload/v1757750412/program-images-0_lu1huf.jpg",alt:"program-0",className:"programImg"}),l.jsx("img",{src:"https://res.cloudinary.com/dprjiwgfo/image/upload/v1757750413/program-images-1_efzpfk.jpg",alt:"program-1",className:"programImg"}),l.jsx("img",{src:"https://res.cloudinary.com/dprjiwgfo/image/upload/v1757750411/program-images-2_xv1t5q.jpg",alt:"program-2",className:"programImg"})]})})});const _h=()=>{const e=window.locati
+---
+className:"sponsorship-note",children:"Early confirmation of your sponsorship will ensure an even higher level of exposure."}),l.jsxs("p",{className:"sponsorship-contact",children:["Feel free to contact our General Chairs: Dr. Sudarsan Sahoo & Dr. Anup Kumar Sharma at"," ",l.jsx("a",{href:"mailto:e2a@ei.nits.ac.in",className:"sponsorship-email",children:"e2a@ei.nits.ac.in"})," for sponsorship related queries."]})]})})]})};const Th=()=>l.jsx(l.Fragment,{children:l.jsx("div",{className:"bg-white ptb-4 schedule mb-2",children:l.jsxs("div",{className:"imageRow",children:[l.jsx("img",{src:"https://res.cloudinary.com/dprjiwgfo/image/upload/v1757750412/program-images-0_lu1huf.jpg",alt:"program-0",className:"programImg"}),l.jsx("img",{src:"https://res.cloudinary.com/dprjiwgfo/image/upload/v1757750413/program-images-1_efzpfk.jpg",alt:"program-1",className:"programImg"}),l.jsx("img",{src:"https://res.cloudinary.com/dprjiwgfo/image/upload/v1757750411/program-images-2_xv1t5q.jpg",alt:"program-2",className:"programImg"})]})})});const _h=()=>{const e=window.location.pathname==="/",n=new Date().getFullYear();return l.jsxs("footer",{className:`foot
+---
+n:["Feel free to contact our General Chairs: Dr. Sudarsan Sahoo & Dr. Anup Kumar Sharma at"," ",l.jsx("a",{href:"mailto:e2a@ei.nits.ac.in",className:"sponsorship-email",children:"e2a@ei.nits.ac.in"})," for sponsorship related queries."]})]})})]})};const Th=()=>l.jsx(l.Fragment,{children:l.jsx("div",{className:"bg-white ptb-4 schedule mb-2",children:l.jsxs("div",{className:"imageRow",children:[l.jsx("img",{src:"https://res.cloudinary.com/dprjiwgfo/image/upload/v1757750412/program-images-0_lu1huf.jpg",alt:"program-0",className:"programImg"}),l.jsx("img",{src:"https://res.cloudinary.com/dprjiwgfo/image/upload/v1757750413/program-images-1_efzpfk.jpg",alt:"program-1",className:"programImg"}),l.jsx("img",{src:"https://res.cloudinary.com/dprjiwgfo/image/upload/v1757750411/program-images-2_xv1t5q.jpg",alt:"program-2",className:"programImg"})]})})});const _h=()=>{const e=window.location.pathname==="/",n=new Date().getFullYear();return l.jsxs("footer",{className:`footer ${e?"footer--home":"footer--inner"}`,children:[l.jsx("div",{className:"footer__wave"}),l.jsxs("div",{className:"footer__content",children:[l.jsxs("div",{className:"footer__bra
+---
+n Sahoo & Dr. Anup Kumar Sharma at"," ",l.jsx("a",{href:"mailto:e2a@ei.nits.ac.in",className:"sponsorship-email",children:"e2a@ei.nits.ac.in"})," for sponsorship related queries."]})]})})]})};const Th=()=>l.jsx(l.Fragment,{children:l.jsx("div",{className:"bg-white ptb-4 schedule mb-2",children:l.jsxs("div",{className:"imageRow",children:[l.jsx("img",{src:"https://res.cloudinary.com/dprjiwgfo/image/upload/v1757750412/program-images-0_lu1huf.jpg",alt:"program-0",className:"programImg"}),l.jsx("img",{src:"https://res.cloudinary.com/dprjiwgfo/image/upload/v1757750413/program-images-1_efzpfk.jpg",alt:"program-1",className:"programImg"}),l.jsx("img",{src:"https://res.cloudinary.com/dprjiwgfo/image/upload/v1757750411/program-images-2_xv1t5q.jpg",alt:"program-2",className:"programImg"})]})})});const _h=()=>{const e=window.location.pathname==="/",n=new Date().getFullYear();return l.jsxs("footer",{className:`footer ${e?"footer--home":"footer--inner"}`,children:[l.jsx("div",{className:"footer__wave"}),l.jsxs("div",{className:"footer__content",children:[l.jsxs("div",{className:"footer__brand",children:[l.jsx("h2",{className:"footer__logo",child
+---
+x(Ph,{})}),l.jsx(J,{path:"/program",exact:!0,element:l.jsx(Ch,{})}),l.jsx(J,{path:"/keynote-speakers",exact:!0,element:l.jsx(zh,{})}),l.jsx(J,{path:"/sponsorship",exact:!0,element:l.jsx(Ih,{})}),l.jsx(J,{path:"/program-schedule",exact:!0,element:l.jsx(Th,{})}),l.jsx(J,{path:"/program-brochure",exact:!0,element:l.jsx(Rh,{})}),l.jsx(J,{path:"/gallary",exact:!0,element:l.jsx(Dh,{})}),l.jsx(J,{path:"/travelsupport",exact:!0,element:l.jsx(Lh,{})}),l.jsx(J,{path:"/best-awards",exact:!0,element:l.jsx(Mh,{})})]}),l.jsx(_h,{})]})});ll.createRoot(document.getElementById("root")).render(l.jsx(b.StrictMode,{children:l.jsx(Oh,{})}));
+
+---
+
+--- Searching for: call for papers ---
+tructions for Offline Presentation",pathname:"/author-instructions-offline"},{name:"Travel Support ",pathname:"/travelsupport",external:!0}]},{name:" Call for Papers",pathname:"/call-for-papers",subItems:[{name:"Conference Tracks",pathname:"/call-for-papers"},{name:"Best Presentation Award",pathname:"/best-awards"}]},{name:"Program",subItems:[{name:"Brochure",pathname:"/program-brochure",external:!0},{name:"Program Schedule",pathname:"/program-schedule",external:!0},{name:"Keynote Speakers",pathname:"/keynote-speakers"}]},{pathname:"/important-dates",name:"Important Dates"},{pathname:"/committee",name:"Committee"},{pathname:"/sponsorship",name:"Sponsorship"},{pathname:"/contact-us",name:"Contact us"}],_e=()=>{const[e,n]=b.useState(!1),[t,r]=b.useState(!1),[i,o]=b.useState(0),s=()=>{typeof window<"u"&&window.scrollY>80?n(!0):n(!1)},a=()=>{typeof window<"u"&&(o(window.innerWidth),window.innerWidth>768&&t&&r(!1))};b.useEffect(()=>{if(!(typeof window>"u"))return o(window.innerWidth),window.addEventListener("scroll",s),window.addEventListener("resize",a),()=>{window.removeEventListener("scroll",s),window.removeEventListener("resize",a)}}
+---
+play:"inline-flex",alignItems:"center",animation:"softPulse 7s ease-in-out infinite"},className:"notice-link","aria-label":"Best Presentation Award - Call for Papers",children:"Best Presentation Award ΓåÆ"}),l.jsx("a",{href:"/travelsupport",style:{fontSize:16,fontWeight:700,color:"#0A66C2",textDecoration:"underline",padding:"6px 10px",borderRadius:8,background:"rgba(10,102,194,0.03)",display:"inline-flex",alignItems:"center",animation:"softPulse 8s ease-in-out infinite"},className:"notice-link","aria-label":"Travel Support - For Authors",children:"Travel Support ΓåÆ"})]})]})})})]}),l.jsxs("div",{className:"content-grid",children:[l.jsxs("div",{className:"main-column",children:[l.jsxs("div",{className:"section-header",children:[l.jsx("h2",{className:"section-title",children:"About The Conference"}),l.jsx("div",{className:"section-underline"})]}),l.jsxs("div",{className:"content-card",children:[l.jsxs("p",{className:"lead-text",children:["Emerging Electronics and Automation (E2A) 2025 is the 5",l.jsx("sup",{children:"th"})," Annual International Conference organized by the Department of Electronics and Instrumentation Engineering at NIT S
+---
+
+--- Searching for: fees ---
+dren:[l.jsx("li",{children:"All participants must fill the registration form to register themselves for the conference, after paying the registration fees."}),l.jsx("li",{children:"Participants are informed to pay the registration fee through online mode in the bank account provided below. Please start this process early since until your payment is received and verified you will not be able to upload your papers."})]})]}),l.jsxs("div",{className:"guideline-item",children:[l.jsx("h3",{className:"guideline-title",children:"Procedure for Registration"}),l.jsxs("ul",{className:"guideline-list",children:[l.jsxs("li",{children:["During payment, please add ",l.jsx("code",{children:"PAPERIdNumber_RegisteringAuthorName_2025"})," in the transaction/payment remarks/description column. For example, if your paper ID is 103 and your name is S┬áGanguly, you should write ",l.jsx("code",{children:"103_S┬áGanguly_2025"})," in the remarks/description column during the payment."]}),l.jsx("li",{children:"Check the table below for registration fee details of different categories. Deposit your respective category fee in the conference bank account ΓÇô please 
+---
+to Register"})})]})]})]})]})]}),l.jsxs("div",{className:"registration-section",children:[l.jsx("h2",{className:"section-title",children:"Registration Fees"}),l.jsx("div",{className:"registration-table-container",children:l.jsxs("table",{className:"registration-table",children:[l.jsx("thead",{children:l.jsxs("tr",{children:[l.jsx("th",{children:"Category"}),l.jsx("th",{children:"Indian Authors (INR)"}),l.jsx("th",{children:"Foreign Authors (USD)"}),l.jsx("th",{children:"Late Registration - Indian Authors (INR)"}),l.jsx("th",{children:"Late Registration - Foreign Authors (USD)"})]})}),l.jsxs("tbody",{children:[l.jsxs("tr",{children:[l.jsx("td",{children:"Students"}),l.jsx("td",{children:"5000"}),l.jsx("td",{children:"200"}),l.jsx("td",{children:"6000"}),l.jsx("td",{children:"250"})]}),l.jsxs("tr",{children:[l.jsx("td",{children:"Academician/Scientists"}),l.jsx("td",{children:"6000"}),l.jsx("td",{children:"300"}),l.jsx("td",{children:"7000"}),l.jsx("td",{children:"350"})]}),l.jsxs("tr",{children:[l.jsx("td",{children:"Industry"}),l.jsx("td",{children:"7000"}),l.jsx("td",{children:"400"}),l.jsx("td",{children:"8000"}),l.jsx("td",{childr
+---
+"})]}),l.jsxs("div",{className:"faq-item",children:[l.jsx("div",{className:"faq-question",children:"What is the preferred mode of paying registration fees for Indian participants in INR?"}),l.jsx("div",{className:"faq-answer",children:"Electronic fund transfer to the conference bank account mentioned above."})]}),l.jsxs("div",{className:"faq-item",children:[l.jsx("div",{className:"faq-question",children:"Is registration mandatory before final submission?"}),l.jsx("div",{className:"faq-answer",children:"Yes, registration is mandatory before final submission."})]}),l.jsxs("div",{className:"faq-item",children:[l.jsx("div",{className:"faq-question",children:"Can an author upload the final paper without paying the registration fees?"}),l.jsx("div",{className:"faq-answer",children:"No, authors cannot upload the final paper without paying the registration fees."})]}),l.jsxs("div",{className:"faq-item",children:[l.jsx("div",{className:"faq-question",children:"What are the ways to pay the registration fees?"}),l.jsx("div",{className:"faq-answer",children:"Electronic fund transfer in INR to the conference organizer's account."})]}),l.jsxs("di
+---
+,{className:"faq-item",children:[l.jsx("div",{className:"faq-question",children:"Can an author upload the final paper without paying the registration fees?"}),l.jsx("div",{className:"faq-answer",children:"No, authors cannot upload the final paper without paying the registration fees."})]}),l.jsxs("div",{className:"faq-item",children:[l.jsx("div",{className:"faq-question",children:"What are the ways to pay the registration fees?"}),l.jsx("div",{className:"faq-answer",children:"Electronic fund transfer in INR to the conference organizer's account."})]}),l.jsxs("div",{className:"faq-item",children:[l.jsx("div",{className:"faq-question",children:"Whom to contact for clarifications on payment of fees and the registration process?"}),l.jsxs("div",{className:"faq-answer",children:["You can send an email to ",l.jsx("a",{href:"mailto:e2a@ei.nits.ac.in",className:"contact-email",children:"e2a@ei.nits.ac.in"})," with the subject line: <CLARIFICATION> - <REGISTRATION FEE> - <YOUR PAPER ID>"]})]})]})]})]})})]})},Ch=()=>{const e=b.useRef(null),n=()=>{e.current.scrollIntoView({behavior:"smooth"})};return b.useEffect(n,[]),l.jsxs(l.Fragment,{childr
+---
+ing the registration fees?"}),l.jsx("div",{className:"faq-answer",children:"No, authors cannot upload the final paper without paying the registration fees."})]}),l.jsxs("div",{className:"faq-item",children:[l.jsx("div",{className:"faq-question",children:"What are the ways to pay the registration fees?"}),l.jsx("div",{className:"faq-answer",children:"Electronic fund transfer in INR to the conference organizer's account."})]}),l.jsxs("div",{className:"faq-item",children:[l.jsx("div",{className:"faq-question",children:"Whom to contact for clarifications on payment of fees and the registration process?"}),l.jsxs("div",{className:"faq-answer",children:["You can send an email to ",l.jsx("a",{href:"mailto:e2a@ei.nits.ac.in",className:"contact-email",children:"e2a@ei.nits.ac.in"})," with the subject line: <CLARIFICATION> - <REGISTRATION FEE> - <YOUR PAPER ID>"]})]})]})]})]})})]})},Ch=()=>{const e=b.useRef(null),n=()=>{e.current.scrollIntoView({behavior:"smooth"})};return b.useEffect(n,[]),l.jsxs(l.Fragment,{children:[l.jsx(_e,{}),l.jsx("div",{className:"main-content",ref:e,children:l.jsx("div",{className:"paper-heading",children:l.jsx("span
+---
+on fees."})]}),l.jsxs("div",{className:"faq-item",children:[l.jsx("div",{className:"faq-question",children:"What are the ways to pay the registration fees?"}),l.jsx("div",{className:"faq-answer",children:"Electronic fund transfer in INR to the conference organizer's account."})]}),l.jsxs("div",{className:"faq-item",children:[l.jsx("div",{className:"faq-question",children:"Whom to contact for clarifications on payment of fees and the registration process?"}),l.jsxs("div",{className:"faq-answer",children:["You can send an email to ",l.jsx("a",{href:"mailto:e2a@ei.nits.ac.in",className:"contact-email",children:"e2a@ei.nits.ac.in"})," with the subject line: <CLARIFICATION> - <REGISTRATION FEE> - <YOUR PAPER ID>"]})]})]})]})]})})]})},Ch=()=>{const e=b.useRef(null),n=()=>{e.current.scrollIntoView({behavior:"smooth"})};return b.useEffect(n,[]),l.jsxs(l.Fragment,{children:[l.jsx(_e,{}),l.jsx("div",{className:"main-content",ref:e,children:l.jsx("div",{className:"paper-heading",children:l.jsx("span",{className:"red-text",children:"To be updated soon..."})})})]})};const Ph=()=>{const e=b.useRef(null),n=()=>{e.current.scrollIntoView({behavior:"
+---
+."})]}),l.jsxs("div",{className:"faq-item",children:[l.jsx("div",{className:"faq-question",children:"Whom to contact for clarifications on payment of fees and the registration process?"}),l.jsxs("div",{className:"faq-answer",children:["You can send an email to ",l.jsx("a",{href:"mailto:e2a@ei.nits.ac.in",className:"contact-email",children:"e2a@ei.nits.ac.in"})," with the subject line: <CLARIFICATION> - <REGISTRATION FEE> - <YOUR PAPER ID>"]})]})]})]})]})})]})},Ch=()=>{const e=b.useRef(null),n=()=>{e.current.scrollIntoView({behavior:"smooth"})};return b.useEffect(n,[]),l.jsxs(l.Fragment,{children:[l.jsx(_e,{}),l.jsx("div",{className:"main-content",ref:e,children:l.jsx("div",{className:"paper-heading",children:l.jsx("span",{className:"red-text",children:"To be updated soon..."})})})]})};const Ph=()=>{const e=b.useRef(null),n=()=>{e.current.scrollIntoView({behavior:"smooth"})};return b.useEffect(n,[]),l.jsxs(l.Fragment,{children:[l.jsx(_e,{}),l.jsx("div",{className:"paper-submission-container",ref:e,children:l.jsxs("div",{className:"paper-submission-content",children:[l.jsx("h3",{className:"paper-submission-heading",children:"Paper Sub
+---

@@ -120,20 +120,15 @@ export function Navbar() {
         <div className="max-w-screen-xl mx-auto px-4 md:px-6 xl:px-8 flex items-center justify-between gap-4">
 
           {/* Brand */}
-          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
+          <Link href="/" className="flex items-center gap-3 group shrink-0">
             <img
-              src="/logo.svg"
-              alt="NIT Silchar"
-              className="h-9 w-9 object-contain transition-transform duration-300 group-hover:scale-105"
+              src="https://res.cloudinary.com/dprjiwgfo/image/upload/v1780614814/E2A_-_2027_dpjmot.png"
+              alt="E2A 2027"
+              className={`h-11 w-auto object-contain transition-all duration-300 group-hover:scale-105 ${!isScrolled ? "brightness-0 invert" : ""}`}
             />
-            <div className="flex flex-col leading-none">
-              <span className={`font-bold text-[17px] tracking-tight transition-colors group-hover:text-[#C9A227] ${
-                isScrolled ? "text-slate-800" : "text-white drop-shadow-md"
-              }`}>
-                E2A<span className={`font-mono ${isScrolled ? "text-[#C9A227]" : "text-amber-300"}`}>&apos;27</span>
-              </span>
-              <span className={`text-[8px] font-mono tracking-widest uppercase mt-0.5 ${
-                isScrolled ? "text-slate-400" : "text-white/70"
+            <div className="flex flex-col justify-center">
+              <span className={`text-[10px] font-mono font-bold tracking-widest uppercase ${
+                isScrolled ? "text-slate-600" : "text-white/80"
               }`}>
                 Dept. of EIE · NIT Silchar
               </span>

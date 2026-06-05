@@ -29,6 +29,20 @@ export const honoraryChairData: CommitteeMember[] = [
 
 export const generalChairsData: CommitteeMember[] = [
   {
+    name: "Xiaozhi Gao",
+    designation: "Professor",
+    affiliation: "School of Computing, Faculty of Science, Forestry and Technology",
+    role: "General Chair",
+    image: "https://res.cloudinary.com/dprjiwgfo/image/upload/v1780617699/gao_w4wczp.jpg"
+  },
+  {
+    name: "Jayasree Chakraborty",
+    designation: "Assistant Attending",
+    affiliation: "Memorial Sloan Kettering Cancer Center",
+    role: "General Chair",
+    image: "https://res.cloudinary.com/dprjiwgfo/image/upload/v1780617998/jaya_zhjhub.jpg"
+  },
+  {
     name: "Dr. Shankar K.",
     designation: "Assistant Professor, Dept. of EIE",
     affiliation: "National Institute of Technology Silchar, India",
@@ -57,9 +71,9 @@ export const convenorData: CommitteeMember[] = [
 export const organizingChairsData: CommitteeMember[] = [
   {
     name: "Dr. Anup Kumar Sharma",
-    designation: "Assistant Professor (Also Financial Chair)",
+    designation: "Assistant Professor",
     affiliation: "National Institute of Technology Silchar, India",
-    role: "Organizing Chair",
+    role: "Organizing Chair\nFinance Chair",
     image: "https://res.cloudinary.com/dprjiwgfo/image/upload/c_fill,g_face,w_300,h_300/v1779298330/anup_urbmbx.jpg"
   },
   {
@@ -85,17 +99,17 @@ export const organizingChairsData: CommitteeMember[] = [
   }
 ];
 
-export const publicationChairsData: string[] = [
-  "Dr. Sudipta Chakraborty",
-  "Dr. Koena Mukherjee",
-  "Dr. Ranjay Hazra"
+export const publicationChairsData = [
+  { name: "Dr. Sudipta Chakraborty", affiliation: "EIE Dept, NIT Silchar" },
+  { name: "Dr. Koena Mukherjee", affiliation: "NIT Puducherry" },
+  { name: "Dr. Ranjay Hazra", affiliation: "EIE Dept, NIT Silchar" }
 ];
 
 export const publicityChairsData: CommitteeMember[] = [
   {
     name: "Dr. R. Murugan",
     designation: "Assistant Professor",
-    affiliation: "National Institute of Technology Silchar, India",
+    affiliation: "National Institute of Technology Puducherry, India",
     role: "Publicity Chair"
   },
   {
@@ -216,7 +230,7 @@ export const tpcData: TPCMember[] = [
   { name: "Dr. Ranjay Hazra", affiliation: "NIT Silchar" },
   { name: "Dr. Devendra Singh Gurjar", affiliation: "NIT Silchar" },
   { name: "Dr. Arun Kumar Sunaniya", affiliation: "NIT Silchar" },
-  { name: "Dr. Koena Mukherjee", affiliation: "NIT Silchar" },
+  { name: "Dr. Koena Mukherjee", affiliation: "NIT Puducherry" },
   { name: "Dr. Pankaj Saha", affiliation: "VTT Technical Research Center, Finland" },
   { name: "Dr. Anirudh Nath", affiliation: "IIEST Shibpur" },
   { name: "Dr. Suparna Maity", affiliation: "GNIT, Kolkata" },

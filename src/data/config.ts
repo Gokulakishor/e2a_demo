@@ -9,6 +9,7 @@ export const siteConfig = {
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
     { label: "Call for Papers", href: "/call-for-papers" },
+    { label: "Best Awards", href: "/best-awards" },
     { label: "Special Session", href: "/special-session" },
     { label: "Important Dates", href: "/#important-dates" },
     { label: "Committee", href: "/committee" },

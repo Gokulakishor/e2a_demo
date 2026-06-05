@@ -14,7 +14,7 @@ export default function ContactPage() {
       institution: "National Institute of Technology Silchar",
       email: "vipin@ei.nits.ac.in",
       phone: "+91-7007231973",
-      office: "Room No. 133, New Academic Building"
+      office: "Department building E&I, NIT Silchar"
     },
     {
       name: "Dr. Shuprajhaa T.",
@@ -24,7 +24,7 @@ export default function ContactPage() {
       institution: "National Institute of Technology Silchar",
       email: "shuprajhaa@ei.nits.ac.in",
       phone: "+91-9600467836",
-      office: "New Academic Building"
+      office: "Department building E&I, NIT Silchar"
     }
   ];
 

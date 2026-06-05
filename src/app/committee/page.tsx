@@ -263,7 +263,7 @@ export default function CommitteePage() {
                       <h3 className="font-extrabold text-base text-foreground mb-1 leading-snug group-hover:text-primary transition-colors">
                         {member.name}
                       </h3>
-                      <p className="text-xs font-bold text-accent uppercase tracking-wider mb-2 font-mono">{member.role}</p>
+                      <p className="text-xs font-bold text-accent uppercase tracking-wider mb-2 font-mono whitespace-pre-line">{member.role}</p>
                       <p className="text-xs text-slate-500 font-medium leading-relaxed max-w-xs mb-4">{member.designation}</p>
                       <div className="border-t border-slate-100 w-full pt-4 mt-auto flex items-center justify-center gap-2 text-[11px] text-slate-600 font-semibold font-mono">
                         <School className="h-3.5 w-3.5 text-primary shrink-0" />
@@ -307,14 +307,14 @@ export default function CommitteePage() {
               viewport={{ once: true }}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto"
             >
-              {publicationChairsData.map((name, i) => (
+              {publicationChairsData.map((chair, i) => (
                 <motion.div key={i} variants={itemVariants}>
                   <Card className="border border-slate-200 bg-white/70 hover:bg-white hover:border-primary rounded-2xl transition-all duration-300 py-6 text-center group">
                     <CardContent className="p-0">
                       <h4 className="font-extrabold text-base text-foreground leading-snug group-hover:text-primary transition-colors">
-                        {name}
+                        {chair.name}
                       </h4>
-                      <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider font-mono mt-1">EIE Dept, NIT Silchar</p>
+                      <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider font-mono mt-1">{chair.affiliation}</p>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -385,10 +385,7 @@ export default function CommitteePage() {
             
             <div className="bg-white/40 border border-primary/20 backdrop-blur-2xl rounded-3xl p-6 md:p-8 shadow-xl space-y-6">
               <div className="flex flex-col md:flex-row gap-6 justify-between items-center">
-                <div>
-                  <h3 className="text-lg font-bold text-foreground">Committee Roster</h3>
-                  <p className="text-xs text-slate-500">Search globally indexed review committee members & technical program governors.</p>
-                </div>
+                {/* Roster Title Removed as per user request */}
                 
                 {/* Search TPC */}
                 <div className="relative w-full md:w-80">

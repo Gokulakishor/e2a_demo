@@ -85,7 +85,7 @@ function CountdownTimer() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    const targetDate = new Date("August 15, 2026 23:59:59").getTime();
+    const targetDate = new Date("2026-09-14T23:59:59+05:30").getTime();
 
     const interval = setInterval(() => {
       const now = new Date().getTime();
@@ -139,7 +139,7 @@ function CountdownTimer() {
       </div>
 
       <p className="text-[10px] text-slate-400 font-mono mt-4">
-        Paper Submission Deadline: August 15, 2026 (11:59 PM IST)
+        Paper Submission Deadline: September 14, 2026 (11:59 PM IST)
       </p>
     </motion.div>
   );
@@ -230,7 +230,8 @@ export default function Home() {
                 variants={FADE_DOWN_ANIMATION_VARIANTS}
                 className="text-lg text-muted-foreground mb-8 font-light leading-relaxed max-w-xl"
               >
-                Department of Electronics and Instrumentation Engineering, National Institute of Technology Silchar.
+                Department of Electronics and Instrumentation Engineering, <br />
+                National Institute of Technology Silchar.
               </motion.p>
               
               <motion.div 
@@ -301,7 +302,7 @@ export default function Home() {
               viewport={{ once: true }}
               className="text-4xl md:text-5xl font-bold tracking-tight text-foreground"
             >
-              E2A &apos;27 <span className="text-gradient">By The Numbers</span>
+              E2A   <span className="text-gradient">By The Numbers</span>
             </motion.h2>
             <motion.p 
               initial={{ opacity: 0, y: 25 }}
@@ -317,21 +318,21 @@ export default function Home() {
             {[
               {
                 icon: BookOpen,
-                value: 3000,
+                value: 700,
                 suffix: "+",
                 label: "Accepted Research Papers",
                 desc: "Covering a diverse range of topics across electronics and automation.",
               },
               {
                 icon: Users,
-                value: 150,
+                value: 100,
                 suffix: "+",
                 label: "Keynotes & Expert Speakers",
                 desc: "Distinguished Fellows, industry executives, and global scientists.",
               },
               {
                 icon: Award,
-                value: 80,
+                value: 50,
                 suffix: "+",
                 label: "Technical Sessions & Tracks",
                 desc: "To present and showcase state-of-the-art research.",
@@ -399,9 +400,9 @@ export default function Home() {
                 CONFERENCE INITIATIVE
               </motion.div>
               <motion.h2 variants={FADE_UP_ANIMATION_VARIANTS} className="text-4xl md:text-5xl font-bold tracking-tight mb-8">
-                Shaping the future <br/> of <span className="text-gradient">Technology.</span>
+                Shaping the future <br/> of <span className="text-gradient">Technology</span>
               </motion.h2>
-              <motion.p variants={FADE_UP_ANIMATION_VARIANTS} className="text-xl text-muted-foreground leading-relaxed mb-8 font-light">
+              <motion.p variants={FADE_UP_ANIMATION_VARIANTS} className="text-lg text-muted-foreground/80 leading-relaxed mb-8">
                 The International Conference on Emerging Electronics and Automation (E2A) is organized by the Department of Electronics and Instrumentation Engineering, NIT Silchar. The conference aims to bring together researchers, academicians, and industry professionals to share their research findings and explore new areas of collaboration.
               </motion.p>
               <motion.p variants={FADE_UP_ANIMATION_VARIANTS} className="text-lg text-muted-foreground/80 leading-relaxed mb-10">
@@ -423,15 +424,15 @@ export default function Home() {
               viewport={{ once: true, margin: "-150px" }}
               className="relative aspect-square rounded-2xl overflow-hidden glass-card shadow-2xl group"
             >
-              <img src="https://res.cloudinary.com/dprjiwgfo/image/upload/c_fill,g_auto,w_1200,h_1200,q_auto,a_exif/v1779299287/DSC_6225_wnugff.jpg" alt="NIT Silchar Campus" className="object-cover w-full h-full opacity-90 transition-all duration-700 group-hover:scale-105" />
+              <img src="https://res.cloudinary.com/dprjiwgfo/image/upload/v1779948840/DSC_6297_1_ilo7ja.jpg" alt="NIT Silchar Campus" className="object-cover w-full h-full opacity-90 transition-all duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10" />
               <div className="absolute bottom-8 left-8 text-white z-20">
                  <div className="flex items-center gap-3 mb-4 bg-white/10 backdrop-blur px-3 py-1.5 w-fit border border-white/20 rounded-full">
                    <GraduationCap className="h-5 w-5 text-accent" />
                    <span className="font-mono text-xs text-white tracking-widest uppercase">VENUE & HOST</span>
                  </div>
-                 <h3 className="text-3xl font-bold tracking-tight">NIT Silchar</h3>
-                 <p className="text-sm text-white/80 mt-2 uppercase tracking-wide">Institute of National Importance</p>
+                 <h3 className="text-3xl font-bold tracking-tight">Dept. of EIE, NIT Silchar</h3>
+                 <p className="text-xs text-white/80 mt-2 tracking-wide italic">(Institute of National Importance)</p>
               </div>
             </motion.div>
           </div>
@@ -463,73 +464,75 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
             {[
               { 
-                icon: BookOpen, 
-                title: "Microelectronics & VLSI", 
-                desc: "Devices, Circuits, Systems, and CAD.",
+                icon: Award, 
+                title: "Track 1: Control And Robotics", 
+                desc: "Linear Control, Non-linear Control, Robust Control, Robotics, Automation",
                 topics: [
-                  "Device Modeling and Simulation", "Low Power VLSI Design", "Analog and Mixed Signal IC Design", 
-                  "Testing and Verification", "CAD for VLSI", "Nanoelectronics and Nanotechnology", 
-                  "Optoelectronics", "Micro-Electro-Mechanical Systems (MEMS)", "Hardware Security and Trust", "Embedded Systems Design"
+                  "Linear Control", "Non-linear Control", "Robust Control", "Decentralized Control", 
+                  "Robotics", "Industrial Automation", "Stability Analysis", "Fractional Order Control"
                 ]
               },
               { 
                 icon: Presentation, 
-                title: "Signal & Image Processing", 
-                desc: "Audio, Video, Speech, and Big Data Analysis.",
+                title: "Track 2: Signal and Image Processing", 
+                desc: "Image and Video, Multimedia, Speech, Computer Vision",
                 topics: [
-                  "Audio and Acoustic Signal Processing", "Biomedical Signal Processing", "Computer Vision and Pattern Recognition", 
-                  "Machine Learning in Signal Processing", "Speech Processing", "Image and Video Processing", 
-                  "Signal Processing for Big Data", "Information Forensics and Security", "Remote Sensing and Signal Processing", "Multimedia Analysis and Retrieval"
-                ]
-              },
-              { 
-                icon: Award, 
-                title: "Control & Robotics", 
-                desc: "Robotics, Automation, and Navigation Systems.",
-                topics: [
-                  "Linear and Non-linear Control", "Robotics and Intelligent Systems", "Industrial Automation", 
-                  "Process Control", "Robust and Decentralized Control", "Stability Analysis", 
-                  "Fractional-order Control", "Mechatronics Systems", "Unmanned Aerial Vehicles (UAVs)", "Autonomous Navigation"
-                ]
-              },
-              { 
-                icon: Zap, 
-                title: "Power & Energy Systems", 
-                desc: "Smart Grids, Renewable Energy, Power Electronics.",
-                topics: [
-                  "Smart Grid Technologies", "Renewable Energy Systems", "Power Electronics and Drives", 
-                  "Energy Storage Systems", "Power System Planning and Operation", "Battery Management Systems", 
-                  "Electrified Transportation (EVs)", "Microgrids and Distributed Generation", "High Voltage Engineering", "Power Quality and Conditioning"
+                  "Image and Video Signal Processing", "Multimedia Applications", "Signal Processing for Big Data", 
+                  "Speech and Audio Processing", "Computer Vision", "Biomedical Applications, Bio-Signal Analysis", 
+                  "Language Identification", "Information Forensics & Security", "Sparse Signal Processing", 
+                  "Time-Frequency Analysis", "Active Noise Control", "Adapative Signal Processing", "Array Signal Processing"
                 ]
               },
               { 
                 icon: MapPin, 
-                title: "Communication Systems", 
-                desc: "5G/6G, Wireless Networks, Optical Communications.",
+                title: "Track 3: Communication Systems", 
+                desc: "5G & beyond, IoT, RF & Microwave, Antennas",
                 topics: [
-                  "Wireless and Mobile Communication", "Optical Communication and Networks", "5G and Beyond Technologies", 
-                  "Antenna and Microwave Engineering", "Satellite Communications", "IoT/IIoT Communication", 
-                  "MIMO and Cooperative Communications", "THz Communication", "Radar Systems", "Quantum Communication"
+                  "5G & beyond Communication", "IoT & IIoT Communication", "UDN", "MIMO", "D2D", 
+                  "RF & Microwave", "Antennas", "THz Communication", "Small Cells", "mmWave communication", 
+                  "Quantum Communication", "Radar Systems", "Optical Communication etc"
                 ]
               },
               { 
                 icon: CalendarDays, 
-                title: "Sensors & Instrumentation", 
-                desc: "Biomedical Instrumentation, Advanced Sensors.",
+                title: "Track 4: Sensors and Instrumentation", 
+                desc: "Measurements, Sensors, Bio-Medical, NDT",
                 topics: [
-                  "Advanced Sensor Technologies", "Biomedical Instrumentation", "Industrial Instrumentation", 
-                  "Internet of Things (IoT) Sensors", "Optical Sensors", "Methods of Measurements", 
-                  "Smart and Intelligent Sensors", "Sensors and Sensor Data Fusion", "Non-Destructive Testing", "Virtual Instrumentation"
+                  "Methods of Measurements", "Electromagnetics, Digital Holography, Laser based Instrumentation for Measurement and Monitoring systems", 
+                  "Sensors and Sensing Technology", "Non-Destructive Testing", "Smart and Intelligent Sensors", 
+                  "Biomedical Sensors, Signal Analysis & Health Monitoring Applications", "IoT Applications in Instrumentation", 
+                  "Sensors & Sensor Data Fusion", "Robotics & Mechatronics Systems", "Process Control & Instrumentation."
+                ]
+              },
+              { 
+                icon: BookOpen, 
+                title: "Track 5: MEMS & VLSI", 
+                desc: "MEMS, Nanotechnology, Photonics, VLSI Design",
+                topics: [
+                  "NEMS & MEMS, Nanotechnology", "Solar Cells, Photonics & Energy", "2D Materials, Organic Semiconductors & Flexible Electronics", 
+                  "Advanced Materials, Characterization and Applications", "Device Simulation & Modelling", "Memory Devices & Logic for Storage and Computing", 
+                  "FinFET Technology, VLSI Circuits & System Design", "FPGA & Embedded System"
                 ]
               },
               { 
                 icon: Sparkles, 
-                title: "AI & Soft Computing", 
-                desc: "Machine Learning, Deep Learning, and NLP.",
+                title: "Track 6: AI & Soft Computing", 
+                desc: "Machine Learning, Deep Learning, Healthcare AI",
                 topics: [
-                  "Artificial Intelligence and Machine Learning", "Deep Learning Applications", "AI in Healthcare", 
-                  "Evolutionary Computing", "Hybrid Intelligent Systems", "Pervasive Computing", 
-                  "Data Visualization and Analytics", "Natural Language Processing (NLP)", "Fuzzy Logic and Neural Networks", "Optimization Techniques"
+                  "AI and Machine Learning", "CAD System", "Deep Learning Applications", "AI in Healthcare", 
+                  "Pattern Recognition", "Biometrics", "Evolutionary Computing", "Hybrid Intelligent Systems", 
+                  "E-commerce, E-medicine", "Morphic Computing", "Pervasive computing and Ambient Intelligence", "Data Visualization."
+                ]
+              },
+              { 
+                icon: Zap, 
+                title: "Track 7: Energy, Power System and Power Electronics", 
+                desc: "Power Systems, Renewable Energy, Micro Grids",
+                topics: [
+                  "Modelling of power and energy systems", "Electrical, thermal, ageing model and estimation of energy storage", 
+                  "Power electronic converters for power or energy systems", "Energy/power management", "Battery management", 
+                  "Renewable energy", "Electrified transportation", "Energy storage sizing", "EV Charging", 
+                  "Energy efficient building", "Micro grid", "Vehicle-to-grid integration", "Grid integration of renewable energy"
                 ]
               },
             ].map((track, i) => (
@@ -630,9 +633,9 @@ export default function Home() {
           <div className="space-y-16 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-[2px] before:bg-gradient-to-b before:from-transparent before:via-primary/30 before:to-transparent">
             {[
               { date: "July 01, 2026", event: "Paper Submission Starts", highlight: true, id: "T-00" },
-              { date: "August 15, 2026", event: "Paper Submission Deadline", highlight: true, id: "T-01" },
-              { date: "October 15, 2026", event: "Notification of Acceptance", highlight: false, id: "T-02" },
-              { date: "November 05, 2026", event: "Camera Ready Paper Submission", highlight: false, id: "T-03" },
+              { date: "September 14, 2026", event: "Paper Submission Deadline", highlight: true, id: "T-01" },
+              { date: "November 25, 2026", event: "Notification of Acceptance", highlight: false, id: "T-02" },
+              { date: "December 31, 2026", event: "Camera Ready Paper Submission", highlight: false, id: "T-03" },
               { date: "November 15, 2026", event: "Early Bird Registration", highlight: true, id: "T-04" },
               { date: "January 20-22, 2027", event: "Conference Dates", highlight: false, id: "T-05" },
             ].map((item, i) => (
@@ -704,7 +707,7 @@ export default function Home() {
           {/* Active Sponsors Grid */}
           <div className="flex justify-center mb-20">
             {[
-              { name: "Springer", role: "Publication Partner", desc: "Lecture Notes in Electrical Engineering" }
+              { name: "Springer", role: "Publication Partner", desc: "Lecture Notes in Electrical Engineering", status: "(Approval pending )" }
             ].map((sponsor, idx) => (
               <motion.div
                 key={idx}
@@ -720,6 +723,9 @@ export default function Home() {
                 <div>
                   <p className="text-[10px] font-bold text-primary uppercase tracking-wider font-mono">{sponsor.role}</p>
                   <p className="text-[9px] text-slate-400 font-light mt-0.5">{sponsor.desc}</p>
+                  {sponsor.status && (
+                    <p className="text-[8px] text-slate-400 font-light italic mt-1">{sponsor.status}</p>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -736,37 +742,35 @@ export default function Home() {
               {[
                 {
                   tier: "Platinum Sponsor",
-                  cost: "₹ 50,000 / $ 650",
+                  cost: "₹ 50,000",
                   color: "from-blue-500/10 to-indigo-500/15 border-blue-200",
                   benefits: [
-                    "Full page ad in conference program",
-                    "Logo on all website pages & banner links",
-                    "Dedicated product exhibition booth",
-                    "15-minute presentation session",
-                    "Webcast of promotional video",
-                    "2 Complimentary delegate registrations"
+                    "Logo recognition on the conference website with a link to your website.",
+                    "Logo recognition in the conference brochure, banners, proceedings, and sessions.",
+                    "A promotional video of the sponsor will be webcast during the general online sessions of the conference.",
+                    "A space for exhibiting your product will be provided as required.",
+                    "The registration fee for the two (02) persons from your side will be waived.",
+                    "A session of 15 minutes duration will be arranged with the participants."
                   ]
                 },
                 {
                   tier: "Gold Sponsor",
-                  cost: "₹ 30,000 / $ 400",
+                  cost: "₹ 30,000",
                   color: "from-amber-500/10 to-[#B59410]/15 border-amber-200",
                   benefits: [
-                    "Half page ad in conference program",
-                    "Logo on all banners & website",
-                    "Logo inside published proceedings",
-                    "Webcast of promotional video",
-                    "1 Complimentary delegate registration"
+                    "Logo recognition on the conference website with a link to your website.",
+                    "Logo recognition in the conference brochure, banners, proceedings, and sessions.",
+                    "A promotional video of the sponsor will be webcast during the general online sessions of the conference.",
+                    "The registration fee for one (01) person from your side will be waived."
                   ]
                 },
                 {
                   tier: "Silver Sponsor",
-                  cost: "₹ 20,000 / $ 250",
+                  cost: "₹ 20,000",
                   color: "from-stone-400/10 to-stone-500/15 border-stone-200",
                   benefits: [
-                    "Quarter page ad in conference program",
-                    "Logo on website & promotional materials",
-                    "Logo on standard sponsor banners"
+                    "Logo recognition on the conference website with a link to your website.",
+                    "Logo recognition in the conference brochure, banners, proceedings, and sessions."
                   ]
                 }
               ].map((tier, idx) => (
