@@ -66,23 +66,25 @@ export default function InformationForAuthorsPage() {
                 <thead>
                   <tr className="bg-primary/5">
                     <th className="text-left p-3 font-semibold text-slate-800 border-b border-slate-200 rounded-tl-xl">Category</th>
-                    <th className="text-center p-3 font-semibold text-slate-800 border-b border-slate-200">Old Fees</th>
-                    <th className="text-center p-3 font-semibold text-slate-800 border-b border-slate-200">Revised Early Bird Fees</th>
-                    <th className="text-center p-3 font-semibold text-slate-800 border-b border-slate-200 rounded-tr-xl">Late Registration Fees</th>
+                    <th className="text-center p-3 font-semibold text-slate-800 border-b border-slate-200">Indian Authors (INR)<br/><span className="text-xs font-normal">Early Bird</span></th>
+                    <th className="text-center p-3 font-semibold text-slate-800 border-b border-slate-200">Foreign Authors (USD)<br/><span className="text-xs font-normal">Early Bird</span></th>
+                    <th className="text-center p-3 font-semibold text-slate-800 border-b border-slate-200">Indian Authors (INR)<br/><span className="text-xs font-normal">Late Registration</span></th>
+                    <th className="text-center p-3 font-semibold text-slate-800 border-b border-slate-200 rounded-tr-xl">Foreign Authors (USD)<br/><span className="text-xs font-normal">Late Registration</span></th>
                   </tr>
                 </thead>
                 <tbody className="text-slate-700">
                   {[
-                    { category: "Students", old: "₹5,000", early: "₹6,000", late: "₹7,000" },
-                    { category: "Academia/Scientists", old: "₹6,000", early: "₹8,000", late: "₹9,000" },
-                    { category: "Industry Professionals", old: "₹7,000", early: "₹9,000", late: "₹10,000" },
-                    { category: "Conference Attendees (Without Paper Presentation)", old: "₹3,000", early: "₹2,000", late: "₹3,000" },
+                    { category: "Students", old: "₹5,000", early: "₹6,000", earlyUSD: "$250", late: "₹7,000", lateUSD: "$275" },
+                    { category: "Academia/Scientists", old: "₹6,000", early: "₹8,000", earlyUSD: "$350", late: "₹9,000", lateUSD: "$375" },
+                    { category: "Industry Professionals", old: "₹7,000", early: "₹9,000", earlyUSD: "$450", late: "₹10,000", lateUSD: "$475" },
+                    { category: "Conference Attendees (Without Paper Presentation)", old: "₹3,000", early: "₹2,000", earlyUSD: "$150", late: "₹3,000", lateUSD: "$175" },
                   ].map((row, idx) => (
                     <tr key={idx} className={`${idx % 2 === 0 ? "bg-white/60" : "bg-slate-50/60"} hover:bg-primary/5 transition-colors`}>
                       <td className="p-3 border-b border-slate-100 font-medium">{row.category}</td>
-                      <td className="p-3 border-b border-slate-100 text-center font-mono font-semibold text-slate-800">{row.old}</td>
                       <td className="p-3 border-b border-slate-100 text-center font-mono font-semibold text-slate-800">{row.early}</td>
+                      <td className="p-3 border-b border-slate-100 text-center font-mono font-semibold text-slate-800">{row.earlyUSD}</td>
                       <td className="p-3 border-b border-slate-100 text-center font-mono font-semibold text-slate-800">{row.late}</td>
+                      <td className="p-3 border-b border-slate-100 text-center font-mono font-semibold text-slate-800">{row.lateUSD}</td>
                     </tr>
                   ))}
                 </tbody>

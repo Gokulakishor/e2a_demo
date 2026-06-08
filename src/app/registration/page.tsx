@@ -7,10 +7,10 @@ import { Calculator, Sparkles } from "lucide-react";
 
 export default function RegistrationPage() {
   const feeData = [
-    { category: "Students", old: "₹5,000", early: "₹6,000", late: "₹7,000" },
-    { category: "Academia/Scientists", old: "₹6,000", early: "₹8,000", late: "₹9,000" },
-    { category: "Industry Professionals", old: "₹7,000", early: "₹9,000", late: "₹10,000" },
-    { category: "Conference Attendees (Without Paper Presentation)", old: "₹3,000", early: "₹2,000", late: "₹3,000" },
+    { category: "Students", old: "₹5,000", early: "₹6,000", earlyUSD: "$250", late: "₹7,000", lateUSD: "$275" },
+    { category: "Academia/Scientists", old: "₹6,000", early: "₹8,000", earlyUSD: "$350", late: "₹9,000", lateUSD: "$375" },
+    { category: "Industry Professionals", old: "₹7,000", early: "₹9,000", earlyUSD: "$450", late: "₹10,000", lateUSD: "$475" },
+    { category: "Conference Attendees (Without Paper Presentation)", old: "₹3,000", early: "₹2,000", earlyUSD: "$150", late: "₹3,000", lateUSD: "$175" },
   ];
 
   // Calculator State
@@ -21,17 +21,20 @@ export default function RegistrationPage() {
 
   // Dynamic calculations
   const calculateTotal = () => {
-    const prices: Record<string, { indian: number }> = {
-      students: { indian: 7000 },
-      academician: { indian: 9000 },
-      industry: { indian: 10000 },
-      attendee: { indian: 3000 },
+    const prices: Record<string, { indian: number, foreign: number }> = {
+      students: { indian: 7000, foreign: 275 },
+      academician: { indian: 9000, foreign: 375 },
+      industry: { indian: 10000, foreign: 475 },
+      attendee: { indian: 3000, foreign: 175 },
     };
     const sel = prices[category] ?? prices.students;
-    const base = sel.indian;
+    const base = isForeign ? sel.foreign : sel.indian;
 
-    let earlyDiscount = isEarlyBird ? 1000 : 0;
-    const extraPaperCost = extraPapers * 3000;
+    let earlyDiscount = 0;
+    if (isEarlyBird) {
+      earlyDiscount = isForeign ? 25 : 1000;
+    }
+    const extraPaperCost = extraPapers * (isForeign ? 150 : 3000);
 
     const subtotal = base - earlyDiscount;
     const total = subtotal + extraPaperCost;
@@ -41,11 +44,11 @@ export default function RegistrationPage() {
       earlyDiscount,
       extraPaperCost,
       total,
-      currency: "₹",
-      baseInr: base,
-      earlyDiscountInr: earlyDiscount,
-      extraPaperCostInr: extraPaperCost,
-      totalInr: total
+      currency: isForeign ? "$" : "₹",
+      baseInr: isForeign ? base * 83 : base,
+      earlyDiscountInr: isForeign ? earlyDiscount * 83 : earlyDiscount,
+      extraPaperCostInr: isForeign ? extraPaperCost * 83 : extraPaperCost,
+      totalInr: isForeign ? total * 83 : total
     };
   };
 
@@ -100,21 +103,23 @@ export default function RegistrationPage() {
             <h2 className="text-3xl font-bold text-primary mb-8 border-b pb-4">Standard Fee Matrix</h2>
             <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white/40 backdrop-blur-md">
               <table className="w-full text-left text-sm whitespace-nowrap">
-                <thead className="uppercase tracking-wider border-b bg-slate-50/80 text-muted-foreground font-semibold">
+                <thead className="uppercase tracking-wider border-b bg-slate-50/80 text-muted-foreground font-semibold text-xs">
                   <tr>
                     <th scope="col" className="px-6 py-4">Participant Category</th>
-                    <th scope="col" className="px-6 py-4">Old Fees</th>
-                    <th scope="col" className="px-6 py-4">Revised Early Bird Fees</th>
-                    <th scope="col" className="px-6 py-4">Late Registration Fees</th>
+                    <th scope="col" className="px-4 py-4 text-center">Indian Authors (INR)<br/><span className="normal-case text-[10px] text-slate-500 font-normal">Early Bird</span></th>
+                    <th scope="col" className="px-4 py-4 text-center">Foreign Authors (USD)<br/><span className="normal-case text-[10px] text-slate-500 font-normal">Early Bird</span></th>
+                    <th scope="col" className="px-4 py-4 text-center">Indian Authors (INR)<br/><span className="normal-case text-[10px] text-slate-500 font-normal">Late Registration</span></th>
+                    <th scope="col" className="px-4 py-4 text-center">Foreign Authors (USD)<br/><span className="normal-case text-[10px] text-slate-500 font-normal">Late Registration</span></th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border text-foreground">
                   {feeData.map((fee, idx) => (
                     <tr key={idx} className="hover:bg-muted/50 transition-colors">
                       <td className="px-6 py-4 font-semibold text-slate-700">{fee.category}</td>
-                      <td className="px-6 py-4 font-mono font-medium text-slate-600">{fee.old}</td>
-                      <td className="px-6 py-4 font-mono font-medium text-slate-600">{fee.early}</td>
-                      <td className="px-6 py-4 font-mono font-medium text-slate-600">{fee.late}</td>
+                      <td className="px-4 py-4 text-center font-mono font-medium text-slate-600">{fee.early}</td>
+                      <td className="px-4 py-4 text-center font-mono font-medium text-slate-600">{fee.earlyUSD}</td>
+                      <td className="px-4 py-4 text-center font-mono font-medium text-slate-600">{fee.late}</td>
+                      <td className="px-4 py-4 text-center font-mono font-medium text-slate-600">{fee.lateUSD}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -174,9 +179,28 @@ export default function RegistrationPage() {
                 {/* 2. Parameters */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
+                  {/* Nationality */}
+                  <div className="bg-white/50 border border-slate-100 rounded-2xl p-4 space-y-2">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 font-mono">Nationality</span>
+                    <div className="flex bg-slate-100 rounded-lg p-0.5">
+                      <button
+                        onClick={() => setIsForeign(false)}
+                        className={`flex-1 py-1.5 text-xs font-bold rounded-md transition-all ${!isForeign ? "bg-white text-primary shadow-sm" : "text-slate-500"}`}
+                      >
+                        Indian
+                      </button>
+                      <button
+                        onClick={() => setIsForeign(true)}
+                        className={`flex-1 py-1.5 text-xs font-bold rounded-md transition-all ${isForeign ? "bg-white text-primary shadow-sm" : "text-slate-500"}`}
+                      >
+                        Foreign
+                      </button>
+                    </div>
+                  </div>
+
                   {/* Early Bird */}
-                  <div className="bg-white/50 border border-slate-100 rounded-2xl p-4 space-y-2 md:col-span-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 font-mono">Early Bird (-₹1,000)</span>
+                  <div className="bg-white/50 border border-slate-100 rounded-2xl p-4 space-y-2">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 font-mono">Early Bird</span>
                     <div className="flex bg-slate-100 rounded-lg p-0.5">
                       <button
                         onClick={() => setIsEarlyBird(true)}

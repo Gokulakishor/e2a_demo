@@ -46,6 +46,11 @@ export function Footer() {
     e.preventDefault();
     if (!queryEmail || !queryText) return;
 
+    // Trigger native email client so the email actually reaches the organizers
+    const subject = encodeURIComponent(`E2A'27 Inquiry: ${queryCategory.toUpperCase()}`);
+    const body = encodeURIComponent(`From: ${queryEmail}\n\nCategory: ${queryCategory}\n\nInquiry:\n${queryText}`);
+    window.location.href = `mailto:e2a@ei.nits.ac.in?subject=${subject}&body=${body}`;
+
     setQueryStatus("sending");
     
     setTimeout(() => {
@@ -53,23 +58,23 @@ export function Footer() {
       let chair = { name: "", email: "", role: "", eta: "" };
       if (queryCategory === "submission") {
         chair = {
-          name: "Dr. Shivendra Kumar Pandey",
-          email: "skpandey@eie.nits.ac.in",
-          role: "Technical Program Chair (Submission Head)",
+          name: "Submission Helpdesk",
+          email: "e2a@ei.nits.ac.in",
+          role: "Technical Program Support",
           eta: "< 12 Hours"
         };
       } else if (queryCategory === "registration") {
         chair = {
-          name: "Dr. Munmun Khanra",
-          email: "mkhanra@eie.nits.ac.in",
-          role: "Convenor & Registration Registrar",
+          name: "Registration Support",
+          email: "e2a@ei.nits.ac.in",
+          role: "Registration & Ticketing",
           eta: "< 8 Hours"
         };
       } else {
         chair = {
-          name: "Dr. Sudarsan Sahoo",
-          email: "ssahoo@eie.nits.ac.in",
-          role: "General Chair & Logistics Secretary",
+          name: "Conference Logistics",
+          email: "e2a@ei.nits.ac.in",
+          role: "General Inquiries",
           eta: "< 24 Hours"
         };
       }
