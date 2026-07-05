@@ -84,7 +84,7 @@ export default function CallForPapersPage() {
                 All submissions must be made electronically via the Microsoft CMT portal.
               </p>
             </div>
-            <a href="https://cmt3.research.microsoft.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-primary hover:bg-primary/95 text-white shrink-0 font-mono tracking-wide py-6 px-8 rounded-xl shadow-md border-0">
+            <a href="https://cmt3.research.microsoft.com/EEA2027/Submission/Index" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-primary hover:bg-primary/95 text-white shrink-0 font-mono tracking-wide py-6 px-8 rounded-xl shadow-md border-0">
               Submit via CMT <ChevronRight className="ml-2 h-4 w-4" />
             </a>
           </motion.div>

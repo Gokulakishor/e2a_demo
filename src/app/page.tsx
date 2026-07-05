@@ -267,7 +267,7 @@ export default function Home() {
                   </Link>
                 </Magnetic>
                 <Magnetic>
-                  <a href="https://cmt3.research.microsoft.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#1E3A8A] to-[#B59410] text-white hover:opacity-95 px-8 h-14 text-xs font-mono uppercase tracking-widest shadow-xl shadow-primary/20 rounded-xl transition-all hover:scale-105 duration-300 w-full sm:w-auto border-0">
+                  <a href="https://cmt3.research.microsoft.com/EEA2027/Submission/Index" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#1E3A8A] to-[#B59410] text-white hover:opacity-95 px-8 h-14 text-xs font-mono uppercase tracking-widest shadow-xl shadow-primary/20 rounded-xl transition-all hover:scale-105 duration-300 w-full sm:w-auto border-0">
                     Submit Paper <ArrowRight className="h-4 w-4" />
                   </a>
                 </Magnetic>
