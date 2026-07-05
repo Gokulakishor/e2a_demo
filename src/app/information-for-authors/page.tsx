@@ -155,10 +155,8 @@ export default function InformationForAuthorsPage() {
             </ul>
 
             <div className="pt-4 flex flex-wrap gap-4">
-              <a href="https://cmt3.research.microsoft.com/" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="bg-primary hover:bg-primary/95 text-white shrink-0 font-mono tracking-wide py-6 px-8 rounded-xl shadow-md border-0">
-                  Submit via CMT <ChevronRight className="ml-2 h-4 w-4" />
-                </Button>
+              <a href="https://cmt3.research.microsoft.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-primary hover:bg-primary/95 text-white shrink-0 font-mono tracking-wide py-6 px-8 rounded-xl shadow-md border-0">
+                Submit via CMT <ChevronRight className="ml-2 h-4 w-4" />
               </a>
               <a 
                 href="https://www.springer.com/gp/authors-editors/conference-proceedings/conference-proceedings-guidelines" 
@@ -169,6 +167,12 @@ export default function InformationForAuthorsPage() {
                   <Download className="mr-2 h-4 w-4" /> Springer Template
                 </Button>
               </a>
+            </div>
+
+            <div className="pt-4">
+              <p className="text-sm text-slate-700 font-light leading-relaxed text-justify">
+                The Microsoft CMT service was used for managing the peer-reviewing process for this conference. This service was provided for free by Microsoft and they bore all expenses, including costs for Azure cloud services as well as for software development and support.
+              </p>
             </div>
           </motion.div>
 

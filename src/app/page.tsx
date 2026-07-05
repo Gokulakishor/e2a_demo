@@ -256,27 +256,21 @@ export default function Home() {
                 variants={FADE_UP_ANIMATION_VARIANTS} 
                 className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
               >
-                <Link href="/call-for-papers" className="w-full sm:w-auto">
-                  <Magnetic>
-                    <Button size="lg" className="bg-gradient-to-r from-primary to-[#B59410] text-white hover:opacity-95 px-8 h-14 text-xs font-mono uppercase tracking-widest shadow-xl shadow-primary/20 rounded-xl transition-all hover:scale-105 duration-300 w-full sm:w-auto border-0">
-                      Call for Papers
-                    </Button>
-                  </Magnetic>
-                </Link>
-                <Link href="/registration" className="w-full sm:w-auto">
-                  <Magnetic>
-                    <Button size="lg" className="!border-slate-200 !text-slate-700 hover:!text-primary px-8 h-14 text-xs font-mono uppercase tracking-widest rounded-xl glass-card transition-all hover:scale-105 duration-300 w-full sm:w-auto">
-                      Register Now
-                    </Button>
-                  </Magnetic>
-                </Link>
-                <a href="https://cmt3.research.microsoft.com/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
-                  <Magnetic>
-                    <Button size="lg" className="bg-gradient-to-r from-[#1E3A8A] to-[#B59410] text-white hover:opacity-95 px-8 h-14 text-xs font-mono uppercase tracking-widest shadow-xl shadow-primary/20 rounded-xl transition-all hover:scale-105 duration-300 w-full sm:w-auto border-0 flex items-center justify-center gap-2">
-                      Submit Paper <ArrowRight className="h-4 w-4" />
-                    </Button>
-                  </Magnetic>
-                </a>
+                <Magnetic>
+                  <Link href="/call-for-papers" className="inline-flex items-center justify-center bg-gradient-to-r from-primary to-[#B59410] text-white hover:opacity-95 px-8 h-14 text-xs font-mono uppercase tracking-widest shadow-xl shadow-primary/20 rounded-xl transition-all hover:scale-105 duration-300 w-full sm:w-auto border-0">
+                    Call for Papers
+                  </Link>
+                </Magnetic>
+                <Magnetic>
+                  <Link href="/registration" className="inline-flex items-center justify-center border border-slate-200 text-slate-700 hover:text-primary px-8 h-14 text-xs font-mono uppercase tracking-widest rounded-xl glass-card transition-all hover:scale-105 duration-300 w-full sm:w-auto">
+                    Register Now
+                  </Link>
+                </Magnetic>
+                <Magnetic>
+                  <a href="https://cmt3.research.microsoft.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#1E3A8A] to-[#B59410] text-white hover:opacity-95 px-8 h-14 text-xs font-mono uppercase tracking-widest shadow-xl shadow-primary/20 rounded-xl transition-all hover:scale-105 duration-300 w-full sm:w-auto border-0">
+                    Submit Paper <ArrowRight className="h-4 w-4" />
+                  </a>
+                </Magnetic>
               </motion.div>
             </motion.div>
 
@@ -431,7 +425,10 @@ export default function Home() {
                    <GraduationCap className="h-5 w-5 text-accent" />
                    <span className="font-mono text-xs text-white tracking-widest uppercase">VENUE & HOST</span>
                  </div>
-                 <h3 className="text-3xl font-bold tracking-tight">Dept. of EIE, NIT Silchar</h3>
+                 <h3 className="text-3xl font-bold tracking-tight">
+                   Dept. of EIE <br />
+                   NIT Silchar
+                 </h3>
                  <p className="text-xs text-white/80 mt-2 tracking-wide italic">(Institute of National Importance)</p>
               </div>
             </motion.div>
@@ -828,17 +825,15 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-6">
                <Magnetic>
-                 <Button size="lg" className="!bg-white !text-primary hover:!bg-white/90 h-16 px-12 text-sm font-mono uppercase tracking-widest rounded-xl shadow-[0_0_40px_rgba(255,255,255,0.2)] w-full sm:w-auto transition-all hover:scale-105 hover:shadow-[0_0_60px_rgba(255,255,255,0.3)] border-0">
+                 <Link href="/registration" className="inline-flex items-center justify-center bg-white text-primary hover:bg-white/90 h-16 px-12 text-sm font-mono uppercase tracking-widest rounded-xl shadow-[0_0_40px_rgba(255,255,255,0.2)] w-full sm:w-auto transition-all hover:scale-105 hover:shadow-[0_0_60px_rgba(255,255,255,0.3)] border-0">
                   Register Now
-                </Button>
+                </Link>
                </Magnetic>
-              <Link href="/call-for-papers" className="w-full sm:w-auto">
-                <Magnetic>
-                  <Button size="lg" className="!border-white/30 !text-white !bg-transparent hover:!bg-white/10 h-16 px-12 text-sm font-mono uppercase tracking-widest rounded-xl w-full sm:w-auto backdrop-blur-lg transition-all hover:scale-105 hover:!border-white/60">
+               <Magnetic>
+                 <Link href="/contact" className="inline-flex items-center justify-center border border-white/30 text-white bg-transparent hover:bg-white/10 h-16 px-12 text-sm font-mono uppercase tracking-widest rounded-xl w-full sm:w-auto backdrop-blur-lg transition-all hover:scale-105 hover:border-white/60">
                     Contact Organizers
-                  </Button>
-                </Magnetic>
-              </Link>
+                  </Link>
+               </Magnetic>
             </div>
           </motion.div>
         </div>

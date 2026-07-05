@@ -95,6 +95,15 @@ export function Navbar() {
         </div>
         <div className="flex items-center gap-3 shrink-0">
           <a
+            href="https://e2a.nits.ac.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:inline text-[10px] font-mono text-white/50 hover:text-amber-400 transition-colors"
+          >
+            E2A 25 ↗
+          </a>
+          <span className="hidden md:inline text-white/20 text-xs">|</span>
+          <a
             href="https://www.nits.ac.in/"
             target="_blank"
             rel="noopener noreferrer"
