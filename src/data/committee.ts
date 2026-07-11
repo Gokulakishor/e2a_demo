@@ -20,10 +20,10 @@ export const patronData: CommitteeMember[] = [
 export const honoraryChairData: CommitteeMember[] = [
   {
     name: "Dr. Ahmed Chemori",
-    designation: "Research Director",
+    designation: "Head of RSM Team",
     affiliation: "LIRMM, CNRS / University of Montpellier, France",
     role: "Honorary Chair",
-    image: "https://res.cloudinary.com/dprjiwgfo/image/upload/c_fill,g_auto:faces,w_600,h_600,q_auto/v1779951079/ahmed2_pwg1q9.jpg"
+    image: "https://res.cloudinary.com/dprjiwgfo/image/upload/c_fill,g_face,w_400,h_400,q_auto/v1783739810/special_cibveh.jpg"
   }
 ];
 
