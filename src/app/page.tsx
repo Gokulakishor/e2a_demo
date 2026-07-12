@@ -254,20 +254,25 @@ export default function Home() {
 
               <motion.div 
                 variants={FADE_UP_ANIMATION_VARIANTS} 
-                className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+                className="flex flex-row flex-nowrap justify-start items-center gap-3 w-full overflow-x-auto pb-4 no-scrollbar"
               >
                 <Magnetic>
-                  <Link href="/call-for-papers" className="inline-flex items-center justify-center bg-gradient-to-r from-primary to-[#B59410] text-white hover:opacity-95 px-8 h-14 text-xs font-mono uppercase tracking-widest shadow-xl shadow-primary/20 rounded-xl transition-all hover:scale-105 duration-300 w-full sm:w-auto border-0">
+                  <Link href="/call-for-papers" className="inline-flex shrink-0 items-center justify-center bg-gradient-to-r from-primary to-[#B59410] text-white hover:opacity-95 px-5 h-12 text-xs font-mono uppercase tracking-widest shadow-xl shadow-primary/20 rounded-xl transition-all hover:scale-105 duration-300 border-0">
                     Call for Papers
                   </Link>
                 </Magnetic>
                 <Magnetic>
-                  <Link href="/registration" className="inline-flex items-center justify-center border border-slate-200 text-slate-700 hover:text-primary px-8 h-14 text-xs font-mono uppercase tracking-widest rounded-xl glass-card transition-all hover:scale-105 duration-300 w-full sm:w-auto">
+                  <Link href="/special-session" className="inline-flex shrink-0 items-center justify-center bg-gradient-to-r from-[#1E3A8A] to-[#B59410] text-white hover:opacity-95 px-5 h-12 text-xs font-mono uppercase tracking-widest shadow-xl shadow-primary/20 rounded-xl transition-all hover:scale-105 duration-300 border-0">
+                    Special Session
+                  </Link>
+                </Magnetic>
+                <Magnetic>
+                  <Link href="/registration" className="inline-flex shrink-0 items-center justify-center border border-slate-200 text-slate-700 hover:text-primary px-5 h-12 text-[10px] sm:text-xs font-mono uppercase tracking-widest rounded-xl glass-card transition-all hover:scale-105 duration-300">
                     Register Now
                   </Link>
                 </Magnetic>
                 <Magnetic>
-                  <a href="https://cmt3.research.microsoft.com/EEA2027/Submission/Index" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#1E3A8A] to-[#B59410] text-white hover:opacity-95 px-8 h-14 text-xs font-mono uppercase tracking-widest shadow-xl shadow-primary/20 rounded-xl transition-all hover:scale-105 duration-300 w-full sm:w-auto border-0">
+                  <a href="https://cmt3.research.microsoft.com/EEA2027/Submission/Index" target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center justify-center gap-2 bg-gradient-to-r from-[#1E3A8A] to-[#B59410] text-white hover:opacity-95 px-5 h-12 text-xs font-mono uppercase tracking-widest shadow-xl shadow-primary/20 rounded-xl transition-all hover:scale-105 duration-300 border-0">
                     Submit Paper <ArrowRight className="h-4 w-4" />
                   </a>
                 </Magnetic>
