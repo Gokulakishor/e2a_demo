@@ -130,6 +130,26 @@ export default function BestAwardsPage() {
             </motion.div>
           </div>
 
+          {/* Micro Note on MAKRF */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white/40 border border-primary/20 backdrop-blur-2xl rounded-3xl p-8 shadow-xl"
+          >
+            <div className="flex items-center gap-4 mb-4">
+              <div className="p-3 bg-emerald-500/10 rounded-2xl text-emerald-600">
+                <Users className="h-6 w-6" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-800">
+                A micro note on the Major Ashish Kumar Roy Foundation
+              </h3>
+            </div>
+            <p className="text-slate-600 leading-relaxed text-justify md:text-lg">
+              Major Ashish Kumar Roy served the 19th Engineers regiment, Indian Army and was killed in action in 2012. His school friends from Kendriya Vidyalaya constituted the Major Ashish Kumar Roy Foundation in his memory and honour. Major Ashish Kumar Roy Foundation organizes cancer awareness, health promotion, badminton championship, sports promotion, telemedicine as well as support research scholars and nation building activities. The Indian Army Chief General Upendra Dwivedi has recognized the efforts of the Major Ashish Kumar Roy Foundation in nation building.
+            </p>
+          </motion.div>
+
         </div>
       </section>
     </div>

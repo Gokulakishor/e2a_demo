@@ -23,7 +23,7 @@ const NAV_LINKS: Array<{
       { label: "Registration", href: "/information-for-authors#registration" },
       { label: "Paper Submission", href: "/information-for-authors#paper-submission" },
       { label: "Travel Support", href: "/information-for-authors#travel-support" },
-      { label: "Best Presentation Award", href: "/information-for-authors#best-presentation-award" },
+      { label: "Best Presentation Award", href: "/best-awards" },
     ],
   },
   { label: "Committee", href: "/committee" },
@@ -95,7 +95,7 @@ export function Navbar() {
         </div>
         <div className="flex items-center gap-3 shrink-0">
           <a
-            href="https://e2a.nits.ac.in/"
+            href="http://endearing-duckanoo-cef30f.netlify.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:inline text-[10px] font-mono text-white/50 hover:text-amber-400 transition-colors"

@@ -262,8 +262,9 @@ export default function Home() {
                   </Link>
                 </Magnetic>
                 <Magnetic>
-                  <Link href="/special-session" className="inline-flex shrink-0 items-center justify-center bg-gradient-to-r from-[#1E3A8A] to-[#B59410] text-white hover:opacity-95 px-5 h-12 text-xs font-mono uppercase tracking-widest shadow-xl shadow-primary/20 rounded-xl transition-all hover:scale-105 duration-300 border-0">
+                  <Link href="/special-session" className="relative inline-flex shrink-0 items-center justify-center bg-gradient-to-r from-[#1E3A8A] to-[#B59410] text-white hover:opacity-95 px-5 h-12 text-xs font-mono uppercase tracking-widest shadow-xl shadow-primary/20 rounded-xl transition-all hover:scale-105 duration-300 border-0">
                     Special Session
+                    <span className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 bg-rose-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-sm whitespace-nowrap shadow-md">Deadline Extended</span>
                   </Link>
                 </Magnetic>
                 <Magnetic>
@@ -279,6 +280,30 @@ export default function Home() {
               </motion.div>
             </motion.div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* SPONSOR LOGO TICKER */}
+      <section className="w-full py-10 border-y border-slate-200/50 bg-white/40 backdrop-blur-sm relative z-20 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <p className="text-center text-[10px] font-mono tracking-widest text-slate-500 uppercase mb-6 font-bold">Sponsored By</p>
+          <div className="flex justify-center items-center gap-8 md:gap-16 flex-wrap transition-opacity duration-300">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05 }}
+              className="px-4"
+            >
+              <a href="https://www.facebook.com/profile.php?id=100063651499588" target="_blank" rel="noopener noreferrer">
+                <img 
+                  src="https://res.cloudinary.com/dprjiwgfo/image/upload/f_auto,q_auto/v1784866285/logooo_iuwxlj.png" 
+                  alt="Sponsor Logo" 
+                  className="h-16 md:h-20 object-contain drop-shadow-sm"
+                />
+              </a>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -707,9 +732,10 @@ export default function Home() {
           </div>
 
           {/* Active Sponsors Grid */}
-          <div className="flex justify-center mb-20">
+          <div className="flex justify-center flex-wrap gap-6 mb-20">
             {[
-              { name: "Springer", role: "Publication Partner", desc: "Lecture Notes in Electrical Engineering", status: "(Approval pending )" }
+              { name: "Springer", role: "Publication Partner", desc: "Lecture Notes in Electrical Engineering", status: "(Approval pending )" },
+              { name: "MAKRF", role: "Best Presentation Award Sponsor", desc: "Major Ashish Kumar Roy Foundation", image: "https://res.cloudinary.com/dprjiwgfo/image/upload/f_auto,q_auto/v1784866285/logooo_iuwxlj.png" }
             ].map((sponsor, idx) => (
               <motion.div
                 key={idx}
@@ -720,7 +746,11 @@ export default function Home() {
                 className="max-w-sm w-full text-center p-6 bg-white/40 border border-slate-200 backdrop-blur-md rounded-2xl flex flex-col justify-between items-center h-full hover:shadow-md hover:border-primary/20 transition-all duration-300"
               >
                 <div className="h-10 flex items-center justify-center mb-3">
-                  <span className="font-extrabold text-lg text-slate-700 tracking-tight font-sans uppercase">{sponsor.name}</span>
+                  {sponsor.image ? (
+                    <img src={sponsor.image} alt={sponsor.name} className="h-10 object-contain drop-shadow-sm" />
+                  ) : (
+                    <span className="font-extrabold text-lg text-slate-700 tracking-tight font-sans uppercase">{sponsor.name}</span>
+                  )}
                 </div>
                 <div>
                   <p className="text-[10px] font-bold text-primary uppercase tracking-wider font-mono">{sponsor.role}</p>

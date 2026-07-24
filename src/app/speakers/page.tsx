@@ -2,9 +2,16 @@
 
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { Users } from "lucide-react";
+import { Users, School } from "lucide-react";
+import { honoraryChairData, generalChairsData } from "@/data/committee";
 
 export default function SpeakersPage() {
+  const speakers = [
+    honoraryChairData[0],
+    generalChairsData[0],
+    generalChairsData[1],
+  ];
+
   return (
     <div className="flex flex-col w-full min-h-screen bg-transparent relative overflow-hidden">
       <section className="relative pt-48 pb-24 overflow-hidden bg-slate-950 text-white">
@@ -42,26 +49,39 @@ export default function SpeakersPage() {
         <div className="absolute right-0 top-1/4 opacity-[0.02] pointer-events-none select-none z-0 hidden lg:block">
           <img src="/logo.svg" alt="NIT Silchar watermark" className="w-[500px] h-[500px]" />
         </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="relative p-[1px] bg-gradient-to-b from-stone-200/60 to-stone-300/40 rounded-3xl shadow-sm"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-white/95 to-stone-50/90 rounded-3xl z-0" />
-            <div className="relative z-10 glass-card rounded-[23px] p-12 text-center bg-white/80">
-              <div className="p-4 bg-primary/10 rounded-2xl w-fit mx-auto mb-6">
-                <Users className="h-10 w-10 text-primary animate-pulse" />
-              </div>
-              <h3 className="text-2xl font-bold text-slate-800 mb-2">Speakers Lineup</h3>
-              <p className="text-lg text-primary font-mono tracking-widest uppercase font-extrabold mb-4">
-                To be announced soon
-              </p>
-              <p className="text-sm text-slate-500 font-light max-w-md mx-auto leading-relaxed">
-                The organizing committee is currently in the process of finalizing keynotes, plenary speeches, and invited talk speakers. Full schedule and profile updates will be posted here.
-              </p>
-            </div>
-          </motion.div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {speakers.map((speaker, i) => (
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="w-full"
+              >
+                <Card className="h-full border border-slate-200 bg-white/70 hover:bg-white hover:border-accent hover:shadow-[0_12px_30px_rgba(181,148,16,0.06)] rounded-2xl transition-all duration-300 overflow-hidden group relative flex flex-col">
+                  <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-primary to-accent" />
+                  <CardContent className="p-8 text-center flex flex-col items-center flex-1">
+                    <img 
+                      src={speaker.image} 
+                      alt={speaker.name}
+                      className="w-32 h-32 rounded-full object-cover mb-6 border-4 border-primary/10 shadow-md group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <h3 className="font-extrabold text-xl text-foreground mb-1 leading-snug group-hover:text-primary transition-colors">
+                      {speaker.name}
+                    </h3>
+                    <p className="text-sm font-semibold text-accent uppercase tracking-wider mb-2 font-mono">Keynote Speaker</p>
+                    <p className="text-xs text-slate-500 font-medium leading-relaxed mb-6">{speaker.designation}</p>
+                    <div className="border-t border-slate-100 w-full pt-4 mt-auto flex items-center justify-center gap-2 text-xs text-slate-600 font-semibold font-mono">
+                      <School className="h-4 w-4 text-primary shrink-0" />
+                      <span className="line-clamp-2">{speaker.affiliation}</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
     </div>

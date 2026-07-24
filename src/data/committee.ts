@@ -29,14 +29,14 @@ export const honoraryChairData: CommitteeMember[] = [
 
 export const generalChairsData: CommitteeMember[] = [
   {
-    name: "Xiaozhi Gao",
+    name: "Prof. Xiaozhi Gao",
     designation: "Professor",
     affiliation: "School of Computing, Faculty of Science, Forestry and Technology",
     role: "General Chair",
     image: "https://res.cloudinary.com/dprjiwgfo/image/upload/v1780617699/gao_w4wczp.jpg"
   },
   {
-    name: "Jayasree Chakraborty",
+    name: "Dr. Jayasree Chakraborty",
     designation: "Assistant Attending",
     affiliation: "Memorial Sloan Kettering Cancer Center",
     role: "General Chair",
