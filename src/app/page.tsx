@@ -495,7 +495,8 @@ export default function Home() {
                 title: "Track 1: Control And Robotics", 
                 desc: "Linear Control, Non-linear Control, Robust Control, Robotics, Automation",
                 topics: [
-                  "Linear Control", "Non-linear Control", "Robust Control", "Decentralized Control", 
+                  "Linear Control", "Non-linear Control", "Robust Control", "Decentralized Control",
+                  "Control For Exoskeleton","Optimised Control For Life Support Systems", 
                   "Robotics", "Industrial Automation", "Stability Analysis", "Fractional Order Control"
                 ]
               },
@@ -504,7 +505,7 @@ export default function Home() {
                 title: "Track 2: Signal and Image Processing", 
                 desc: "Image and Video, Multimedia, Speech, Computer Vision",
                 topics: [
-                  "Image and Video Signal Processing", "Multimedia Applications", "Signal Processing for Big Data", 
+                  "Image and Video Signal Processing", "Sound Processing Techniques","Multimedia Applications", "Signal Processing for Big Data", 
                   "Speech and Audio Processing", "Computer Vision", "Biomedical Applications, Bio-Signal Analysis", 
                   "Language Identification", "Information Forensics & Security", "Sparse Signal Processing", 
                   "Time-Frequency Analysis", "Active Noise Control", "Adapative Signal Processing", "Array Signal Processing"
@@ -515,7 +516,7 @@ export default function Home() {
                 title: "Track 3: Communication Systems", 
                 desc: "5G & beyond, IoT, RF & Microwave, Antennas",
                 topics: [
-                  "5G & beyond Communication", "IoT & IIoT Communication", "UDN", "MIMO", "D2D", 
+                  "5G & beyond Communication","RF Transmission For Biomedical Devices", "IoT & IIoT Communication", "UDN", "MIMO", "D2D", 
                   "RF & Microwave", "Antennas", "THz Communication", "Small Cells", "mmWave communication", 
                   "Quantum Communication", "Radar Systems", "Optical Communication etc"
                 ]
@@ -525,7 +526,7 @@ export default function Home() {
                 title: "Track 4: Sensors and Instrumentation", 
                 desc: "Measurements, Sensors, Bio-Medical, NDT",
                 topics: [
-                  "Methods of Measurements", "Electromagnetics, Digital Holography, Laser based Instrumentation for Measurement and Monitoring systems", 
+                  "Methods of Measurements","Instrumentation For Brain Computer Interface", "Electromagnetics, Digital Holography, Laser based Instrumentation for Measurement and Monitoring systems", 
                   "Sensors and Sensing Technology", "Non-Destructive Testing", "Smart and Intelligent Sensors", 
                   "Biomedical Sensors, Signal Analysis & Health Monitoring Applications", "IoT Applications in Instrumentation", 
                   "Sensors & Sensor Data Fusion", "Robotics & Mechatronics Systems", "Process Control & Instrumentation."

@@ -150,7 +150,7 @@ export default function InformationForAuthorsPage() {
             <ul className="list-disc list-inside space-y-3 text-sm md:text-md text-slate-700 font-light leading-relaxed text-justify">
               <li>All submissions must be made electronically via the Microsoft CMT portal.</li>
               <li>Papers must follow <strong className="font-semibold text-slate-800">Springer formatting guidelines</strong>.</li>
-              <li>Maximum <strong className="font-semibold text-slate-800">8 pages</strong> including figures, tables, and references.</li>
+              <li>Maximum <strong className="font-semibold text-slate-800">10-12 pages</strong> including figures, tables, and references.</li>
               <li>All submitted papers will undergo a rigorous peer review process.</li>
             </ul>
 

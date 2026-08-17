@@ -7,34 +7,40 @@ export const tracksData: Track[] = [
   {
     title: "Control And Robotics",
     topics: [
-      "Linear Control", "Non-linear Control", "Robust Control", "Decentralized Control", 
-      "Robotics", "Industrial Automation", "Stability Analysis", "Fractional Order Control"
+      "Linear Control", "Non-linear Control", "Robust Control", "Decentralized Control",
+      "Control For Exoskeleton","Optimised Control For Life Support Systems",
+      "Robotics", "Industrial Automation", "Stability Analysis", "Fractional Order Control",
+      
     ]
   },
   {
     title: "Signal and Image Processing",
     topics: [
-      "Image and Video Signal Processing", "Multimedia Applications", "Signal Processing for Big Data", 
+      "Image and Video Signal Processing","Sound Processing Techniques", "Multimedia Applications", "Signal Processing for Big Data", 
       "Speech and Audio Processing", "Computer Vision", "Biomedical Applications, Bio-Signal Analysis", 
       "Language Identification", "Information Forensics & Security", "Sparse Signal Processing", 
-      "Time-Frequency Analysis", "Active Noise Control", "Adapative Signal Processing", "Array Signal Processing"
+      "Time-Frequency Analysis", "Active Noise Control", "Adapative Signal Processing", "Array Signal Processing",
+      
+      
     ]
   },
   {
     title: "Communication Systems",
     topics: [
-      "5G & beyond Communication", "IoT & IIoT Communication", "UDN", "MIMO", "D2D", 
+      "5G & beyond Communication", "IoT & IIoT Communication","RF Transmission For Biomedical Devices","UDN", "MIMO", "D2D", 
       "RF & Microwave", "Antennas", "THz Communication", "Small Cells", "mmWave communication", 
-      "Quantum Communication", "Radar Systems", "Optical Communication etc"
+      "Quantum Communication", "Radar Systems", "Optical Communication etc",
+      
     ]
   },
   {
     title: "Sensors and Instrumentation",
     topics: [
-      "Methods of Measurements", "Electromagnetics, Digital Holography, Laser based Instrumentation for Measurement and Monitoring systems", 
+      "Methods of Measurements","Instrumentation For Brain Computer Interface","Electromagnetics, Digital Holography, Laser based Instrumentation for Measurement and Monitoring systems", 
       "Sensors and Sensing Technology", "Non-Destructive Testing", "Smart and Intelligent Sensors", 
       "Biomedical Sensors, Signal Analysis & Health Monitoring Applications", "IoT Applications in Instrumentation", 
-      "Sensors & Sensor Data Fusion", "Robotics & Mechatronics Systems", "Process Control & Instrumentation."
+      "Sensors & Sensor Data Fusion", "Robotics & Mechatronics Systems", "Process Control & Instrumentation.",
+      
     ]
   },
   {

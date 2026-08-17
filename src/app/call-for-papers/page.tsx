@@ -103,8 +103,8 @@ export default function CallForPapersPage() {
             <ul className="list-disc list-inside space-y-3.5 text-slate-650 font-light text-sm md:text-md text-justify">
               <li className="text-justify leading-relaxed">All papers must be original and not simultaneously submitted to another journal or conference.</li>
               <li className="text-justify leading-relaxed">Submissions should be made according to the Springer LNEE format (<a href="/templates/latex_template.zip" download className="text-primary hover:underline">LaTeX template</a>, <a href="/templates/word_template.zip" download className="text-primary hover:underline">Word template</a>).</li>
-              <li className="text-justify leading-relaxed">Authors must follow the <strong className="font-semibold text-slate-800">Springer's "Lecture Notes in Electrical Engineering" (LNEE) series proceedings</strong>.</li>
-              <li className="text-justify leading-relaxed">The paper should be a maximum of <strong className="font-semibold text-slate-800">8 pages</strong> (including figures, tables, and references).</li>
+              <li className="text-justify leading-relaxed">Authors must follow the <strong className="font-semibold text-slate-800">Springer's "Lecture Notes in Electrical Engineering" (LNEE Scopus Indexed) series proceedings</strong>.</li>
+              <li className="text-justify leading-relaxed">The paper should be a maximum of <strong className="font-semibold text-slate-800">10-12 pages</strong> (including figures, tables, and references).</li>
               <li className="text-justify leading-relaxed">Papers should be submitted through the Microsoft CMT platform.</li>
               <li className="text-justify leading-relaxed">All papers will undergo a rigorous peer review process (we do not follow double-blind review).</li>
               <li className="text-justify leading-relaxed">Accepted and presented papers will be published in the <strong className="font-semibold text-slate-800">Springer's "Lecture Notes in Electrical Engineering" (LNEE) series proceedings</strong>.</li>

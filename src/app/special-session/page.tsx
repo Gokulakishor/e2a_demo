@@ -1,9 +1,111 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Presentation, Target, FileText, CheckCircle, Calendar, Users, Briefcase, Mail } from "lucide-react";
+import { Presentation, Target, FileText, CheckCircle, Calendar, Users, Briefcase, Mail, BookOpen, Download } from "lucide-react";
 
 export default function SpecialSessionPage() {
+  const submittedProposals = [
+    {
+      id: "SS1",
+      title: "AI/ML-Driven Control and Navigation for Autonomous UAV Systems (SS-DRONES 2027)",
+      organizers: [
+        { name: "Dr. Vasanthakumar Sekar", affiliation: "VIT University, Chennai, India" },
+        { name: "Prof. K. Srinivasan", affiliation: "NIT Tiruchirappalli, India" }
+      ],
+      fileUrl: "/proposals/E2A2027_SS_DRONES_Proposal_Content.pdf"
+    },
+    {
+      id: "SS2",
+      title: "AI-Driven Technologies for Electric Vehicles, Smart Charging, and Future E-Mobility Systems",
+      organizers: [
+        { name: "Dr. Amritesh Kumar", affiliation: "NIT Silchar, India" },
+        { name: "Dr. Suraj Gupta", affiliation: "NIT Meghalaya, India" }
+      ],
+      fileUrl: "/proposals/Call for Special Session, E2A2026.docx"
+    },
+    {
+      id: "SS3",
+      title: "Biometrics Authentication and Pattern Recognition",
+      organizers: [
+        { name: "Dr. Biswajit Kar", affiliation: "Central Institute of Technology Kokrajhar (CITK), Assam, India" },
+        { name: "Dr. Pankaj Pratap Singh", affiliation: "Central Institute of Technology Kokrajhar (CITK), Assam, India" }
+      ],
+      fileUrl: "/proposals/Conference Special Session Proposal_Dr. Biswajit Kar.docx"
+    },
+    {
+      id: "SS4",
+      title: "Explainable AI for Smart Healthcare, Industry 5.0 and Intelligent Automation (XAI-SHIA 2027)",
+      organizers: [
+        { name: "Dr. R. Nidhya", affiliation: "Madanapalle Institute of Technology & Science, India" },
+        { name: "Dr. M. Sreedevi", affiliation: "Madanapalle Institute of Technology & Science, India" },
+        { name: "Mr. T Thangarasan", affiliation: "Madanapalle Institute of Technology & Science, India" }
+      ],
+      fileUrl: "/proposals/Special Session Proposal-Dr R Nidhya.pdf"
+    },
+    {
+      id: "SS5",
+      title: "Intelligent Automation (IA)",
+      organizers: [
+        { name: "Dr. Koena Mukherjee", affiliation: "NIT Puducherry, India" },
+        { name: "Dr. Rajvir Kaur", affiliation: "NIT Puducherry, India" },
+        { name: "Dr. Bijukumar B.", affiliation: "NIT Puducherry, India" }
+      ],
+      fileUrl: "/proposals/SS proposal.pdf"
+    },
+    {
+      id: "SS6",
+      title: "Special Session on Applied AI/ML for Intelligent Electrical and Electronic Systems (AIML-IEES)",
+      organizers: [
+        { name: "Dr. Asmita Bose", affiliation: "NIT Durgapur, India" },
+        { name: "Dr. Avishek Adhikary", affiliation: "IIT Bhilai, India" },
+        { name: "Prof. Shubhojit Ghosh", affiliation: "NIT Raipur, India" }
+      ],
+      fileUrl: "/proposals/special session call E2A 2027_ A3B.docx"
+    },
+    {
+      id: "SS7",
+      title: "ASCVA-UAV: Advances in Sensing, Control and Vision for Secure Autonomy in UAVs",
+      organizers: [
+        { name: "Dr. Deep Chandra Upadhyay", affiliation: "VIT Bhopal University, India" },
+        { name: "Dr. Anurag Tiwari", affiliation: "VIT Bhopal University, India" },
+        { name: "Dr. Gopal Singh", affiliation: "VIT Bhopal University, India" },
+        { name: "Dr. Dipak Prasad", affiliation: "VIT Bhopal University, India" }
+      ],
+      fileUrl: "/proposals/Special Session Proposal_revised version.pdf"
+    },
+    {
+      id: "SS8",
+      title: "Intelligence-Driven Signal and Image Processing for Secure, Intelligent, and Trustworthy VLSI Systems",
+      organizers: [
+        { name: "Dr. M. Suresh", affiliation: "VIT Bhopal University, India" },
+        { name: "Dr. Vijay Birichha", affiliation: "VIT Bhopal University, India" },
+        { name: "Dr. Amit Kumar Singh", affiliation: "VIT Bhopal University, India" },
+        { name: "Dr. Anurag Tiwari", affiliation: "VIT Bhopal University, India" }
+      ],
+      fileUrl: "/proposals/SS8.pdf"
+    },
+    {
+      id: "SS9",
+      title: "Engineering Trustworthy and Intelligent Autonomous Systems: Explainability, Safety, Security and Responsible Innovation",
+      organizers: [
+        { name: "Dr. Amit Verma", affiliation: "CGC University, Mohali, Punjab, India" },
+        { name: "Dr. Mukesh Kumar", affiliation: "CGC University, Mohali, Punjab, India" },
+        { name: "Mr. Bineet Singh", affiliation: "CGC University, Mohali, Punjab, India" }
+      ],
+      fileUrl: "/proposals/SS9.pdf"
+    },
+    {
+      id: "SS10",
+      title: "Learning-Enabled Control and Autonomous Decision-Making for Resilient Cyber-Physical Systems (LEAD-CPS)",
+      organizers: [
+        { name: "Dr. Ghousiya Begum K", affiliation: "SASTRA Deemed to be University, India" },
+        { name: "Dr. Hemavathi. N", affiliation: "SASTRA Deemed to be University, India" },
+        { name: "Mr Kannabhiran A", affiliation: "SASTRA Deemed to be University, India" }
+      ],
+      fileUrl: "/proposals/SS10.docx"
+    }
+  ];
+
   return (
     <div className="flex flex-col w-full min-h-screen bg-slate-50 relative overflow-hidden">
       <section className="relative pt-48 pb-24 overflow-hidden bg-slate-950 text-white">
@@ -293,6 +395,70 @@ xxx`}
               >
                 <FileText className="w-4 h-4" /> Copy Format
               </button>
+            </div>
+          </motion.div>
+
+          {/* Accepted / Submitted Special Sessions Section */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-3xl p-8 shadow-sm border border-slate-200 mt-12"
+          >
+            <div className="flex items-center gap-4 mb-6 border-b pb-4">
+              <div className="p-3 bg-indigo-50 text-indigo-600 rounded-xl">
+                <BookOpen className="w-6 h-6" />
+              </div>
+              <h3 className="text-2xl font-bold text-slate-800">Accepted Special Sessions</h3>
+            </div>
+            
+            <p className="text-slate-600 text-sm mb-6">
+              Below is the list of accepted and submitted special session proposals for E2A 2027 along with their organizers and downloadable proposal files:
+            </p>
+
+            <div className="space-y-4">
+              {submittedProposals.map((proposal, index) => (
+                <div 
+                  key={index} 
+                  className="p-6 rounded-2xl bg-slate-50 border border-slate-200 hover:border-slate-300 transition-all shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4"
+                >
+                  <div className="space-y-3 flex-1">
+                    <span className="inline-block px-3 py-1 bg-indigo-600 text-white font-mono font-bold text-xs rounded-full">
+                      {proposal.id}
+                    </span>
+                    <h4 className="text-lg font-bold text-slate-900">
+                      {proposal.title}
+                    </h4>
+                    <div className="border-t border-slate-200 pt-3">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">
+                        Organized By:
+                      </p>
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-slate-700">
+                        {proposal.organizers.map((org, orgIdx) => (
+                          <li key={orgIdx} className="flex items-start gap-2">
+                            <Users className="w-4 h-4 text-indigo-500 shrink-0 mt-0.5" />
+                            <span>
+                              <strong>{org.name}</strong> <span className="text-slate-500">({org.affiliation})</span>
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="shrink-0 flex items-center">
+                    <a 
+                      href={proposal.fileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      download
+                      className="inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 hover:bg-indigo-600 hover:text-white px-4 py-2 rounded-xl text-sm font-medium transition-colors border border-indigo-100"
+                    >
+                      <Download className="w-4 h-4" /> Download Proposal
+                    </a>
+                  </div>
+                </div>
+              ))}
             </div>
           </motion.div>
 
