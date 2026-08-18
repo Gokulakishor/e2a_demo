@@ -60,7 +60,7 @@ export default function SpeakersPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
           {/* 4 columns on large screens */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {speakersData.map((speaker, index) => (
+            {speakersData.map ((speaker, index) => (
               <motion.div
                 key={speaker.id}
                 initial={{ opacity: 0, y: 30 }}

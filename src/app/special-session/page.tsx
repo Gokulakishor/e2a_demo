@@ -2,7 +2,213 @@
 
 import { motion } from "framer-motion";
 import { Presentation, Target, FileText, CheckCircle, Calendar, Users, Briefcase, Mail } from "lucide-react";
+const acceptedSessions = [
+  {
+    id: 1,
+    title: "AI/ML-Driven Control and Navigation for Autonomous UAV Systems",
+    organizers: [
+      {
+        name: "Dr. Vasanthakumar Sekar",
+        affiliation: "Assistant Professor (Sr.), School of Computer Science and Engineering, VIT University, Chennai, India ",
+      },
+      
+    ],
+  },
 
+  {
+    id: 2,
+    title:
+      "AI-Driven Technologies for Electric Vehicles, Smart Charging, and Future E-Mobility Systems",
+    organizers: [
+      {
+        name: "Dr. Amritesh Kumar",
+        affiliation: " Assistant Professor,epartment of Electrical Engineering, NIT Silchar, Assam, India",
+      },
+      {
+        name: "Dr. Suraj Gupta",
+        affiliation: "Assistant Professor,Department of Electrical Engineering, NIT Meghalaya, India",
+      },
+    ],
+  },
+
+  {
+    id: 3,
+    title: "Biometrics Authentication and Pattern Recognition",
+    organizers: [
+      {
+        name: "Dr. Biswajit Kar",
+        affiliation: "Central Institute of Technology Kokrajhar (CITK), Assam, India",
+      },
+      {
+        name: "Dr. Pankaj Pratap Singh",
+        affiliation: "Central Institute of Technology Kokrajhar (CITK), Assam, India",
+      },
+    ],
+  },
+
+  {
+    id: 4,
+    title:
+      "Explainable AI for Smart Healthcare, Industry 5.0 and Intelligent Automation",
+    organizers: [
+      {
+        name: "Dr. R. Nidhya",
+        affiliation:
+          "Professor, Department of Computer Science and Engineering, Madanapalle Institute of Technology & Science Deemed to be University",
+      },
+      {
+        name: "Dr. M. Sreedevi",
+        affiliation:
+          "Professor & HoD, Department of Computer Science and Engineering, Madanapalle Institute of Technology & Science Deemed to be University",
+      },
+      {
+        name: "Mr. T Thangarasan",
+        affiliation:
+          "Assistant Professor, Department of Computer Science and Engineering, Madanapalle Institute of Technology & Science Deemed to be University",
+      },
+    ],
+  },
+
+  {
+    id: 5,
+    title: "Intelligent Automation",
+    organizers: [
+      {
+        name: "Dr. Koena Mukherjee",
+        affiliation:
+          "Associate Professor, Department of Electrical and Electronics Engineering, NIT Puducherry, India",
+      },
+      {
+        name: "Dr. Rajvir Kaur",
+        affiliation:
+          "Assistant Professor, Department of Electrical and Electronics Engineering, NIT Puducherry, India",
+      },
+      {
+        name: "Dr. Bijukumar B.",
+        affiliation: "Assistant Professor,Department of Electrical Engineering NIT Puducherry, India",
+      },
+    ],
+  },
+
+  {
+    id: 6,
+    title:
+      "Special Session on Applied AI/ML for Intelligent Electrical and Electronic Systems",
+    organizers: [
+      {
+        name: "Dr. Asmita Bose",
+        affiliation: "Assistant Professor, Department of Electrical Engineering NIT Durgapur",
+      },
+      {
+        name: "Dr. Avishek Adhikary",
+        affiliation: "Associate Professor,Department of Electrical Engineering IIT Bhilai",
+      },
+      {
+        name: "Prof. Shubhojit Ghosh",
+        affiliation: "Professor, Department of Electrical Engineering ,NIT Raipur",
+      },
+    ],
+  },
+
+  {
+    id: 7,
+    title:
+      "ASCVA-UAV: Advances in Sensing, Control and Vision for Secure Autonomy in UAVs",
+    organizers: [
+      {
+        name: "Dr. Deep Chandra Upadhyay",
+        affiliation:
+          "School of Electrical and Electronics Engineering, VIT Bhopal University",
+      },
+      {
+        name: "Dr. Anurag Tiwari",
+        affiliation:
+          "School of Electrical and Electronics Engineering, VIT Bhopal University",
+      },
+      {
+        name: "Dr. Gopal Singh",
+        affiliation:
+          "School of Electrical and Electronics Engineering, VIT Bhopal University",
+      },
+      {
+        name: "Dr. Dipak Prasad",
+        affiliation: "VIT Bhopal University, Bhopal, Madhya Pradesh",
+      },
+    ],
+  },
+
+  {
+    id: 8,
+    title:
+      "Intelligence-Driven Signal and Image Processing for Secure, Intelligent, and Trustworthy VLSI Systems",
+    organizers: [
+      {
+        name: "Dr. M. Suresh",
+        affiliation:
+          "School of Electrical and Electronics Engineering, VIT Bhopal University",
+      },
+      {
+        name: "Dr. Vijay Birichha",
+        affiliation: "SCAI, VIT Bhopal University",
+      },
+      {
+        name: "Dr. Amit Kumar Singh",
+        affiliation:
+          "School of Electrical and Electronics Engineering, VIT Bhopal University",
+      },
+      {
+        name: "Dr. Anurag Tiwari",
+        affiliation: "VIT Bhopal University, Bhopal, Madhya Pradesh",
+      },
+    ],
+  },
+
+  {
+    id: 9,
+    title:
+      "Engineering Trustworthy and Intelligent Autonomous Systems: Explainability, Safety, Security and Responsible Innovation",
+    organizers: [
+      {
+        name: "Dr. Amit Verma",
+        affiliation:
+          "Associate Professor, School of Computer Science and Engineering and Advanced Centre of Research and Innovation (ACRI), CGC University, Mohali, Punjab, India",
+      },
+      {
+        name: "Dr. Mukesh Kumar",
+        affiliation:
+          "Associate Professor, Department of Computer Applications, Chandigarh School of Business, CGC University, Mohali, Punjab, India",
+      },
+      {
+        name: "Mr. Bineet Singh",
+        affiliation:
+          "Assistant Professor of Law, CGC University, Mohali, Punjab, India; Doctoral Researcher, Himachal Pradesh University, Shimla",
+      },
+    ],
+  },
+
+  {
+    id: 10,
+    title:
+      "Learning-Enabled Control and Autonomous Decision-Making for Resilient Cyber-Physical Systems(LEAD-CPS)",
+    organizers: [
+      {
+        name: "Dr. Ghousiya Begum K",
+        affiliation:
+          "Assistant Professor, School of Electrical and Electronics Engineering (SEEE), SASTRA Deemed to be University, India",
+      },
+      {
+        name: "Dr. Hemavathi. N",
+        affiliation:
+          "Senior Assistant Professor, School of Electrical and Electronics Engineering (SEEE), SASTRA Deemed to be University, India",
+      },
+      {
+        name: "Mr. Kannabhiran A",
+        affiliation:
+          "Assistant Professor, School of Electrical and Electronics Engineering (SEEE), SASTRA Deemed to be University, India",
+      },
+    ],
+  },
+];
 export default function SpecialSessionPage() {
   return (
     <div className="flex flex-col w-full min-h-screen bg-slate-50 relative overflow-hidden">
@@ -204,6 +410,90 @@ export default function SpecialSessionPage() {
               </ul>
             </motion.div>
           </div>
+
+          {/* Accepted Special Sessions */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="space-y-8"
+          >
+            <div className="text-center">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-amber-100 text-amber-700 text-sm font-semibold tracking-wide">
+                E2A 2027
+              </span>
+
+              <h2 className="mt-4 text-3xl md:text-4xl font-bold text-slate-900">
+                Accepted Special Sessions
+              </h2>
+
+              <p className="mt-3 text-slate-600 max-w-2xl mx-auto">
+                Explore the special sessions accepted for E2A 2027, featuring
+                emerging research areas and interdisciplinary topics.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {acceptedSessions.map((session, index) => (
+                <motion.div
+                  key={session.id}
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                >
+                  {/* Session number */}
+                  <div className="flex items-start gap-4">
+                    <span className="flex-shrink-0 w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold">
+                      {String(session.id).padStart(2, "0")}
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="mt-5 text-xl font-bold text-slate-900 leading-snug group-hover:text-amber-700 transition-colors">
+                    {session.title}
+                  </h3>
+
+                  {/* Organizers */}
+                  <div className="mt-6">
+                    <h4 className="text-sm font-semibold uppercase tracking-wider text-slate-500 mb-3">
+                      Organizers
+                    </h4>
+
+                    <div className="space-y-3">
+                      {session.organizers.map((organizer, organizerIndex) => (
+                        <div
+                          key={organizerIndex}
+                          className="border-l-2 border-amber-400 pl-4"
+                        >
+                          <p className="font-semibold text-slate-800">
+                            {organizer.name}
+                          </p>
+
+                          <p className="text-sm text-slate-500 mt-0.5">
+                            {organizer.affiliation}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Bottom */}
+                  <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <span className="text-sm text-slate-500">
+                      Special Session
+                    </span>
+
+                    <span className="text-sm font-semibold text-amber-600">
+                      Accepted
+                    </span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
 
           {/* Important Dates & Contact */}
           <motion.div 

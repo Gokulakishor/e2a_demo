@@ -264,7 +264,7 @@ export default function Home() {
                 <Magnetic>
                   <Link href="/special-session" className="relative inline-flex shrink-0 items-center justify-center bg-gradient-to-r from-[#1E3A8A] to-[#B59410] text-white hover:opacity-95 px-5 h-12 text-xs font-mono uppercase tracking-widest shadow-xl shadow-primary/20 rounded-xl transition-all hover:scale-105 duration-300 border-0">
                     Special Session
-                    <span className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 bg-rose-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-sm whitespace-nowrap shadow-md">Deadline Extended</span>
+                    <span className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 bg-rose-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-sm whitespace-nowrap shadow-md line-through">Deadline Extended</span>
                   </Link>
                 </Magnetic>
                 <Magnetic>
@@ -780,7 +780,7 @@ export default function Home() {
                   benefits: [
                     "Logo recognition on the conference website with a link to your website.",
                     "Logo recognition in the conference brochure, banners, proceedings, and sessions.",
-                    "A promotional video of the sponsor will be webcast during the general online sessions of the conference.",
+                    "A promotional video of the sponsor will be played in all the sections of the conference.",
                     "A space for exhibiting your product will be provided as required.",
                     "The registration fee for the two (02) persons from your side will be waived.",
                     "A session of 15 minutes duration will be arranged with the participants."
