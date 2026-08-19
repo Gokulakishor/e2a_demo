@@ -480,16 +480,7 @@ export default function SpecialSessionPage() {
                     </div>
                   </div>
 
-                  {/* Bottom */}
-                  <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                    <span className="text-sm text-slate-500">
-                      Special Session
-                    </span>
-
-                    <span className="text-sm font-semibold text-amber-600">
-                      Accepted
-                    </span>
-                  </div>
+                  
                 </motion.div>
               ))}
             </div>
