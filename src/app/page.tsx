@@ -793,7 +793,7 @@ export default function Home() {
                   benefits: [
                     "Logo recognition on the conference website with a link to your website.",
                     "Logo recognition in the conference brochure, banners, proceedings, and sessions.",
-                    "A promotional video of the sponsor will be webcast during the general online sessions of the conference.",
+                    "A promotional video of the sponsor will be played in all the sessions of the conference.",
                     "The registration fee for one (01) person from your side will be waived."
                   ]
                 },

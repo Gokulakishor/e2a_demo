@@ -1,3 +1,4 @@
+
 export interface Speaker {
   id: string;
   name: string;
@@ -41,9 +42,9 @@ export const speakersData: Speaker[] = [
     id: "4",
     name: "Dr. Priyanka Jain",
     designation:
-      "Scientist 'F' & Head, Neurocognitive AI Group, Associate Director",
+      "Scientist 'F' & Head,\nNeurocognitive AI Group,\nAssociate Director",
     affiliation:
-      "Centre for Development of Advanced Computing (C-DAC), Delhi",
+      "Centre for Development of Advanced Computing (CDAC), New Delhi",
     image: "/speaker/priyanka-jain.jpg",
     bio: "...",
     type: "Keynote",

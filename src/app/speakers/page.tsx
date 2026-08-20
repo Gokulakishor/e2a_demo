@@ -97,9 +97,13 @@ export default function SpeakersPage() {
                     </p>
 
                     {/* Designation */}
-                    <p className="text-sm text-slate-600 font-medium leading-relaxed mb-5">
-                      {speaker.designation}
-                    </p>
+<p className="text-sm text-slate-600 font-medium leading-relaxed mb-5">
+  {speaker.designation.split("\n").map((line, index) => (
+    <span key={index} className="block">
+      {line}
+    </span>
+  ))}
+</p>
 
                     {/* Affiliation */}
                     <div className="border-t border-slate-100 w-full pt-4 mt-auto flex items-start justify-center gap-2 text-xs text-slate-600 font-medium">
