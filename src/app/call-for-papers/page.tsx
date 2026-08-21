@@ -200,14 +200,23 @@ export default function CallForPapersPage() {
                     status: "Published",
                     active: true
                   },
-                  {
-                    edition: "4th Edition (E2A 2024)",
-                    series: "Lecture Notes in Electrical Engineering (LNEE)",
-                    isbn: "ISBN: Under Process (springer approval pending)",
-                    url: "#",
-                    status: "Pending",
-                    active: false
-                  },
+                  
+{
+  edition: "4th Edition (E2A 2024 - Vol. 1)",
+  series: "Lecture Notes in Electrical Engineering (LNEE, Vol.1455)",
+  isbn: "ISBN: 978-981-96-9554-6",
+  url: "https://link.springer.com/book/10.1007/978-981-96-9554-6",
+  status: "Published",
+  active: true
+},
+{
+  edition: "4th Edition (E2A 2024 - Vol. 2)",
+  series: "Lecture Notes in Electrical Engineering (LNEE, Vol.1469)",
+  isbn: "ISBN: 978-981-95-0705-4",
+  url: "https://link.springer.com/book/10.1007/978-981-95-0705-4",
+  status: "Published",
+  active: true
+},
                   {
                     edition: "5th Edition (E2A 2025)",
                     series: "Lecture Notes in Electrical Engineering (LNEE)",
