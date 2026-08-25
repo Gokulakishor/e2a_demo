@@ -139,7 +139,7 @@ function CountdownTimer() {
       </div>
 
       <p className="text-[10px] text-slate-400 font-mono mt-4">
-        Paper Submission Deadline: September 14, 2026 (11:59 PM IST)
+        Paper Submission Deadline: 14 September, 2026 (11:59 PM IST)
       </p>
     </motion.div>
   );
@@ -264,7 +264,8 @@ export default function Home() {
                 <Magnetic>
                   <Link href="/special-session" className="relative inline-flex shrink-0 items-center justify-center bg-gradient-to-r from-[#1E3A8A] to-[#B59410] text-white hover:opacity-95 px-5 h-12 text-xs font-mono uppercase tracking-widest shadow-xl shadow-primary/20 rounded-xl transition-all hover:scale-105 duration-300 border-0">
                     Special Session
-                    <span className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 bg-rose-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-sm whitespace-nowrap shadow-md ">Deadline- 31-08-2026</span>
+                  <span className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 bg-rose-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-sm whitespace-nowrap shadow-md">
+                    Deadline-31-08-2026</span>
                   </Link>
                 </Magnetic>
                 <Magnetic>
