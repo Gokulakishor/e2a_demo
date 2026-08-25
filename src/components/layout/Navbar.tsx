@@ -129,20 +129,35 @@ export function Navbar() {
         <div className="max-w-screen-xl mx-auto px-4 md:px-6 xl:px-8 flex items-center justify-between gap-4">
 
           {/* Brand */}
-          <Link href="/" className="flex items-center gap-3 group shrink-0">
-            <img
-              src="https://res.cloudinary.com/dprjiwgfo/image/upload/v1780614814/E2A_-_2027_dpjmot.png"
-              alt="E2A 2027"
-              className={`h-11 w-auto object-contain transition-all duration-300 group-hover:scale-105 ${!isScrolled ? "brightness-0 invert" : ""}`}
-            />
-            <div className="flex flex-col justify-center">
-              <span className={`text-[10px] font-mono font-bold tracking-widest uppercase ${
-                isScrolled ? "text-slate-600" : "text-white/80"
-              }`}>
-                Dept. of EIE · NIT Silchar
-              </span>
-            </div>
-          </Link>
+<Link href="/" className="flex items-center gap-3 group shrink-0">
+  {/* E2A 2027 Logo */}
+  <img
+    src="https://res.cloudinary.com/dprjiwgfo/image/upload/v1780614814/E2A_-_2027_dpjmot.png"
+    alt="E2A 2027"
+    className={`h-11 w-auto object-contain transition-all duration-300 group-hover:scale-105 ${
+      !isScrolled ? "brightness-0 invert" : ""
+    }`}
+  />
+
+  {/* NIT Silchar Logo + Department */}
+  <div className="flex flex-col items-center justify-center leading-none">
+    <img
+      src="logo.svg"
+      alt="NIT Silchar"
+      className={`h-7 w-7 object-contain mb-1 transition-all duration-300 ${
+        !isScrolled ? "brightness-0 invert" : ""
+      }`}
+    />
+
+    <span
+      className={`text-[9px] font-mono font-bold tracking-widest uppercase whitespace-nowrap ${
+        isScrolled ? "text-slate-600" : "text-white/80"
+      }`}
+    >
+      Dept. of EIE · NIT Silchar
+    </span>
+  </div>
+</Link>
 
           {/* Desktop Nav Links */}
           <nav className="hidden xl:flex items-center gap-0.5" ref={dropdownRef}>
