@@ -269,7 +269,7 @@ export function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="xl:hidden overflow-hidden bg-white/98 backdrop-blur-2xl border-t border-slate-200/80 shadow-lg max-h-[70vh] overflow-y-auto"
+              className="xl:hidden overflow-hidden bg-white backdrop-blur-none border-t border-slate-200 shadow-lg max-h-[70vh] overflow-y-auto"
             >
               <div className="max-w-screen-xl mx-auto px-4 py-4 flex flex-col gap-1">
                 {NAV_LINKS.map((link) => {
@@ -285,7 +285,7 @@ export function Navbar() {
                             className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${
                               active
                                 ? "bg-[#1E3A8A]/8 text-[#1E3A8A]"
-                                : "text-slate-600 hover:bg-slate-50 hover:text-[#1E3A8A]"
+                                : "text-slate-700 hover:bg-slate-50 hover:text-[#1E3A8A]"
                             }`}
                           >
                             {link.label}
@@ -326,7 +326,7 @@ export function Navbar() {
                               : "text-slate-600 hover:bg-slate-50 hover:text-[#1E3A8A]"
                           }`}
                         >
-                          {link.label}a
+                          {link.label}
                         </Link>
                       )}
                     </div>
