@@ -129,35 +129,16 @@ export function Navbar() {
         <div className="max-w-screen-xl mx-auto px-4 md:px-6 xl:px-8 flex items-center justify-between gap-4">
 
           {/* Brand */}
-<Link href="/" className="flex items-center gap-3 group shrink-0">
-  {/* E2A 2027 Logo */}
-  <img
-    src="https://res.cloudinary.com/dprjiwgfo/image/upload/v1780614814/E2A_-_2027_dpjmot.png"
-    alt="E2A 2027"
-    className={`h-11 w-auto object-contain transition-all duration-300 group-hover:scale-105 ${
-      !isScrolled ? "brightness-0 invert" : ""
-    }`}
-  />
-
-  {/* NIT Silchar Logo + Department */}
-  <div className="flex flex-col items-center justify-center leading-none">
-    <img
-      src="logo.svg"
-      alt="NIT Silchar"
-      className={`h-7 w-7 object-contain mb-1 transition-all duration-300 ${
-        !isScrolled ? "brightness-0 invert" : ""
-      }`}
-    />
-
-    <span
-      className={`text-[9px] font-mono font-bold tracking-widest uppercase whitespace-nowrap ${
-        isScrolled ? "text-slate-600" : "text-white/80"
-      }`}
-    >
-      Dept. of EIE · NIT Silchar
-    </span>
-  </div>
-</Link>
+          <Link href="/" className="flex items-center gap-3 group shrink-0">
+            {/* E2A 2027 Logo */}
+            <img
+              src="https://res.cloudinary.com/dprjiwgfo/image/upload/v1780614814/E2A_-_2027_dpjmot.png"
+              alt="E2A 2027"
+              className={`h-11 w-auto object-contain transition-all duration-300 group-hover:scale-105 ${
+                !isScrolled ? "brightness-0 invert" : ""
+              }`}
+            />
+          </Link>
 
           {/* Desktop Nav Links */}
           <nav className="hidden xl:flex items-center gap-0.5" ref={dropdownRef}>
@@ -250,7 +231,23 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* Desktop CTA removed as per user request */}
+          {/* NIT Silchar Logo + Department (moved to right side) */}
+          <div className="hidden md:flex flex-col items-center gap-1 shrink-0">
+            <img
+              src="logo.svg"
+              alt="NIT Silchar"
+              className={`h-7 w-7 object-contain transition-all duration-300 ${
+                !isScrolled ? "brightness-0 invert" : ""
+              }`}
+            />
+            <span
+              className={`text-[9px] font-mono font-bold tracking-widest uppercase whitespace-nowrap leading-none ${
+                isScrolled ? "text-slate-600" : "text-white/80"
+              }`}
+            >
+              Dept. of EIE · NIT Silchar
+            </span>
+          </div>
 
           {/* Mobile hamburger */}
           <button
@@ -329,7 +326,7 @@ export function Navbar() {
                               : "text-slate-600 hover:bg-slate-50 hover:text-[#1E3A8A]"
                           }`}
                         >
-                          {link.label}
+                          {link.label}a
                         </Link>
                       )}
                     </div>

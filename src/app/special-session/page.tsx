@@ -208,6 +208,30 @@ const acceptedSessions = [
       },
     ],
   },
+  {
+    id: 11,
+    title:
+      "Next-Generation Intelligent Systems: From Sensing to Decision Making ",
+    organizers: [
+      {
+        name: "Dr.P.Kayal",
+        affiliation:
+          " Professor , Department of CSE(AI&ML),BVRIT HYDERABAD College of Engineering for Women, Hyderabd, India",
+      },
+      {
+        name: "Dr.Viswanadham R",
+        affiliation:
+          " Associate Professor , Department of ECE , BVRIT HYDERABAD College of Engineering for Women, Hyderabad,India.",
+      },
+      {
+        name: "Dr. Balimidi Mallikarjuna ",
+        affiliation:
+          "Assistant Professor , National Institute of Technology Silchar [Electrical Engineering, NIT Silchar, Silchar, India]",
+      },
+    ],
+  },
+
+
 ];
 export default function SpecialSessionPage() {
   return (
