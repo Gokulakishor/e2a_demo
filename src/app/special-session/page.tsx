@@ -230,6 +230,33 @@ const acceptedSessions = [
       },
     ],
   },
+  {
+    id: 12,
+    title:
+      "Advanced RF and Wireless Technologies for Emerging Applications (ARWT 2027)",
+    organizers: [
+      {
+        name: "Dr. Prince Jain",
+        affiliation:
+          "Assistant Professor (Research Cadre), Department of Mechatronics Engineering, Faculty of Engineering and Technology, Parul University, Vadodara, Gujarat, India",
+      },
+      {
+        name: "Dr. Pujita Bhatt",
+        affiliation:
+          "Assistant Professor, Department of Mechatronics Engineering, Faculty of Engineering and Technology, Parul University, Vadodara, Gujarat, India",
+      },
+      {
+        name: "Prof. (Dr.) Unnati Joshi",
+        affiliation:
+          "Director (Research), Professor and Chief Research Officer, Micro-Nano Research and Development Center, Parul University, Vadodara, Gujarat, India",
+      },
+      {
+        name: "Prof. (Dr.) Anand Joshi",
+        affiliation:
+          "Chairperson, Micro-Nano R&D Center; Director, Research and Development Cell; and Senior Professor, Department of Mechanical Engineering, Parul University, Vadodara, Gujarat, India",
+      },
+    ],
+  },
 
 
 ];
