@@ -102,7 +102,7 @@ export default function InformationForAuthorsPage() {
                 <li>At least one author of each accepted paper must register at the full rate to ensure inclusion in the proceedings.</li>
                 <li>The authors can register for a maximum of 3 accepted papers. For each extra paper, an additional fee of INR 3,000 is to be paid.</li>
                 <li>Students can upload a maximum of 1 paper with a single registration.</li>
-                <li>The final camera-ready paper should have a maximum of 8 pages.</li>
+                <li>The final camera-ready paper should have a maximum of 12 pages.</li>
                 <li>Registration fees are non-refundable.</li>
                 <li>Papers that are not presented at the conference will not be included in the proceedings.</li>
               </ol>

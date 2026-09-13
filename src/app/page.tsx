@@ -85,7 +85,7 @@ function CountdownTimer() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    const targetDate = new Date("2026-09-14T23:59:59+05:30").getTime();
+    const targetDate = new Date("2026-10-05T23:59:59+05:30").getTime();
 
     const interval = setInterval(() => {
       const now = new Date().getTime();
@@ -139,8 +139,8 @@ function CountdownTimer() {
       </div>
 
       <p className="text-[10px] text-slate-400 font-mono mt-4">
-        Paper Submission Deadline: September 14, 2026 (11:59 PM IST)
-      </p>
+  Paper Submission Deadline: October 05, 2026 (11:59 PM IST)
+</p>
     </motion.div>
   );
 }
@@ -262,11 +262,10 @@ export default function Home() {
                   </Link>
                 </Magnetic>
                 <Magnetic>
-                  <Link href="/special-session" className="relative inline-flex shrink-0 items-center justify-center bg-gradient-to-r from-[#1E3A8A] to-[#B59410] text-white hover:opacity-95 px-5 h-12 text-xs font-mono uppercase tracking-widest shadow-xl shadow-primary/20 rounded-xl transition-all hover:scale-105 duration-300 border-0">
-                    Special Session
-                    <span className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 bg-rose-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-sm whitespace-nowrap shadow-md">Deadline Extended</span>
-                  </Link>
-                </Magnetic>
+  <Link href="/special-session" className="inline-flex shrink-0 items-center justify-center bg-gradient-to-r from-[#1E3A8A] to-[#B59410] text-white hover:opacity-95 px-5 h-12 text-xs font-mono uppercase tracking-widest shadow-xl shadow-primary/20 rounded-xl transition-all hover:scale-105 duration-300 border-0">
+    Special Session
+  </Link>
+</Magnetic>
                 <Magnetic>
                   <Link href="/registration" className="inline-flex shrink-0 items-center justify-center border border-slate-200 text-slate-700 hover:text-primary px-5 h-12 text-[10px] sm:text-xs font-mono uppercase tracking-widest rounded-xl glass-card transition-all hover:scale-105 duration-300">
                     Register Now
@@ -661,7 +660,7 @@ export default function Home() {
           <div className="space-y-16 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-[2px] before:bg-gradient-to-b before:from-transparent before:via-primary/30 before:to-transparent">
             {[
               { date: "July 01, 2026", event: "Paper Submission Starts", highlight: true, id: "T-00" },
-              { date: "September 14, 2026", event: "Paper Submission Deadline", highlight: true, id: "T-01" },
+              { date: "October 05, 2026", originalDate: "September 14, 2026", event: "Paper Submission Deadline", extended: true, highlight: true, id: "T-01" },
               { date: "November 25, 2026", event: "Notification of Acceptance", highlight: false, id: "T-02" },
               { date: "December 31, 2026", event: "Camera Ready Paper Submission", highlight: false, id: "T-03" },
               { date: "November 15, 2026", event: "Early Bird Registration", highlight: true, id: "T-04" },
@@ -687,12 +686,21 @@ export default function Home() {
                   )}
                   <div className="flex flex-col relative z-10">
                     <div className="flex items-center justify-between mb-3">
-                      <span className="font-mono text-xs text-muted-foreground bg-slate-100 px-2 py-1 rounded-md">{item.id}</span>
-                      <span className={`font-mono text-sm uppercase tracking-widest ${item.highlight ? 'text-primary font-bold bg-primary/10 px-3 py-1 rounded-full' : 'text-slate-500'}`}>
-                        {item.date}
-                      </span>
-                    </div>
-                    <span className="text-xl font-bold text-foreground tracking-tight group-hover:text-primary transition-colors">{item.event}</span>
+  <span className="font-mono text-xs text-muted-foreground bg-slate-100 px-2 py-1 rounded-md">{item.id}</span>
+  <span className="flex flex-col items-end gap-0.5">
+  {item.originalDate && (
+    <span className="font-mono text-base font-semibold text-slate-400 line-through decoration-rose-500 decoration-2">
+      {item.originalDate}
+    </span>
+  )}
+  <span className={`font-mono text-sm uppercase tracking-widest ${item.highlight ? 'text-primary font-bold bg-primary/10 px-3 py-1 rounded-full' : 'text-slate-500'}`}>
+    {item.date}
+  </span>
+</span>
+</div>
+<span className="text-xl font-bold text-foreground tracking-tight group-hover:text-primary transition-colors">
+  {item.event}
+</span>
                   </div>
                 </div>
               </motion.div>

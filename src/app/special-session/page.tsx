@@ -561,9 +561,10 @@ export default function SpecialSessionPage() {
                   <div className="font-mono text-lg font-bold text-white/50 decoration-rose-500 decoration-2">05.09.2026</div>
                 </div>
                 <div className="bg-white/10 p-4 rounded-xl border border-white/20">
-                  <div className="text-amber-400 text-xs font-bold uppercase tracking-wider mb-1">Paper Deadline</div>
-                  <div className="font-mono text-lg font-semibold">14.09.2026</div>
-                </div>
+  <div className="text-amber-400 text-xs font-bold uppercase tracking-wider mb-1">Paper Deadline</div>
+  <div className="font-mono text-lg font-semibold text-white/50 line-through decoration-rose-500 decoration-2">14.09.2026</div>
+  <div className="font-mono text-lg font-bold text-white/50 decoration-rose-500 decoration-2">05.10.2026</div>
+</div>
               </div>
             </div>
             
