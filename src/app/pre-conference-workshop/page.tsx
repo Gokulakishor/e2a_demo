@@ -70,7 +70,7 @@ export default function preConference() {
                                <h3 className="font-extrabold text-xl text-foreground mb-1 leading-snug group-hover:text-primary transition-colors">
                                  {member.name}
                                </h3>
-                               <p className="text-sm font-semibold text-accent uppercase tracking-wider mb-2 font-mono">{member.role}</p>
+                               
                                <p className="text-sm font-semibold text-slate-500 leading-relaxed max-w-xs">
   {member.designation.split(",").map((item, index) => (
     <span key={index}>
