@@ -1,4 +1,3 @@
-
 export interface Speaker {
   id: string;
   name: string;
@@ -46,6 +45,39 @@ export const speakersData: Speaker[] = [
     affiliation:
       "Centre for Development of Advanced Computing (CDAC), New Delhi",
     image: "/speaker/priyanka-jain.jpg",
+    bio: "...",
+    type: "Keynote",
+  },
+  {
+    id: "5",
+    name: "Dr. Rahul Prajesh",
+    designation:
+      "Scientist 'E',\nCSIR- Central Electronics Engineering Research Institute, \npilani",
+    affiliation:
+      "",
+    image: "/speaker/Dr-Rahul-Prajesh.jpg",
+    bio: "...",
+    type: "Keynote",
+  },
+  {
+    id: "6",
+    name: "Dr.Mayur Prakash Bonkile",
+    designation:
+      " Assistant Professor,\n Energy Science and Engineering, \n IIT Kharagpur",
+    affiliation:
+      "",
+    image: "/speaker/Dr-Mayur-Prakash-Bonkile.jpg",
+    bio: "...",
+    type: "Keynote",
+  },
+  {
+    id: "7",
+    name: "Dr. Avishek Adhikary",
+    designation:
+      " Assistant Professor,\nElectrical Engineering and Computer Science,\n IIT Bhilai",
+    affiliation:
+      "",
+    image: "/speaker/Dr-Avishek-Adhikary.jpg",
     bio: "...",
     type: "Keynote",
   },

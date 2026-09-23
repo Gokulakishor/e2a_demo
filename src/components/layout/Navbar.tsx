@@ -16,6 +16,7 @@ const NAV_LINKS: Array<{
   { label: "About", href: "/about" },
   { label: "Call for Papers", href: "/call-for-papers" },
   { label: "Special Session", href: "/special-session" },
+  { label: "Pre-Conference Workshop", href: "/pre-conference-workshop" },
   {
     label: "For Authors",
     href: "/information-for-authors",
