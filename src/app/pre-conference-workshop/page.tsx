@@ -47,6 +47,12 @@ export default function preConference() {
           <img src="/logo.svg" alt="NIT Silchar watermark" className="w-[500px] h-[500px]" />
         </div>
          <div className="space-y-8">
+                     {/* Workshop Title */}
+                     <div className="text-center max-w-3xl mx-auto px-4">
+                       <h2 className="text-2xl md:text-3xl font-extrabold text-primary tracking-tight leading-snug">
+                         Vivan-BCI (Brain-Computer Interface) as an assistive communication solution.
+                       </h2>
+                     </div>
                      <div className="border-b border-slate-200 pb-4 text-center">
                        <h2 className="text-3xl font-extrabold text-foreground tracking-tight">Organizer</h2>
                      </div>
@@ -105,25 +111,14 @@ export default function preConference() {
               </div>
               <h2 className="text-3xl font-bold text-primary">Frequently Asked Questions</h2>
             </div>
-          
-            {/* Fee Table */}
-          
-
-            <p className="text-xs text-slate-500 italic font-light">
-               Arrangements and requirements to be provided by the conference
-Projection System, Table, two chairs for participants.
-            </p>
-
-            
 
             {/* Frequently Asked Questions */}
             <div className="pt-8 border-t border-slate-200">
               {/* <h3 className="text-xl font-bold text-primary mb-4">Frequently Asked Questions</h3> */}
               <div className="space-y-4">
                 <div className="bg-white/60 border border-slate-100 p-4 rounded-xl">
-                  <h5 className="font-semibold text-slate-800 text-sm mb-1">Title of the Workshop and duration in hours?</h5>
-                  <p className="text-slate-600 font-light text-sm">Vivan-BCI (Brain-Computer Interface) as an assistive communication solution.
-Live Demo time = 40 Min (20 min preparation, 20 min Demo + QA), if 1-2 candidates want to experiment on BCI system themselves that may take same 20 min respectively.</p>
+                  <h5 className="font-semibold text-slate-800 text-sm mb-1">What the participants will get?</h5>
+                  <p className="text-slate-600 font-light text-sm">Live Demo time = 40 Min (20 min preparation, 20 min Demo + QA), if 1-2 candidates want to experiment on BCI system themselves that may take same 20 min respectively.</p>
                 </div>
                 <div className="bg-white/60 border border-slate-100 p-4 rounded-xl">
                   <h5 className="font-semibold text-slate-800 text-sm mb-1">Who can attend and any prerequisites for participation.?</h5>
@@ -141,8 +136,6 @@ Live Demo time = 40 Min (20 min preparation, 20 min Demo + QA), if 1-2 candidate
               </div>
             </div>
           </motion.div>
-
-        
 
         </div>
       </section>

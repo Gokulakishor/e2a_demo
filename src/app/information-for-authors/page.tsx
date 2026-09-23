@@ -152,6 +152,7 @@ export default function InformationForAuthorsPage() {
               <li>Papers must follow <strong className="font-semibold text-slate-800">Springer formatting guidelines</strong>.</li>
               <li>Maximum <strong className="font-semibold text-slate-800">10-12 pages</strong> including figures, tables, and references.</li>
               <li>All submitted papers will undergo a rigorous peer review process.</li>
+              <li>Review articles are not being accepted in this conference.</li>
             </ul>
 
             <div className="pt-4 flex flex-wrap gap-4">
