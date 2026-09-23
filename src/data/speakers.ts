@@ -52,9 +52,9 @@ export const speakersData: Speaker[] = [
     id: "5",
     name: "Dr. Rahul Prajesh",
     designation:
-      "Scientist 'E',\nCSIR- Central Electronics Engineering Research Institute, \npilani",
+      "Scientist 'E'",
     affiliation:
-      "",
+      "CSIR- Central Electronics Engineering Research Institute, \npilani",
     image: "/speaker/Dr-Rahul-Prajesh.jpg",
     bio: "...",
     type: "Keynote",
@@ -63,9 +63,9 @@ export const speakersData: Speaker[] = [
     id: "6",
     name: "Dr.Mayur Prakash Bonkile",
     designation:
-      " Assistant Professor,\n Energy Science and Engineering, \n IIT Kharagpur",
+      " Assistant Professor",
     affiliation:
-      "",
+      "Energy Science and Engineering,                               \nIIT Kharagpur",
     image: "/speaker/Dr-Mayur-Prakash-Bonkile.jpg",
     bio: "...",
     type: "Keynote",
@@ -74,9 +74,9 @@ export const speakersData: Speaker[] = [
     id: "7",
     name: "Dr. Avishek Adhikary",
     designation:
-      " Assistant Professor,\nElectrical Engineering and Computer Science,\n IIT Bhilai",
+      " Assistant Professor",
     affiliation:
-      "",
+      "Electrical Engineering and Computer Science,\nIIT Bhilai",
     image: "/speaker/Dr-Avishek-Adhikary.jpg",
     bio: "...",
     type: "Keynote",

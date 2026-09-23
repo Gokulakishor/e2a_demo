@@ -106,13 +106,19 @@ export default function SpeakersPage() {
 </p>
 
                     {/* Affiliation */}
-                    <div className="border-t border-slate-100 w-full pt-4 mt-auto flex items-start justify-center gap-2 text-xs text-slate-600 font-medium">
-                      <School className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                    {/* Affiliation */}
+                    {/* Affiliation */}
+<div className="border-t border-slate-100 w-full pt-4 mt-auto flex items-start justify-center gap-2 text-xs text-slate-600 font-medium">
+  <School className="h-4 w-4 text-primary shrink-0 mt-0.5" />
 
-                      <span className="leading-relaxed">
-                        {speaker.affiliation}
-                      </span>
-                    </div>
+  <span className="leading-relaxed text-center">
+    {speaker.affiliation.split("\n").map((line, index) => (
+      <span key={index} className="block">
+        {line}
+      </span>
+    ))}
+  </span>
+</div>
                   </CardContent>
                 </Card>
               </motion.div>
