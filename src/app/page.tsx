@@ -85,7 +85,7 @@ function CountdownTimer() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    const targetDate = new Date("2026-10-05T23:59:59+05:30").getTime();
+    const targetDate = new Date("2026-10-26T23:59:59+05:30").getTime();
 
     const interval = setInterval(() => {
       const now = new Date().getTime();
@@ -136,10 +136,11 @@ function CountdownTimer() {
             <span className="text-[9px] uppercase tracking-wider text-slate-400 font-mono mt-1 font-medium">{unit.label}</span>
           </div>
         ))}
+        
       </div>
 
       <p className="text-[10px] text-slate-400 font-mono mt-4">
-  Paper Submission Deadline: October 05, 2026 (11:59 PM IST)
+  Paper Submission Deadline: October 26, 2026 (11:59 PM IST)
 </p>
     </motion.div>
   );
@@ -660,7 +661,7 @@ export default function Home() {
           <div className="space-y-16 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-[2px] before:bg-gradient-to-b before:from-transparent before:via-primary/30 before:to-transparent">
             {[
               { date: "July 01, 2026", event: "Paper Submission Starts", highlight: true, id: "T-00" },
-              { date: "October 05, 2026", originalDate: "September 14, 2026", event: "Paper Submission Deadline", extended: true, highlight: true, id: "T-01" },
+              { date: "October 26, 2026", originalDate: "October 05, 2026", event: "Paper Submission Deadline", extended: true, highlight: true, id: "T-01" },
               { date: "November 25, 2026", event: "Notification of Acceptance", highlight: false, id: "T-02" },
               { date: "December 31, 2026", event: "Camera Ready Paper Submission", highlight: false, id: "T-03" },
               { date: "November 15, 2026", event: "Early Bird Registration", highlight: true, id: "T-04" },
