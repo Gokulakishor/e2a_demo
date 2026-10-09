@@ -452,7 +452,10 @@ export default function SpecialSessionPage() {
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="p-1.5 bg-green-50 rounded-lg text-green-600 shrink-0"><Users className="w-5 h-5" /></div>
-                  <span className="leading-relaxed">At least one organizer is expected to register, attend, and chair the corresponding sessions.</span>
+                  <span className="leading-relaxed">
+  At least one organizer is expected to register, attend, and chair the corresponding sessions.
+  The SS Organizers are provided an option to choose Online or Offline presence to chair their corresponding sessions.
+</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="p-1.5 bg-green-50 rounded-lg text-green-600 shrink-0"><Target className="w-5 h-5" /></div>

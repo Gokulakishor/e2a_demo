@@ -3,9 +3,9 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Menu, X, ArrowRight, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Megaphone } from "lucide-react";
 
 const NAV_LINKS: Array<{
   label: string;
@@ -15,6 +15,7 @@ const NAV_LINKS: Array<{
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Call for Papers", href: "/call-for-papers" },
+  { label: "Important Dates", href: "/#important-dates" },
   { label: "Special Session", href: "/special-session" },
   { label: "Pre-Conference Workshop", href: "/pre-conference-workshop" },
   {
@@ -34,42 +35,50 @@ const NAV_LINKS: Array<{
   { label: "Contact", href: "/contact" },
 ];
 
+/* Separate component so the 1-second clock tick doesn't re-render the whole navbar */
+function IstClock() {
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const tick = () =>
+      setTime(
+        new Date().toLocaleTimeString("en-IN", {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: true,
+          timeZone: "Asia/Kolkata",
+        }) + " IST"
+      );
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <span className="text-[10px] font-mono tabular-nums text-amber-400/90 tracking-tight">
+      {time}
+    </span>
+  );
+}
+
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [timeStr, setTimeStr] = useState("");
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 30);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // Highlights a link when on its own page or any of its children's pages
+  const isActive = (link: (typeof NAV_LINKS)[number]) =>
+    pathname === link.href ||
+    !!link.children?.some((c) => pathname === c.href.split("#")[0]);
 
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      const options: Intl.DateTimeFormatOptions = {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: true,
-        timeZone: "Asia/Kolkata",
-      };
-      setTimeStr(now.toLocaleTimeString("en-IN", options) + " IST");
-    };
-    updateTime();
-    const id = setInterval(updateTime, 1000);
-    return () => clearInterval(id);
-  }, []);
-
-  // Close mobile menu on route change
+  // Close menus on route change
   useEffect(() => {
     setMobileMenuOpen(false);
     setOpenDropdown(null);
+    setMobileExpanded(null);
   }, [pathname]);
 
   // Close dropdown on outside click
@@ -83,6 +92,21 @@ export function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const linkBase =
+    "relative px-2.5 py-2 rounded-lg text-[11px] font-semibold uppercase tracking-wider transition-all duration-200 whitespace-nowrap";
+  const linkColor = (active: boolean) =>
+    active
+      ? "text-[#1E3A8A]"
+      : "text-slate-500 hover:text-[#1E3A8A] hover:bg-slate-100/70";
+
+  const ActiveUnderline = () => (
+    <motion.span
+      layoutId="activeUnderline"
+      className="absolute bottom-0.5 left-3 right-3 h-0.5 rounded-full bg-gradient-to-r from-[#1E3A8A] to-[#C9A227]"
+      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+    />
+  );
+
   return (
     <>
       {/* ── Institutional Top Bar ── */}
@@ -90,13 +114,18 @@ export function Navbar() {
         <div className="flex items-center gap-2 min-w-0">
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse shrink-0" />
           <span className="text-[10px] font-mono tracking-wider text-white/60 truncate">
-            <span className="text-white/80 font-semibold">NATIONAL INSTITUTE OF TECHNOLOGY SILCHAR</span>
-            <span className="hidden sm:inline text-white/40"> — An Institute of National Importance</span>
+            <span className="text-white/80 font-semibold">
+              NATIONAL INSTITUTE OF TECHNOLOGY SILCHAR
+            </span>
+            <span className="hidden sm:inline text-white/40">
+              {" "}
+              — An Institute of National Importance
+            </span>
           </span>
         </div>
         <div className="flex items-center gap-3 shrink-0">
           <a
-            href="http://endearing-duckanoo-cef30f.netlify.app/"
+            href="https://endearing-duckanoo-cef30f.netlify.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:inline text-[10px] font-mono text-white/50 hover:text-amber-400 transition-colors"
@@ -113,94 +142,71 @@ export function Navbar() {
             NIT PORTAL ↗
           </a>
           <span className="hidden md:inline text-white/20 text-xs">|</span>
-          <span className="text-[10px] font-mono tabular-nums text-amber-400/90 tracking-tight">
-            {timeStr}
-          </span>
+          <IstClock />
         </div>
       </div>
+      {/* Scrolling Deadline Announcement */}
+<div className="fixed top-9 inset-x-0 z-30 h-8 overflow-hidden bg-[#1E3A8A] text-white">
+  <Link
+    href="/#important-dates"
+    className="flex h-full items-center overflow-hidden"
+    aria-label="Submission deadline extended. View important dates."
+  >
+    <div className="flex min-w-max animate-marquee items-center gap-3 px-4">
+      <Megaphone className="h-4 w-4 shrink-0 text-amber-300" />
 
-      {/* ── Main Navbar ── */}
-      <header
-        className={`fixed inset-x-0 z-40 transition-all duration-500 ${
-          isScrolled
-            ? "top-9 bg-white/97 backdrop-blur-2xl border-b border-slate-200/80 shadow-[0_4px_24px_rgba(30,58,138,0.08)] py-2"
-            : "top-9 bg-gradient-to-b from-black/60 via-black/30 to-transparent border-b border-transparent py-4"
-        }`}
-      >
-        <div className="max-w-screen-xl mx-auto px-4 md:px-6 xl:px-8 flex items-center justify-between gap-4">
+      <span className="text-xs font-semibold uppercase tracking-wider">
+        Submission Deadline Extended — Click Here to View Important Dates
+      </span>
 
+      <span className="text-amber-300">✦</span>
+
+      <span className="text-xs font-semibold uppercase tracking-wider">
+        Submission Deadline Extended — Click Here to View Important Dates
+      </span>
+    </div>
+  </Link>
+</div>
+      {/* ── Main Navbar (always white) ── */}
+      <header className="fixed inset-x-0 top-[4.5rem] z-40 border-b border-slate-200 bg-white shadow-sm py-0">
+        <div className="w-full px-4 md:px-6 flex items-center justify-between gap-2">
           {/* Brand */}
-          <Link href="/" className="flex items-center gap-3 group shrink-0">
-            {/* E2A 2027 Logo */}
+          <Link href="/" className="flex items-center gap-3 group shrink-0 ">
             <img
               src="https://res.cloudinary.com/dprjiwgfo/image/upload/v1780614814/E2A_-_2027_dpjmot.png"
               alt="E2A 2027"
-              className={`h-11 w-auto object-contain transition-all duration-300 group-hover:scale-105 ${
-                !isScrolled ? "brightness-0 invert" : ""
-              }`}
+              className="h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
 
           {/* Desktop Nav Links */}
           <nav className="hidden xl:flex items-center gap-0.5" ref={dropdownRef}>
             {NAV_LINKS.map((link) => {
-              const active = pathname === link.href || (link.children && pathname.startsWith("/information-for-authors"));
-              const hasChildren = link.children && link.children.length > 0;
+              const active = isActive(link);
+              const hasChildren = !!link.children?.length;
 
               return (
                 <div key={link.href} className="relative">
                   {hasChildren ? (
                     <button
-                      onClick={() => setOpenDropdown(openDropdown === link.label ? null : link.label)}
-                      className={`relative px-2.5 py-2 rounded-lg text-[11px] font-semibold uppercase tracking-wider transition-all duration-200 whitespace-nowrap flex items-center gap-1 ${
-                        isScrolled
-                          ? active
-                            ? "text-[#1E3A8A]"
-                            : "text-slate-500 hover:text-[#1E3A8A] hover:bg-slate-100/70"
-                          : active
-                            ? "text-white font-bold"
-                            : "text-white/90 hover:text-white hover:bg-white/10"
-                      }`}
+                      onClick={() =>
+                        setOpenDropdown(openDropdown === link.label ? null : link.label)
+                      }
+                      className={`${linkBase} ${linkColor(active)} flex items-center gap-1`}
+                      aria-expanded={openDropdown === link.label}
                     >
                       {link.label}
-                      <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${openDropdown === link.label ? "rotate-180" : ""}`} />
-                      {active && (
-                        <motion.span
-                          layoutId="activeUnderline"
-                          className={`absolute bottom-0.5 left-3 right-3 h-0.5 rounded-full ${
-                            isScrolled
-                              ? "bg-gradient-to-r from-[#1E3A8A] to-[#C9A227]"
-                              : "bg-amber-300"
-                          }`}
-                          transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                        />
-                      )}
+                      <ChevronDown
+                        className={`h-3 w-3 transition-transform duration-200 ${
+                          openDropdown === link.label ? "rotate-180" : ""
+                        }`}
+                      />
+                      {active && <ActiveUnderline />}
                     </button>
                   ) : (
-                    <Link
-                      href={link.href}
-                      className={`relative px-2.5 py-2 rounded-lg text-[11px] font-semibold uppercase tracking-wider transition-all duration-200 whitespace-nowrap ${
-                        isScrolled
-                          ? active
-                            ? "text-[#1E3A8A]"
-                            : "text-slate-500 hover:text-[#1E3A8A] hover:bg-slate-100/70"
-                          : active
-                            ? "text-white font-bold"
-                            : "text-white/90 hover:text-white hover:bg-white/10"
-                      }`}
-                    >
+                    <Link href={link.href} className={`${linkBase} ${linkColor(active)}`}>
                       {link.label}
-                      {active && (
-                        <motion.span
-                          layoutId="activeUnderline"
-                          className={`absolute bottom-0.5 left-3 right-3 h-0.5 rounded-full ${
-                            isScrolled
-                              ? "bg-gradient-to-r from-[#1E3A8A] to-[#C9A227]"
-                              : "bg-amber-300"
-                          }`}
-                          transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                        />
-                      )}
+                      {active && <ActiveUnderline />}
                     </Link>
                   )}
 
@@ -212,14 +218,14 @@ export function Navbar() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -5 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute top-full left-0 mt-1 w-64 bg-white/98 backdrop-blur-2xl border border-slate-200 rounded-xl shadow-xl overflow-hidden z-50"
+                        className="absolute top-full left-0 mt-2 w-64 bg-white border border-slate-200 rounded-xl shadow-2xl overflow-hidden z-[100]"
                       >
                         {link.children!.map((child) => (
                           <Link
                             key={child.href}
                             href={child.href}
                             onClick={() => setOpenDropdown(null)}
-                            className="block px-4 py-3 text-[11px] font-semibold text-slate-600 hover:bg-primary/5 hover:text-[#1E3A8A] transition-colors uppercase tracking-wider border-b border-slate-100 last:border-b-0"
+                            className="block px-5 py-3.5 text-xs font-semibold text-slate-700 hover:bg-blue-50 hover:text-[#1E3A8A] transition-colors uppercase tracking-wide border-b border-slate-100 last:border-b-0"
                           >
                             {child.label}
                           </Link>
@@ -232,31 +238,22 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* NIT Silchar Logo + Department (moved to right side) */}
-          <div className="hidden md:flex flex-col items-center gap-1 shrink-0">
-            <img
-              src="logo.svg"
-              alt="NIT Silchar"
-              className={`h-7 w-7 object-contain transition-all duration-300 ${
-                !isScrolled ? "brightness-0 invert" : ""
-              }`}
-            />
-            <span
-              className={`text-[9px] font-mono font-bold tracking-widest uppercase whitespace-nowrap leading-none ${
-                isScrolled ? "text-slate-600" : "text-white/80"
-              }`}
-            >
-              Dept. of EIE · NIT Silchar
-            </span>
-          </div>
+          {/* NIT Silchar Logo + Department */}
+          <div className="hidden md:flex flex-col items-center gap-1.5 shrink-0">
+  <img src="/logo.png" alt="NIT Silchar" className="h-20 w-auto object-contain" />
+  <span className="text-[9px] font-mono font-bold tracking-widest uppercase whitespace-nowrap leading-tight text-slate-600 text-center">
+    Dept. of EIE
+    <br />
+    NIT Silchar
+  </span>
+</div>
 
           {/* Mobile hamburger */}
           <button
-            className={`xl:hidden p-2 rounded-xl transition-colors ${
-              isScrolled ? "text-slate-600 hover:bg-slate-100" : "text-white hover:bg-white/10"
-            }`}
+            className="xl:hidden p-2 rounded-xl transition-colors text-slate-600 hover:bg-slate-100"
             onClick={() => setMobileMenuOpen((v) => !v)}
             aria-label="Toggle menu"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -270,27 +267,34 @@ export function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="xl:hidden overflow-hidden bg-white backdrop-blur-none border-t border-slate-200 shadow-lg max-h-[70vh] overflow-y-auto"
+              className="xl:hidden overflow-hidden bg-white border-t border-slate-200 shadow-lg max-h-[70vh] overflow-y-auto"
             >
               <div className="max-w-screen-xl mx-auto px-4 py-4 flex flex-col gap-1">
                 {NAV_LINKS.map((link) => {
-                  const active = pathname === link.href;
-                  const hasChildren = link.children && link.children.length > 0;
+                  const active = isActive(link);
+                  const hasChildren = !!link.children?.length;
 
                   return (
                     <div key={link.href}>
                       {hasChildren ? (
                         <>
                           <button
-                            onClick={() => setMobileExpanded(mobileExpanded === link.label ? null : link.label)}
+                            onClick={() =>
+                              setMobileExpanded(mobileExpanded === link.label ? null : link.label)
+                            }
+                            aria-expanded={mobileExpanded === link.label}
                             className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${
                               active
-                                ? "bg-[#1E3A8A]/8 text-[#1E3A8A]"
+                                ? "bg-[#1E3A8A]/10 text-[#1E3A8A]"
                                 : "text-slate-700 hover:bg-slate-50 hover:text-[#1E3A8A]"
                             }`}
                           >
                             {link.label}
-                            <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${mobileExpanded === link.label ? "rotate-180" : ""}`} />
+                            <ChevronDown
+                              className={`h-4 w-4 transition-transform duration-200 ${
+                                mobileExpanded === link.label ? "rotate-180" : ""
+                              }`}
+                            />
                           </button>
                           <AnimatePresence>
                             {mobileExpanded === link.label && (
@@ -321,9 +325,9 @@ export function Navbar() {
                         <Link
                           href={link.href}
                           onClick={() => setMobileMenuOpen(false)}
-                          className={`px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${
+                          className={`block px-4 py-3 rounded-xl text-sm font-semibold transition-colors ${
                             active
-                              ? "bg-[#1E3A8A]/8 text-[#1E3A8A]"
+                              ? "bg-[#1E3A8A]/10 text-[#1E3A8A]"
                               : "text-slate-600 hover:bg-slate-50 hover:text-[#1E3A8A]"
                           }`}
                         >
@@ -333,7 +337,6 @@ export function Navbar() {
                     </div>
                   );
                 })}
-                {/* Mobile CTA removed as per user request */}
               </div>
             </motion.div>
           )}
